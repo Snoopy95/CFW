@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+		<h1 class='col-10'> Ancien DOSSIERS T </h1>
+{% endblock %}
+
+{% block body %}
+	<div class='fixe'>
+		<div class="menu cadre row">
+			<a href="{{path('dossiert')}}" type="button" class="btn btn-primary btn-sm mr-5">Retour</a>
+			{{ form_start(form)}}
+			<div class="form-inline">
+				<button type="submit" class="btn btn-success btn-sm mr-2">Recherche</button>
+				<div class="form-group">
+					{{form_widget(form.search)}}
+				</div>		
+			</div>	
+			{{ form_end(form) }}
+		</div>
+	</div>
+	
+	<div class="row cadre liste scroll">
+	{% if lines|length>0 %}
+		<div class="col-4">
+			<ul>
+				{% for line in lines|slice(0, ((lines|length)/3)|round(0, 'ceil')) %}
+					<li>{{line}}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+	{% if lines|length>1 %}
+		<div class="col-4">
+			<ul>
+				{% for line in lines|slice((lines|length/3)|round(0, 'ceil'), (lines|length/3)|round(0, 'ceil')) %}
+					<li>{{line}}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+	{% if lines|length>2 %}
+		<div class="col-4">
+			<ul>
+				{% for line in lines|slice(((lines|length/3)|round(0, 'ceil')*2), (lines|length)) %}
+					<li>{{line}}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+	</div>
+{% endblock %}

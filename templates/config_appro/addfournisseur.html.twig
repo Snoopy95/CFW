@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<h1 class='col-10'>Ajout de fournisseurs</h1>
+	<a href="{{path('config_fournisseurs')}}">
+		<i class="fas fa-backward fa-2x"></i>
+	</a>
+{% endblock %}
+
+{% block body %}
+	<div class="menu cadre mt-5">
+		<div class="card card-body">
+			{{ form_start(formfourn) }}
+			<h3> Fournisseur</h3>
+			<div class="form-row">
+				<div class="form-group col-lg-1">
+					{{form_widget(formfourn.codefour)}}
+				</div>
+				<div class="form-group col-lg-4">
+					{{form_widget(formfourn.nom)}}
+				</div>
+			</div>
+			<h3>Contact</h3>
+			<small>Si aucun contact, laisser vide !!</small>
+            {{ form_start(formcontact) }}
+			<div class='form-row'>
+				<div class="form-group col-lg-4">
+					{{form_widget(formcontact.nom)}}
+				</div>
+				<div class="form-group col-lg-4">
+					{{form_widget(formcontact.mail)}}
+				</div>
+			</div>
+		</div>
+		<div class="p-3">
+			<button type="submit" class="ml-5 btn btn-success">Valider !</button>
+			<a href="{{ path('config_fournisseurs') }}" type="button" class="ml-5 btn btn-danger">Annuler</a>
+		</div>
+		{{ form_end(formcontact)}}
+		{{ form_end(formfourn)}}
+	</div>
+{% endblock %}

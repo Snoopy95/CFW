@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<h1 class='col-12'>Accueil CFW</h1>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row-cols mt-5 justify-content-center">
+			<h1 class='animate_buttom'>
+				<a href="{{path('dossiert')}}">Dossier T</a>
+			</h1>
+			<h1 class='animate_buttom'>
+				<a href="{{path('appro_index')}}">Appro matiere</a>
+			</h1>
+		</div>
+	</div>
+{% endblock %}

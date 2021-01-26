@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<h1 class='col-10'>Fournisseurs</h1>
+	<a href="{{path('config_index')}}">
+		<i class="fas fa-backward fa-2x"></i>
+	</a>
+{% endblock %}
+
+{% block body %}
+	<div >
+		<div class="cadre menu mt-5 d-flex justify-content-between">
+			<div>
+				<a href='{{path('config_fournisseurs')}}' type='button' class="btn btn-sm btn-success">
+					<i class="fas fa-id-card"></i>
+					Fournisseur |
+					<i class="fas fa-user-friends"></i>
+					Contact
+				</a>
+				<a href='{{path('config_familles')}}' type='button' class='btn btn-sm btn-success'>
+					<i class="fas fa-tags"></i>
+					Famille
+				</a>
+				<a href="{{path('config_nuances')}}" type='button' class='btn btn-sm btn-success'>
+					<i class="fas fa-tags"></i>
+					Nuance
+				</a>
+				<a href='#' type='button' class='btn btn-sm btn-warning'>
+					<i class="fas fa-history"></i>
+					Autre
+				</a>
+			</div>
+			<div>
+				<a href="{{path('config_addfournisseur')}}" type='button' class="btn btn-sm btn-success">
+					<i class="fas fa-user"></i>
+					Ajouter un Fournisseur
+				</a>
+				<a href='{{path('config_contacts')}}' type='button' class='btn btn-sm btn-success'>
+					<i class="fas fa-envelope"></i>
+					Contact
+				</a>
+			</div>
+			<div class='invisible' id='cadre-del'>
+				<button type="button" class='btn btn-success btn-sm mr-2' id='btn-undo'>
+					<i class="fas fa-undo"></i>
+					Undo
+				</button>
+				<button type="button" class='btn btn-danger btn-sm' id='btn-delete' data-url='delfournisseurs'>
+					Supprimer
+					<span class="badge badge-pill badge-light">
+						0
+					</span>
+				</button>
+			</div>
+		</div>
+		<div class="liste cadre-2 scroll-y">
+			<div class="card-columns">
+				{% if liste %}
+					{% for line in liste %}
+						<div id="card{{line.id}}" class="card text-center shadow">
+							<div class="card-header">
+								<div class="d-inline-flex mr-5">
+									<button type="button" class="addcont btn text-success" title="Ajouter contact" data-toggle="modal" data-target='#addcontact'
+										data-id="{{line.id}}" data-url="addcontact">
+										<i class="fas fa-user-plus fa-lg"></i>
+									</button>
+								</div>
+								<div class="d-inline-flex">
+									<button type='button' class="del-btn btn btn-link text-danger" title="Supprimer" data-id="{{line.id}}">
+										<i class="far fa-trash-alt fa-lg"></i>
+									</button>
+								</div>
+								<div class="d-inline-flex ml-5">
+									<div class="custom-control custom-switch">
+										<input type="checkbox" class="custom-control-input switch-tab" id="Switch{{line.id}}" data-id="{{line.id}}" data-url="statutfournisseur" {% if line.statut == "OK" %} checked {% endif %}>
+										<label class="custom-control-label" for="Switch{{line.id}}"></label>
+									</div>
+								</div>
+							</div>
+							<div class="card-body">
+								<h5 class="card-title">{{line.nom}}</h5>
+								<div class="card-text">
+									{% for contact in line.contacts %}
+										<div class="border-top">
+											<p class='text-capitalize mt-1'>{{contact.nom}}</p>
+											<p class="text-lowercase">
+												{{ contact.mail}}</p>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+							<div class='card-footer'>
+								<a href="{{path('config_fichefournisseur', {'id': line.id})}}" class="text-info shadow" title="Plus d'info">
+									<i class="fas fa-address-card fa-2x"></i>
+								</a>
+							</div>
+						</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="addcontact" tabindex="-1" data-backdrop="static" aria-hidden="true">
+			{% include '/config_appro/modaladdcontact.html.twig' %}
+		</div>
+	</div>
+	{% endblock %}
+
+	{% block script %}
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="{{asset('js/appro.js')}}"></script>
+	{% endblock %}

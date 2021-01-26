@@ -1,0 +1,973 @@
+100	LOPPIIN ET JEAN VERTUS                  
+101	RADIALEX                                
+102	SIFI                                    
+103	SIREMBALLAGE                            
+104	APIV                                    
+105	ATELIER BOBINAGE PIERRELAYE             
+106	ADECCO                                  
+107	AGA                                     
+108	ACGR                                    
+109	BYSTRONIC FRANCE SA                     
+110	ACCEL                                   
+111	ACRODUR COURBEVOIE                      
+112	ACCURIDE INTERNATIONAL GMBH             
+113	AGENDA FISCAL                           
+114	ADLER                                   
+115	AIRGAZ                                  
+116	ALBAUT                                  
+117	METACONCEPT                             
+118	AMGER                                   
+119	AMETIF                                  
+120	AMADA SA                                
+121	RICHARD ANDRE                           
+122	APRO CERGY                              
+123	ATELIERS LHORTIE                        
+124	AUCHAN                                  
+125	APSID                                   
+126	ARELEC                                  
+128	AVDEL                                   
+129	AXIS FABORY                             
+132	BACHOLLE                                
+133	BALZAC INFORMATIQUE                     
+134	BARRIER                                 
+135	BAUDON                                  
+138	BERNIER                                 
+139	BERNIER PATRICE                         
+140	BEYELER SAGITA PERROT                   
+142	BINDER MAGNETIC                         
+143	BLOXAHAM-RUSSILY-HUGOT                  
+144	BLS MAGNET                              
+146	BONNET                                  
+147	RESSORTS GERBOUT                        
+148	BOUTET                                  
+149	BRAY ET CHARNELET                       
+150	INITIAL BTB                             
+151	FRANCIS LEFEVRE                         
+152	COFIGES                                 
+153	COGNE FRANCE SA                         
+154	CARNIERE ET DEFOSSEZ                    
+155	CCI                                     
+156	CRITCHLEY SME VOIR COPEL                
+157	CERETH                                  
+158	CERGY VIS                               
+159	CETIM                                   
+160	SCI CGS                                 
+161	CHATEAU D'EAU SA                        
+162	CHAPALAIN                               
+163	CLIP INDUSTRIE                          
+164	CASTOLIN FRANCE                         
+165	CASTORAMA                               
+166	CERBERE SOVAREC                         
+167	COOKSONCLAL                             
+168	CNRH                                    
+169	CORDONNERIE SOK                         
+170	CQFT                                    
+171	CREATION DU VAL D'OISE                  
+172	CRIT INTERIM                            
+173	DANTE RAPID DECOLTAGE                   
+174	CSR                                     
+175	CXP INTERNATIONNAL                      
+176	DACOR                                   
+177	DEC                                     
+178	DECAP OUEST                             
+179	DEMIGUEL                                
+180	2IP                                     
+181	DIMACEL COMPOSANTS                      
+182	DIAC                                    
+183	DEXEL                                   
+184	DIETZ                                   
+185	EDF                                     
+186	EFIPAC                                  
+187	ELECTROLUX                              
+188	EMAIL ET DECOR                          
+189	EMKA FRANCE                             
+190	EMT/TONNETOT                            
+191	ENAC                                    
+192	EPTA                                    
+193	EPSIA                                   
+194	EUGENE BUDIN ET FILS                    
+195	95 EXPRESS                              
+196	ETILAM GRAVIGNY                         
+197	FENWICK-LINDE                           
+198	FET                                     
+199	FIFORM ISOL                             
+200	FNAC CERGY                              
+201	FONTAINE LUOIS                          
+203	SFDE                                    
+204	FRAPINOX                                
+205	FTS                                     
+206	GALLAYS                                 
+207	GANTOIS                                 
+208	GCP                                     
+209	GRAPPIN ANNAT INDUSTRIE                 
+210	GUEDERLIN                               
+211	GUEGNON                                 
+212	GUILBERT                                
+213	HERCKELBOUT DAWSON                      
+214	CORUS ALUMINIUM SERVICE CENTER          
+215	HURCO                                   
+216	INTER INOX                              
+217	INFO PLUS INTERNATONNAL                 
+218	INTERMETAUX                             
+219	IMPHY SERVICE                           
+220	ISOTECH                                 
+221	JET SERVICES CHARENTON                  
+222	JLM SERVICE                             
+223	JUNIOR INSTRUMENTS                      
+224	JPG                                     
+225	KORB                                    
+226	KOPAL                                   
+227	KOVI                                    
+228	KOMPAS FRANCE                           
+229	LAMBERT ALCYON VOIR PUNCH CODE 646      
+230	L'AIR LIQUIDE                           
+231	BFL DEXIS ISOTECH                       
+232	LASER TECHNIQUES                        
+233	LAPAUZE                                 
+234	LAURENT                                 
+235	LE FRIEC                                
+236	LES ECHOS                               
+237	LES FONTES D'ART DOMAR                  
+238	LNP                                     
+239	LORRAINE DECOUPE                        
+240	CENTRE LECLERC                          
+241	LENEUTRE                                
+242	LETOUR BERNARD                          
+243	L'EQUIPIER                              
+244	LM PLASTIQUES                           
+245	L'USINE NOUVELLE                        
+246	LUMINA PEINTURE                         
+247	MAINTENANCE POINCONNAGE                 
+248	MATELECO                                
+249	MBO                                     
+250	MESPOULET                               
+251	MESSER FRANCE SA                        
+252	MARTIN JURIDIQUE                        
+253	MICROSURFACES                           
+254	MINOLTA                                 
+255	MIGALL                                  
+256	MICRON FRANCE                           
+257	MOTRALEC                                
+258	MORELLEC                                
+259	MPAB                                    
+260	NOEL PONOT                              
+261	NETAL                                   
+262	NACI NETTOYAGE                          
+263	NORCAN                                  
+264	NORTON VOIR SAINT GOBAIN ABRASIF 647    
+266	NOZAL                                   
+267	NITRUVID BODYCOTE                       
+268	OLYMPIQUE PEINTURE                      
+269	OCLAIR                                  
+270	OTELO                                   
+271	OUEST ISOL                              
+272	OTALU                                   
+273	PANTO GRAVURE                           
+274	PAPETERIE GENERALE                      
+275	PARIS ROULETTES                         
+276	PCA CITROEN                             
+277	PHONIE INTERNATIONNALE                  
+278	PHYTRONIC                               
+279	PICAMILH                                
+280	PINET                                   
+281	PLANSEE                                 
+282	JEAN PERROT INDUSTRIE                   
+283	POLISSA                                 
+284	PORTER BESSON                           
+285	PROMET                                  
+286	PMSI                                    
+287	BRONZAVIA                               
+288	PROCOPY                                 
+289	PROTETAIN                               
+290	PSM FIXATION                            
+291	AMD SOLUTIONS FRANCE                    
+292	RABOURDIN INDUSTRIE SA                  
+293	RADIOSPARES COMPOSANTS                  
+294	RADIO TELEPHONIE                        
+295	RADAN                                   
+296	RAINOTTI                                
+297	RAPID                                   
+298	RAYNAUD INDUSTRIE                       
+299	SOMERS                                  
+300	REY DUVAL                               
+301	RIC                                     
+302	RIVEX NYLIC     VOIR TEHNODIS           
+303	METAL PLV                               
+304	ROC                                     
+305	SAGEM                                   
+306	SAGI                                    
+307	AMA SA                                  
+308	SACV VERT GALANT                        
+309	SAIT FRANCE                             
+310	SALENTEY                                
+311	SAPI                                    
+312	SAPIM INOX                              
+313	SANA                                    
+314	SAROM                                   
+315	SCC                                     
+316	SCHROFF SAS                             
+317	SDPM                                    
+318	SECAM                                   
+319	SECRETARIAT D'ENTREPRISE                
+320	SED                                     
+321	SEDITUBE                                
+322	SEIM                                    
+323	SELF INOX & ALUMINIUM                   
+324	SEM DIFFUSION                           
+325	SEPROJA UTILISER 437 PROTEC             
+326	SERCATT                                 
+327	SERYPACK                                
+328	SESIVAT VATTIER                         
+329	SES STERLING                            
+330	SESEM                                   
+331	SFF                                     
+332	SFPI                                    
+333	SIE                                     
+334	SIEMO                                   
+335	SIRUT                                   
+336	SLD LUBRIFIANT                          
+337	SLPM                                    
+338	SODIMATEL FASTENERS                     
+339	SOCIETE DE GALVANOPLASTIE               
+340	SOCLAM                                  
+341	SOCOTEC                                 
+342	SOLOCVI                                 
+343	SOGOREX                                 
+344	SORBUS                                  
+345	SOUTHCO                                 
+346	SOVETAMPONS                             
+347	STIMO                                   
+348	SUN CLEAR DIFFUSION                     
+349	SUPMI                                   
+350	SURCOUF                                 
+351	SYLVAIN JOSEPH                          
+352	TECMATEL                                
+353	FRANCE TELECOM                          
+354	THETIOT ANDRE                           
+355	THALES                                  
+357	T DA CRUZ                               
+358	TOURNIER                                
+359	TRANSPORT DIVERS                        
+360	TRANSRACK                               
+361	THYSSEN FRANCE                          
+362	3M FRANCE                               
+363	TOUTUBES                                
+364	UGINE FRANCE SERVICE                    
+365	UNIC INDUSTRIES                         
+366	UNITOL                                  
+367	UNIFRANCE                               
+368	UC2                                     
+369	VACOUR                                  
+370	VEBER                                   
+371	VULCA SERVICE                           
+372	VITALAQUE                               
+373	VT PLASTICS                             
+374	ISPC TRAITEMENT DE SURFACE              
+375	SAEW                                    
+376	WASYL KUZMIAK                           
+377	WEBER SNWM                              
+378	WEBCO                                   
+379	WITTMER                                 
+380	WINCKELS                                
+382	ALMET                                   
+383	APACHE INFORMATIQUE                     
+384	AIR TECHNIQUE                           
+385	HARDY-TORTAUX SA                        
+386	AGRILOG MPSA EQUIP'INDUSTRIE            
+387	MATRAX TRAITEMENTS                      
+388	GALION SA                               
+389	DIRECT                                  
+390	INTERBAIL NOUVELLE USINE                
+391	COFRAFER                                
+392	BIOBLOCK SCIENTIFIC                     
+393	GMC                                     
+394	ADSMA                                   
+395	GDF                                     
+396	BERANGER                                
+397	SOUDAGE UNIVERSAL FRANCE                
+398	HUTCHINSON SNC                          
+399	SECAP                                   
+400	ABAQUEPLAST                             
+401	LASER FUSION                            
+402	DEA IMMOBILIER                          
+403	NEMOR EUROPE OUTILS                     
+404	TUBINOX                                 
+405	CHEMSEARCH                              
+406	TRUFFAUT                                
+407	LHORTIE                                 
+408	DPA                                     
+409	CELDUC                                  
+410	FISCHER                                 
+411	SICCOM                                  
+412	SIC                                     
+413	KLOCKNER METAL SERVICE                  
+414	GSU                                     
+415	COSEL                                   
+416	SCARIC                                  
+417	JAVAUX                                  
+418	INTERPAC                                
+419	UGIMAG AIMANTS                          
+420	CEFILAC                                 
+421	 ATELIER DE L ETAIN                     
+422	TROLYT                                  
+423	BUDIN EUGENE                            
+424	SEEM-SEMRAC                             
+425	TECHNIQUES SURFACE                      
+426	EPS                                     
+427	TIFLEX                                  
+428	LEVRAT SA                               
+429	3A SERIGRAPHIE                          
+430	CD GRAPHIC                              
+431	METALBOI YVELINES DECAPAGE              
+432	RICHARDSON ELECTRONIQUE                 
+433	SNPI                                    
+434	NE PAS UTLISER METALBOI VOIR 431        
+435	NEDIS                                   
+436	RESSORTS DURY                           
+437	PROTEC INDUSTRIE                        
+438	SETON                                   
+439	SITA ILE DE FRANCE                      
+440	BERNARD CAULIER                         
+441	ALGETY                                  
+442	HARTEREAU                               
+443	MPK                                     
+444	STUDLER                                 
+445	MICROJET                                
+446	BOUZINAC CINTRAGE                       
+447	ELCTRO THERMIQUE                        
+448	EFE                                     
+449	SOREFAME                                
+450	UFB LOCABAIL                            
+451	LOXXIA BAIL                             
+452	LE GRAND CERCLE                         
+453	ACIERS DURAND FRERES                    
+454	CELSO                                   
+455	GRAVIC ROLL                             
+456	TAXI TRANSPORT THIERRY                  
+457	SOFEM                                   
+458	SOGECA                                  
+459	NE PAS UTILISER FRANCE TELECOM          
+460	LONGJUFLEX                              
+461	CHAMBRELAN                              
+462	HPC                                     
+463	MIDAS                                   
+464	WEISHAUPT                               
+465	CROMADEX                                
+466	AKZO NOBEL                              
+467	ICAM                                    
+468	SAVIGNY                                 
+469	ABP                                     
+470	SYSTEM ENGINEERING SERVICE              
+471	FRNP                                    
+472	WANADOO                                 
+473	ERTM                                    
+474	MANDIN YANICK                           
+475	ROUSSEAU                                
+476	CEPP                                    
+477	MIDI SERVICE                            
+478	OA FRANCE                               
+479	M.C.E.S                                 
+480	ACCESS LOCKS DISTRIBUTION               
+481	EFSI/PARSYS                             
+482	PONOT                                   
+483	MARTINOT GUY                            
+484	CGM COMPTOIR GENERAL DES METAUX         
+485	JEAN MONOD PELON                        
+486	RICHCO                                  
+487	SAGE                                    
+488	TANDEM                                  
+489	HYDAP                                   
+490	GTA                                     
+491	RONZEAU                                 
+492	CATEM                                   
+493	GREFFE                                  
+494	ABC 95 AUTO                             
+495	BRIAND                                  
+496	LA POSTE                                
+497	DESOUTER                                
+498	UTILISE PAR COMPTA                      
+499	NIC FIXATION                            
+500	IMEX TECHNIK AG                         
+501	TECHNO-FROID                            
+502	FRANKEL                                 
+503	IMPRIMERIE TENAILLON                    
+504	SERODE                                  
+505	MECACIER                                
+506	API                                     
+507	AAZ LASER                               
+508	DEBBIA                                  
+509	STAUBLI                                 
+510	ISOMECA                                 
+511	OUEST TOLERIE                           
+512	1000 ET UNE PILES                       
+513	ESSELTE SA                              
+514	CHARLIER                                
+515	UTILISE PAR COMPTA                      
+516	LBA                                     
+517	OMS MANUTENTION                         
+518	SEM SUHNER                              
+519	ULTRA SERVICE                           
+520	VAUBAN                                  
+521	PARIS SERVICE GAZ-ELF ANTARGAZ          
+530	MICROSAV                                
+532	ODA                                     
+534	TEYSSOU                                 
+535	EUROTHERM                               
+536	MAXESS LAND                             
+537	REVUE FIDUCIAIRE                        
+538	UTILISER PAR COMPTA                     
+539	MANCHETTE                               
+540	UTILISE PAR COMPTA                      
+541	UTILISE PAR COMPTA                      
+542	LOC MANUTENTION                         
+543	CERES                                   
+544	FIDUCIAIRE DE PONTOISE                  
+545	PFI                                     
+546	PERMANENCE EUROPEENNE                   
+547	CHIMIE PLUS                             
+548	PC SOFT                                 
+549	SAPHY                                   
+550	RANDSTAD                                
+551	LELIEVRE                                
+552	SEGULA  INDUSTRIES                      
+553	NIC                                     
+554	ADELEC                                  
+555	EUROPCAR                                
+556	LACROIX GEORGES                         
+557	PRECIS- PREVOST                         
+558	GARAGE OURSEL                           
+559	ROON                                    
+560	VENOT AUTOMATION                        
+561	MPS                                     
+562	ARNAUTS                                 
+563	SCOTT BADER SA                          
+564	TRUFFAUT                                
+565	ARTISANS DE LA MONTAGES                 
+566	CORNILLE                                
+567	AURORE GRAPHIC                          
+568	SAPM INDUSTRIE                          
+569	PC SOFT                                 
+570	TONNETOT                                
+571	COULAUD                                 
+572	BGF                                     
+573	STRAUB                                  
+574	MG TRANSPORTS                           
+575	MSX CLAL                                
+576	SMV                                     
+577	MESSER [SOUDAGE]                        
+578	VSMO                                    
+579	ORBISOUDE                               
+580	DUPONT MECANIQUE                        
+581	SIB                                     
+582	BOSSARD                                 
+583	PERINELLE ET MATHIS                     
+584	DARTY                                   
+585	COUAILLET                               
+586	PAL                                     
+587	SCP JULLIEN LECHARNY ROL                
+588	CARAY                                   
+589	SECHE                                   
+590	ATOLL                                   
+591	YLTEC                                   
+592	AVANTEC                                 
+593	TONER SERVICES                          
+594	EPE                                     
+595	ELECO PRODUITS                          
+596	ABIX                                    
+597	BOS                                     
+598	SELEKTRA-LOTTECHNIK                     
+599	DBI PLASTIQUE                           
+600	CIFA                                    
+601	ACME                                    
+602	GARDETTE INDUSTRIE                      
+603	MGE UPS SYSTEMES SA                     
+604	BERENDSEN VOIR FLUITRONICS              
+605	TAT EXPRESS                             
+608	TRIANGLE                                
+611	USINE NOUVELLE                          
+612	PURADRESSE ROUTAGE                      
+613	CM DIFFUSION                            
+614	PHARMACIE BRIDEL                        
+615	PARIS VIS                               
+616	SD2M                                    
+617	SCERT VOIR VINK FRANCE                  
+618	PROTEC THE CAP COMPAGNY                 
+619	MARTINEZ MAINTENANCE MACHINES OUTILS    
+620	FARGE COLAS ASSOCIES                    
+621	HERTZ                                   
+622	EURO TOLERIE                            
+623	SCP BERNARD DUCROCQ                     
+624	COPEL                                   
+625	GATIMEL &  OKERMAN                      
+626	INNODEC                                 
+627	LES GUIDES DU SAVOIR FAIRE              
+628	PAGES JAUNES                            
+629	APTHO                                   
+630	PRO ART                                 
+631	BRIGITTE INTERNATIONAL                  
+632	DECOUPE SERVICE                         
+633	HSBC                                    
+634	ACA                                     
+635	LEROY EMBALLAGES                        
+636	PRODUCTEURS REUNIS                      
+637	IMPRIMERIE BAUDOUIN                     
+638	KILOUTOU                                
+639	MECACHIMIQUE S.A                        
+640	CONFORAMA                               
+641	AUGUSTE THOUARD                         
+642	PRO PEINTURE                            
+643	SERBAT                                  
+644	STMO                                    
+645	ADHESION ET ASSOCIES                    
+646	PUNCH                                   
+647	SAINT GOBAIN ABRASIFS                   
+648	DZUS                                    
+649	GOBIN DAUDE                             
+650	DIVERS                                  
+651	REDUC MICRO                             
+652	LAUBION                                 
+653	TUROVER                                 
+654	EGC RONCORONI                           
+655	SDRT                                    
+656	AMPERE SYSTEME                          
+657	FRAIKIN LOCATIME                        
+658	M.W.M                                   
+659	MERELEC                                 
+660	ASFO - GRIVO                            
+661	SCI ST ELOI                             
+662	GRETA DE L'EURE                         
+663	TECHNODIS                               
+664	CREDO FRANCE ASSISTANCE                 
+665	VISSELECT SA                            
+666	MSI                                     
+667	LIMA                                    
+668	SEFARD                                  
+669	LOCAROUL                                
+670	FAYOLLE ET FILS                         
+671	SSAB                                    
+672	COMPTOIR GENERAL DU RESSORT             
+673	EUROMASTER PIERRELAYE                   
+674	SAB METAL                               
+675	TELECONOM                               
+676	DUTHOIT                                 
+677	BERNARD                                 
+678	MOSTEC                                  
+679	AQUA COUPE                              
+680	VINK FRANCE                             
+681	SECURIMED                               
+682	FLUITRONICS                             
+683	LEFEVRE INDUSTRIES SA                   
+684	FRANCE VI  PARIS OUEST                  
+685	RENAULT ROUSSEAU CERGY PONTOISE         
+686	ORLEANS LASER                           
+687	GRAVINDUS                               
+688	CIV COMPOSANTS INDUSTRIELS VARAY        
+689	AGI SA                                  
+690	PERGAZ                                  
+691	SC2M                                    
+692	CFW                                     
+693	CEGEVIS                                 
+694	BECEDEC                                 
+695	ALBOT                                   
+696	SERMS SARL                              
+697	BRUMENT-STARFLOW SA                     
+698	SDSE                                    
+699	GARAGE DU RENOUVEAU                     
+700	A.O.M.S                                 
+701	APY MATERIEL DE BUREAU                  
+702	ATF VASSEUR                             
+703	BALTEX   MACEPLAST FRANCE               
+704	BLACQUE BELAIR                          
+705	CARLINE                                 
+706	CARAL                                   
+707	ACIERS CHAUVIERES                       
+708	COTTENET                                
+709	DEFIVES                                 
+710	ELBHAR S.A.R.L                          
+711	ELIS                                    
+712	ENSINGER                                
+713	XEROX                                   
+714	RESSEFRIZAT                             
+715	GALVACHAUD                              
+716	GARAGE GAUTHIER                         
+717	GMO - CGMI                              
+718	HEPCO                                   
+719	ICS                                     
+720	INDUSCO FRANCE                          
+721	IPC                                     
+722	LACHANT ET QUESNEL                      
+723	CAMILLE                                 
+724	LECLERC                                 
+725	LINDE GAS                               
+726	CLAUDE CHRISTIAEN S.A                   
+727	MANTELEC                                
+728	MANUTAN                                 
+729	NEGOSTEEL                               
+730	NORMYDRO                                
+731	OFFICE DEPOT                            
+732	PARFLAM                                 
+733	PARTENET                                
+734	POMMIER                                 
+735	PORCHER DISTRIBUTION                    
+736	RAYMOND                                 
+737	RESTAURANT AUX PETITS OIGNONS           
+738	RHOMBUS                                 
+739	ROBIN                                   
+740	RS EMBALLAGES                           
+741	SICM                                    
+742	CABINET SIGAME                          
+743	SIMAF                                   
+744	SOL GROUP                               
+745	STAMEX TRANSPORT                        
+746	SUPRA                                   
+747	SWAGELOK                                
+748	TC VAL                                  
+749	KDI STOCK CENTRAL TESTAS                
+750	VERCO                                   
+751	VOG SERIGRAPHIE                         
+752	WURTH                                   
+753	ZEP                                     
+754	SDMP                                    
+755	TRUMPF                                  
+756	STIM                                    
+757	ISSINOX                                 
+758	METAL STORM                             
+759	STILL LASER                             
+760	TOLCOLOR                                
+761	SEP                                     
+762	DUBRAY LASER                            
+763	MEDIA COMMUNICATION                     
+764	POPPELMANN                              
+765	GMO                                     
+766	CGMI UTILISE GMO-CGMI                   
+767	CALITOL                                 
+768	LE CAOUTCHOUC D ARGENTEUIL              
+769	MOTUL                                   
+770	SPM                                     
+771	GMI GRAVURE MECANIQUE INDUSTRIELLES     
+772	SOUDAGE CENTER                          
+773	TMA                                     
+774	LRB ROULIER SA                          
+775	ERC EAUX VIVES                          
+776	JOLY                                    
+777	DIS AUTO                                
+778	LESSOUS ET GORSE                        
+779	3PF                                     
+780	ELODI TRANSPORTS                        
+781	JEFER                                   
+782	UNIVERS PRODUCTIQUE                     
+783	ESAPCE IMPRESSION                       
+784	STILL SAXBY                             
+785	ULTRA                                   
+786	LEROY MERLIN                            
+787	POUCHARD TUBES                          
+788	A3D METALLERIE                          
+789	LTI                                     
+790	ADEZIF                                  
+791	AB SOUDURE                              
+792	HYPERIX                                 
+793	MULTI SERVICES SARL                     
+794	BELTEX                                  
+795	GVD                                     
+796	CATILLON IMPREGNATION SERVICE           
+797	MIRABELLE                               
+798	ARES                                    
+799	WURTH MODYF                             
+800	CENTURION EURL BRET                     
+801	EFIRACK                                 
+802	VIS SOUDAGE                             
+803	L ETOILE                                
+804	RAPIDOX                                 
+805	VALINCO                                 
+806	MKS                                     
+807	DESCOURS ET CABAUD                      
+808	DROULIN                                 
+809	EMILE MAURIN                            
+810	BOISSONADE                              
+811	ADMF                                    
+812	MICEL ICTDP                             
+813	NGK BERYLCO FRANCE                      
+814	FENAIR                                  
+815	PLASTEM                                 
+816	WILSON TOOL                             
+817	AIMT SGI                                
+818	EURO SERRURES                           
+819	CONRAD                                  
+820	JMD                                     
+821	CIV CAOUTCHOUC INDUSTRIEL DU VEXIN      
+822	WHEELABRATOR                            
+823	CAP MAQUETTES                           
+824	CUINICK CHROME                          
+825	SERVICE CENTRE AERONATIQUE FRANCE SCAF  
+826	MASSON ET CIE ( ROSWAG )                
+827	ATPS                                    
+828	NE PAS UTILISER EX ANPE                 
+839	POINT SERVICE                           
+840	ETIT                                    
+841	ATOUTINOX                               
+851	HYDROLA                                 
+852	CELLINOX                                
+853	JICEY FRANCE SA                         
+854	ROBARDEY ET ROUX-FOUILLET               
+855	SEELEUTHNER                             
+856	CMP                                     
+857	RECOS MACHINES                          
+858	CINTRO MECA                             
+859	PROTEAUX ET CIE                         
+860	DX REALISATIONS                         
+861	ARS                                     
+862	RAFIX                                   
+863	FREESTYLE                               
+864	BARDEL                                  
+865	POLICHROME                              
+866	LMC FRANCE                              
+867	TRANSDECO                               
+868	SKF                                     
+869	CLEDEC SDM SAS                          
+870	SPAC                                    
+871	FIM INOX                                
+872	TECHNIPART                              
+873	ETROP                                   
+874	BIFM                                    
+875	L.MEZIERES                              
+876	AMT                                     
+877	IMI INTERCONNECTION MARKETING INC       
+878	SDR                                     
+879	SGMC                                    
+880	DIAP FRANCE                             
+881	CISAFER                                 
+882	AEDS BD FIXATIONS                       
+883	ATELIER DE LA HAUTE GARONNE             
+884	KME BRASS FRANCE SAS                    
+885	RM PALETTES                             
+886	SERVANT MECANOGRAPHIE                   
+887	RAGONOT CONCEPT                         
+888	SAGITA SERVICES                         
+889	GUITEL POINT M                          
+890	CEGMI                                   
+891	BULTE PLASTIQUES FRANCE S. A.           
+892	HEXAPROFILS                             
+893	S INDUSTRIE S.A.S                       
+894	TSS RONIS DIFFUSION                     
+895	MICHAUD & CHAILLY                       
+896	PHILIPPE MANUTENTION                    
+897	LAMECO GROUP                            
+898	MECA-VIT                                
+899	TRANSPORT LAURY                         
+900	CENTRALE DIRECT                         
+901	LONG S.A.                               
+902	MIXCONCEPT SERVINF                      
+903	PHOSALU                                 
+904	HLL                                     
+905	REMO                                    
+906	AURA INTERIM                            
+907	ALCOA                                   
+908	DISTRICOM                               
+909	REISCH S.A.S.                           
+910	EURO-LOCKS SA                           
+911	FRANS BONHOMME                          
+912	BAUDOUX PROLIANS                        
+913	SERVICE CENTRES AERO FRANCE             
+914	GAYON                                   
+915	NE PAS UTILISER BODYCOTE                
+916	TACINAS                                 
+917	RAFHAY                                  
+918	PRIMA                                   
+919	MAZAK                                   
+920	CINTRYVELINES                           
+921	ETME                                    
+922	S'PACK VOIR BBA EMBALLAGES              
+923	VALACTIF                                
+924	P&G OUTILLAGE                           
+925	AB CAOUTCHOUC                           
+926	GSF                                     
+927	PROTECTION DES METAUX                   
+928	MONDIAL EXPRESS                         
+929	CLAL MSX                                
+930	SORELEC                                 
+931	FERRANT                                 
+932	AGRIMOTT SAS                            
+933	POLIDA S.A.R.L.                         
+934	TOX PRESSOTECHNIK                       
+935	LTM                                     
+936	INTER PLANS S.A.                        
+937	APF CHROMAGE                            
+938	DUBOIS PERFORATION                      
+939	ATF INDUSTRIE                           
+940	E.I. JACQUET DENIS                      
+941	EUROPE MECANIQUE                        
+942	YELLOZ COMPONENTS                       
+943	DFR                                     
+944	MGI                                     
+945	SOUDAGE UNIVERSAL                       
+946	ALCAN AERO                              
+947	SOG                                     
+948	LUTIN SERVICE                           
+949	PROKODIS SNC                            
+950	ACIPAR                                  
+951	LIBRE                                   
+952	D.A SOLUTIONS                           
+953	LEGEN I                                 
+954	ARQUA SERVICES                          
+955	JACQUET DENIS                           
+956	CHAPPE ET FONTOLIVE                     
+957	LP MACHINES OUTILS SARL                 
+958	DACHSER                                 
+959	COULEURS SYSTEMES FRANCONVILLE          
+960	ECORACKS                                
+961	SAFIR                                   
+962	BBA EMBALLAGES                          
+963	ADEMECA CONCEPT                         
+964	MOS                                     
+965	URS FRANCE                              
+966	SAPELEM                                 
+967	APAVE                                   
+968	IMS                                     
+969	GEODIS                                  
+970	NEW CONCEPT PARTNER                     
+971	PRO CINTRE                              
+972	VSM IMPAVIDE                            
+973	WIPELEC                                 
+974	BAFA                                    
+975	BRETAGNE LASER                          
+976	LASERIS-CENTRE                          
+977	TIG MIG SOUDURE                         
+978	S.I.P.E                                 
+979	AQUAPRISM                               
+980	TOMCER-ERMI                             
+981	SIPE ARGENTEUIL                         
+982	FRANZ HOLZ GMBH & CO, KG                
+983	LJC SERVICES                            
+984	TOLERIE GENERALE                        
+985	MGLB                                    
+986	KERBIRIO                                
+987	AEROTIS                                 
+988	ESSENTRA                                
+989	TENTE SAS                               
+990	MARINES AUTOMOBILES                     
+991	LEGRAND SGM                             
+992	CHRONOPOST                              
+993	SFAC EULER HERMES                       
+994	SDI                                     
+995	VACOUR                                  
+996	CTAS                                    
+997	BRETAGNE EMAILLAGE                      
+998	ALTIMA                                  
+999	FOURNISSEUR                             
+1000	EURL SCEG95                             
+1002	TUBAZUR                                 
+1003	BIANCO ETS                              
+1004	KDI MECA SERVICE                        
+1005	ELECTRO RESEAUX PLUS                    
+1006	TMN                                     
+1007	PERRIEN                                 
+1008	AUTO MJ                                 
+1009	LINEO CLOTURES                          
+1010	SKIFFY                                  
+1011	MOCAP                                   
+1012	LEGALLAIS                               
+1013	FMP                                     
+1014	GS ACIERS                               
+1015	BSC DEPANNAGES                          
+1016	DVAI                                    
+1017	SKIFFY SAS                              
+1018	LASER 53                                
+1019	SMPA                                    
+1020	BD                                      
+1021	DMTEX                                   
+1022	MECAFLASH                               
+1023	LES ISOLANTS DE PARIS                   
+1024	RESSORTS GERBOUT                        
+1025	AEG                                     
+1026	NEE                                     
+1027	APERAM STAINLESS SERVICES               
+1028	ADS PROTO                               
+1029	SNT                                     
+1030	ARO WELDING TECHNOLOGIES SAS            
+1031	THALES AVIONICS                         
+1032	CNC-SHOPPING.COM                        
+1033	NATIONAL PEINTURES                      
+1034	PMC MILLIOT                             
+1035	MANULOC                                 
+1036	ONLY GIRLS                              
+1037	TITANOX FASTENING                       
+1038	AQI                                     
+1039	APX                                     
+1040	COGETRAD INDUSTRIES                     
+1041	AUTO SERVICE TECHNOLOGIE                
+1042	CLUFIX                                  
+1043	GBMO                                    
+1044	BOUTAL JEAN PIERRE                      
+1045	ID ALLOYS                               
+1046	LA CORNUE                               
+1047	EQUILASE                                
+1048	BERTHOLD MARX                           
+1049	COULEURS SYSTEMES TAVERNY               
+1050	BOEING                                  
+1051	CDEM                                    
+1052	CONSTRUCTIONS D'ANTAN                   
+1053	AJR2E                                   
+1054	ARTOIS COATING                          
+1055	ICM INDUSTRIE                           
+1056	ICM INDUSTRIE PARIS                     
+1057	HYDRO 95                                
+1058	BD SERIGRAPHIE ET PEINTURE              
+1059	VAUTIER JC                              
+1060	ANTARES                                 
+1061	SHOPPING-GAZ.FR / FINAGAZ               
+1062	LTTA                                    
+1063	BST BREST SURFACES TECHNOLOGIES         
+1064	LDI                                     
+1065	GLS                                     
+1066	PROMECA DISTRIBUTION                    
+1067	AHMED MEDJAHED                          
+1068	MI3S SARL                               
+1069	PLASTIKOLOR'ACTION                      
+1070	RM AUTO                                 
+1071	TSIP TRAITEMENT                         
+1072	CREA QUINCAILLERIE                      
+1073	HORACOLOR'S                             
+1074	WATCO S.A.R.L                           
+1075	METAL FINITIONS                         
+1076	REBER                                   
+1077	HYGIENE CONSEILS                        
+1078	AD TAF TRAITEMENTS THERMIQUES           
+1079	MI3S                                    
+1080	ELECTRO DEPOT                           
+1081	BOULANGER                               
+1082	POLYDIS PLASTIQUES                      
+1083	ATELIER STEEL MICRON                    
+1084	CONNECTT INTERIM & PLACEMENTS           
+1085	LA ROUTE                                
+1086	AMAZON                                  
+1087	GENIE FLEXION                           
+1088	FBCG - POM SA                           
+1089	KIPP                                    
+1090	SUNSTEEL                                
+1091	KDI CARDINAL                            
+1092	SEFI                                    
+1093	MDP                                     
+1094	SOFOC                                   
+1095	AEROCAM                                 
+1096	ENEC                                    
+1097	CHAMPION                                
+1098	IGUS                                    
+1099	TUBEXACT                                
+1100	SERVICES ECA                            
+1101	BARAT TRANSPORT                         
+1102	FRANCOIS CARRIGNON                      
+1103	SEMATEC METROLOGIE                      
+1104	FLASH TRANSPORTS                        
+1105	RADIO RELAIS                            
+1106	PANICOUPE                               
+1107	ROMUS                                   
+1108	SOLIDCAM                                
+1109	ARTEL                                   
+1110	EUROKORTEN                              
+1111	ENGIE                                   
+1112	DBA MECA                                
+1113	LA BOVIDA                               
+1114	HAM FRANCE                              
+1115	GEADA WEB INFO CONSEIL                  
+1116	NBN SHOP                                
+1117	GALVA 45                                
