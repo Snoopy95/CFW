@@ -77,18 +77,18 @@ class ApproMatController extends AbstractController
 
         if (!empty($debits['content'])) {
             foreach ($debits['content'] as $line) {
-                $linedebit = new AppelOffre();
-                $linedebit->setDatecreat(new \DateTime());
-                $linedebit->setClient($line[7]);
-                $linedebit->setNaf($line[0]);
-                $linedebit->setMatiere($line[1]);
-                $linedebit->setDebit($line[2]);
-                $linedebit->setEpaisseur(substr($line[1], -1, 1));
-                $linedebit->setQuantite(ceil($line[3]));
-                $linedebit->setStatut("sending");
                 $estde = $this->services->selectfamille($line[1]);
-                $linedebit->setFamille($estde['famille']);
-                $linedebit->setNuance($estde['nuance']);
+                $linedebit = (new AppelOffre())
+                    ->setDatecreat(new \DateTime())
+                    ->setClient($line[7])
+                    ->setNaf($line[0])
+                    ->setMatiere($line[1])
+                    ->setDebit($line[2])
+                    ->setEpaisseur(substr($line[1], -1, 1))
+                    ->setQuantite(ceil($line[3]))
+                    ->setStatut("sending")
+                    ->setFamille($estde['famille'])
+                    ->setNuance($estde['nuance']);
                 $this->em->persist($linedebit);
             }
             $this->em->flush();
@@ -132,8 +132,8 @@ class ApproMatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $debit = $updligne->getMatiere();
             $estde = $this->services->selectfamille($debit);
-            $updligne->setFamille($estde['famille']);
-            $updligne->setNuance($estde['nuance']);
+            $updligne->setFamille($estde['famille'])
+                ->setNuance($estde['nuance']);
 
             $this->em->flush();
             $this->addFlash('success', 'ligne modifiée');
@@ -158,10 +158,10 @@ class ApproMatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $debit = $addligne->getMatiere();
             $estde=$this->services->selectfamille($debit);
-            $addligne->setFamille($estde['famille']);
-            $addligne->setNuance($estde['nuance']);
-            $addligne->setDatecreat(new \DateTime());
-            $addligne->setStatut('sending');
+            $addligne->setFamille($estde['famille'])
+                ->setNuance($estde['nuance'])
+                ->setDatecreat(new \DateTime())
+                ->setStatut('sending');
             dd($addligne);
             $this->em->persist($addligne);
             $this->em->flush();

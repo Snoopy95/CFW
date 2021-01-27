@@ -262,12 +262,12 @@ class ConfigApproController extends AbstractController
         $data = json_decode($request->getContent(), true);
         if (!empty($data)) {
             $fourn = $this->em->getRepository(Fournisseur::class)->find($data['id']);
-            $addcontact = new Contacts();
-            $addcontact->setNom($data['name']);
-            $addcontact->setMail($data['mail']);
-            $addcontact->setCodecont($fourn->getCodefour());
-            $addcontact->setStatut('OK');
-            $addcontact->setFournisseur($fourn);
+            $addcontact = (new Contacts())
+                ->setNom($data['name'])
+                ->setMail($data['mail'])
+                ->setCodecont($fourn->getCodefour())
+                ->setStatut('OK')
+                ->setFournisseur($fourn);
 
             $this->em->persist($addcontact);
             $this->em->flush();
@@ -303,8 +303,8 @@ class ConfigApproController extends AbstractController
         
         if (!empty($data)) {
             $contact= $this->em->getRepository(Contacts::class)->find($data['id']);
-            $contact->setMail($data['mail']);
-            $contact->setNom($data['name']);
+            $contact->setMail($data['mail'])
+                ->setNom($data['name']);
             $this->em->flush();
             $this->addFlash('success', 'Contact mise à jour');
             return new Response('Contact mise à jour', 200);
@@ -356,24 +356,24 @@ class ConfigApproController extends AbstractController
 
         if ($fournisseurs['content']) {
             foreach ($fournisseurs['content'] as $line) {
-                $linefournisseur = new Fournisseur();
-                $linefournisseur->setCodefour($line[0]);
-                $linefournisseur->setNom($line[1]);
-                $linefournisseur->setStatut("OK");
+                $linefournisseur = (new Fournisseur())
+                    ->setCodefour($line[0])
+                    ->setNom($line[1])
+                    ->setStatut("OK");
                 $this->em->persist($linefournisseur);
             }
             $this->em->flush();
         }
         if ($contacts['content']) {
             foreach ($contacts['content'] as $line) {
-                $linecontact = new Contacts();
-                $linecontact->setNom($line[1]);
-                $linecontact->setMail(strtolower($line[2]));
-                $linecontact->setCodecont($line[3]);
-                $linecontact->setFournisseur(
+                $linecontact = (new Contacts())
+                    ->setNom($line[1])
+                    ->setMail(strtolower($line[2]))
+                    ->setCodecont($line[3])
+                    ->setFournisseur(
                     $this->services->selectfourn($line[3])
-                );
-                $linecontact->setStatut('OK');
+                )
+                    ->setStatut('OK');
                 $this->em->persist($linecontact);
             }
             $this->em->flush();
@@ -398,11 +398,11 @@ class ConfigApproController extends AbstractController
         $famille = $this->services->explosefile($param);
         if ($famille['content']) {
             foreach ($famille['content'] as $line) {
-                $linefamille = new Famille();
-                $linefamille->setNomfamille($line[0]);
-                $linefamille->setCodefamille($line[1]);
-                $linefamille->setStatutfamille('OK');
-                $linefamille->setDatecreat(new \DateTime());
+                $linefamille = (new Famille())
+                    ->setNomfamille($line[0])
+                    ->setCodefamille($line[1])
+                    ->setStatutfamille('OK')
+                    ->setDatecreat(new \DateTime());
                 $this->em->persist($linefamille);
             }
             $this->em->flush();
@@ -426,11 +426,11 @@ class ConfigApproController extends AbstractController
         $nuance = $this->services->explosefile($param);
         if ($nuance['content']) {
             foreach ($nuance['content'] as $line) {
-                $linenuance = new Nuance();
-                $linenuance->setCodenuance($line[3]);
-                $linenuance->setName($line[1]);
-                $linenuance->setDatecreat(new \DateTime());
-                $linenuance->setStatutnuance('OK');
+                $linenuance = (new Nuance())
+                    ->setCodenuance($line[3])
+                    ->setName($line[1])
+                    ->setDatecreat(new \DateTime())
+                    ->setStatutnuance('OK');
                 $this->em->persist($linenuance);
             }
             $this->em->flush();
