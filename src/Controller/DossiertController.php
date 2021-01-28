@@ -163,15 +163,15 @@ class DossiertController extends AbstractController
     public function delete(int $id, EntityManagerInterface $em): Response
     {
         $deldossier = $this->getDoctrine()->getRepository(Dossier::class)->find($id);
-        $backdossier = new Backdossier();
-        $backdossier->setNumdossier($deldossier->getNumdossier());
-        $backdossier->setClient($deldossier->getClient());
-        $backdossier->setRefpiece($deldossier->getRefpiece());
-        $backdossier->setDesigpiece($deldossier->getDesigpiece());
-        $backdossier->setInd($deldossier->getInd());
-        $backdossier->setPlan($deldossier->getPlan());
-        $backdossier->setDatecreat($deldossier->getDatecreat());
-        $backdossier->setDatedelete(new \DateTime());
+        $backdossier = (new Backdossier())
+            ->setNumdossier($deldossier->getNumdossier())
+            ->setClient($deldossier->getClient())
+            ->setRefpiece($deldossier->getRefpiece())
+            ->setDesigpiece($deldossier->getDesigpiece())
+            ->setInd($deldossier->getInd())
+            ->setPlan($deldossier->getPlan())
+            ->setDatecreat($deldossier->getDatecreat())
+            ->setDatedelete(new \DateTime());
 
         $em->remove($deldossier);
         $em->persist($backdossier);
