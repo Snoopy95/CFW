@@ -162,7 +162,6 @@ class ApproMatController extends AbstractController
                 ->setNuance($estde['nuance'])
                 ->setDatecreat(new \DateTime())
                 ->setStatut('sending');
-            dd($addligne);
             $this->em->persist($addligne);
             $this->em->flush();
             $this->addFlash('success', 'ligne ajoutée');
@@ -189,15 +188,24 @@ class ApproMatController extends AbstractController
         ]);
         $liste = [];
         foreach ($debit as $value) {
-            $fam= $value->getFamille();
-            $famille = $this->em->getRepository(Famille::class)->find(2);
-            $nuan= $value->getNuance();
-            $fourn = $this->em->getRepository(Fournisseur::class)->findAll();
-            foreach ($fourn as $name) {
-                $liste[] = $name->getFamilles();
-            };
+            $fam = $value->getFamille();
+            $nuan = $value->getNuance();
+            if (empty($liste)) {
+                $liste[] = $fam;
+            } else {
+                foreach ($liste as $item) {
+                    if ($item == $fam) {
+                        $add = false;
+                        break;
+                    } else {
+                        $add = true;
+                    }
+                }
+                $add ? $liste[]=$fam: null;
+            }
         };
         dd($liste);
+
         return $this->render('appro_mat/appromail.html.twig', [
             'debit' => $debit,
         ]);
