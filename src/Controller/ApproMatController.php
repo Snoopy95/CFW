@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\AppelOffre;
-use App\Entity\Contacts;
+use App\Entity\Mail;
 use App\Entity\Famille;
+use App\Entity\Contacts;
+use App\Entity\AppelOffre;
 use App\Entity\Fournisseur;
 use App\Form\UpdateLigneType;
 use App\Services\ServicesApproMat;
@@ -186,28 +187,46 @@ class ApproMatController extends AbstractController
         $debit = $this->em->getRepository(AppelOffre::class)->findBy([
             'statut' => 'sending'
         ]);
-        $liste = [];
+        $emails=[];
         foreach ($debit as $value) {
-            $fam = $value->getFamille();
+            $fam= $value->getFamille();
             $nuan = $value->getNuance();
-            if (empty($liste)) {
-                $liste[] = $fam;
+            $fourn = $this->em->getRepository(Fournisseur::class)->findByFamAndNuan($fam->getId(), $nuan->getId());
+
+            if (empty($emails)) {
+                $email = new Mail();
+                $email->setDebits($value);
+                $email->setFamille($fam);
+                $email->setNuance($nuan);
+                foreach ($fourn as $fournsimple) {
+                    $email->setFournisseurs($fournsimple);
+                };
+                $emails[]=$email;
             } else {
-                foreach ($liste as $item) {
-                    if ($item == $fam) {
-                        $add = false;
+                foreach ($emails as $mail) {
+                    if ($mail->getFamille() == $fam && $mail->getNuance() == $nuan) {
+                        $mail->setDebits($value);
+                        $add=false;
                         break;
                     } else {
-                        $add = true;
+                        $add=true;
                     }
                 }
-                $add ? $liste[]=$fam: null;
+                if ($add) {
+                    $email = new Mail();
+                    $email->setDebits($value);
+                    $email->setFamille($fam);
+                    $email->setNuance($nuan);
+                    foreach ($fourn as $fournsimple) {
+                        $email->setFournisseurs($fournsimple);
+                    };
+                    $emails[] = $email;
+                };
             }
         };
-        dd($liste);
 
         return $this->render('appro_mat/appromail.html.twig', [
-            'debit' => $debit,
+            'debit' => $emails,
         ]);
     }
 }
