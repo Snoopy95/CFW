@@ -33,9 +33,26 @@
 		</div>
 		<!-- ***** tableau **** -->
 		<div class="liste cadre">
-			<pre>
+			{# <pre>
 				{{ dump(debit) }}
-			</pre>
+			</pre> #}
+		{% for mail in debit %}
+		<p>
+			{{ mail.famille.nomfamille }}
+			{{ mail.nuance.name }}
+			{% for matiere in mail.debits %}
+				{{ matiere.matiere}}
+			{% endfor %}
+			{% for fourn in mail.fournisseurs %}
+				{% for contact in fourn.contacts %}
+					{% if contact.statut == "OK" %}
+						{{ contact.mail }}
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		</p>
+		{% endfor %}
+
 		</div>
 	</div>
 {% endblock %}
