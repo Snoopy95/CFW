@@ -192,7 +192,7 @@ class ApproMatController extends AbstractController
             $fam= $value->getFamille();
             $nuan = $value->getNuance();
             $fourn = $this->em->getRepository(Fournisseur::class)->findByFamAndNuan($fam->getId(), $nuan->getId());
-
+            
             if (empty($emails)) {
                 $email = new Mail();
                 $email->setDebits($value);

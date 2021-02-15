@@ -10,10 +10,6 @@
 {% block body %}
 	<div class="">
 		<div class="cadre menu mt-5">
-			{# <a href='{{path('appro_recupdebit')}}' type='button' class="btn btn-sm btn-secondary">
-				<i class="fas fa-download"></i>
-				MAJ Débit
-			</a> #}
 			<a href='{{path('appro_adddebit')}}' type='button' class='btn btn-sm btn-success'>
 				<i class="fas fa-plus-square"></i>
 				Ajout mat
@@ -36,23 +32,35 @@
 			{# <pre>
 				{{ dump(debit) }}
 			</pre> #}
-		{% for mail in debit %}
-		<p>
-			{{ mail.famille.nomfamille }}
-			{{ mail.nuance.name }}
-			{% for matiere in mail.debits %}
-				{{ matiere.matiere}}
+			{% for mail in debit %}
+				<ul>
+					<li><em><strong>Famille : </strong></em>
+					{{ mail.famille.nomfamille }}</li>
+					<li><em><strong>Nuance :</strong></em>
+					{{ mail.nuance.name }}</li>
+					<ul>
+						<li><em><strong>Debits</strong></em></li>
+						<ul>
+							{% for matiere in mail.debits %}
+								<li>{{ matiere.matiere}}</li>
+							{% endfor %}
+						</ul>
+					</ul>
+					<ul>
+						<li><em><strong>Contacts</strong></em></li>
+						<ul>
+							{% for fourn in mail.fournisseurs %}
+								{% for contact in fourn.contacts %}
+									{% if contact.statut == "OK" %}
+										<li>{{ contact.mail }}</li>
+									{% endif %}
+								{% endfor %}
+							{% endfor %}
+						</ul>
+					</ul>
+				</ul>
+				<p class='my-auto'>----------------------------------------------------------------------</p>
 			{% endfor %}
-			{% for fourn in mail.fournisseurs %}
-				{% for contact in fourn.contacts %}
-					{% if contact.statut == "OK" %}
-						{{ contact.mail }}
-					{% endif %}
-				{% endfor %}
-			{% endfor %}
-		</p>
-		{% endfor %}
-
 		</div>
 	</div>
 {% endblock %}
