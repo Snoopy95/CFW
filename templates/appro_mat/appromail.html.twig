@@ -2,65 +2,63 @@
 
 {% block title %}
 	<h1 class='col-10'>Mail Appro Matiere</h1>
-	<a href="{{path('acceuil')}}">
-		<i class="fas fa-home fa-2x"></i>
+	<a href="{{path('appro_index')}}">
+	<i class="fas fa-backward fa-2x"></i>
+
 	</a>
 {% endblock %}
 
 {% block body %}
 	<div class="">
 		<div class="cadre menu mt-5">
-			<a href='{{path('appro_adddebit')}}' type='button' class='btn btn-sm btn-success'>
-				<i class="fas fa-plus-square"></i>
-				Ajout mat
+			<a href='{{path('appro_index')}}' type='button' class='btn btn-sm btn-success'>
+				<i class="fas fa-paper-plane"></i>
+				Envoyer
 			</a>
-			<a href="#" type='button' class='btn btn-sm btn-success'>
+			{# <a href="#" type='button' class='btn btn-sm btn-success'>
 				<i class="fas fa-envelope"></i>
 				mail mat
-			</a>
+			</a> #}
 			<a href='#' type='button' class='btn btn-sm btn-warning'>
 				<i class="fas fa-history"></i>
 				Historique mat
 			</a>
-			<a href='{{ path('config_index') }}' type='button' class='btn btn-sm btn-secondary float-right '>
+			{# <a href='{{ path('config_index') }}' type='button' class='btn btn-sm btn-secondary float-right '>
 				<i class="fas fa-tools"></i>
 				Configuration
-			</a>
+			</a> #}
 		</div>
 		<!-- ***** tableau **** -->
 		<div class="liste cadre">
-			{# <pre>
-				{{ dump(debit) }}
-			</pre> #}
-			{% for mail in debit %}
-				<ul>
-					<li><em><strong>Famille : </strong></em>
-					{{ mail.famille.nomfamille }}</li>
-					<li><em><strong>Nuance :</strong></em>
-					{{ mail.nuance.name }}</li>
+			{% if msg == false %}
+				{% set cont = 1 %}
+				{% for mail in debit %}
+				<h3 class="ml-3"> Mail {{ cont }}</h3>
 					<ul>
-						<li><em><strong>Debits</strong></em></li>
+						<li><em><strong>Fournisseur : </strong></em>
+						{{ mail.fournisseur.nom}}</li>
 						<ul>
-							{% for matiere in mail.debits %}
-								<li>{{ matiere.matiere}}</li>
-							{% endfor %}
-						</ul>
-					</ul>
-					<ul>
-						<li><em><strong>Contacts</strong></em></li>
-						<ul>
-							{% for fourn in mail.fournisseurs %}
-								{% for contact in fourn.contacts %}
-									{% if contact.statut == "OK" %}
-										<li>{{ contact.mail }}</li>
-									{% endif %}
+							<li><em><strong>Contacts</strong></em></li>
+							<ul>
+								{% for mail in mail.adressmails %}
+									<li>{{ mail.nom}} => {{ mail.mail}}</li>
 								{% endfor %}
-							{% endfor %}
+							</ul>
+						</ul>
+						<ul>
+							<li><em><strong>Matieres</strong></em></li>
+							<ul>
+								{% for mat in mail.debits %}
+									<li>{{ mat.matiere }}</li>
+								{% endfor %}
+							</ul>
 						</ul>
 					</ul>
-				</ul>
-				<p class='my-auto'>----------------------------------------------------------------------</p>
-			{% endfor %}
+					{% set cont = cont+1 %}
+				{% endfor %}
+			{% else %}
+				<h2 class="text-center"> {{msg}}</h2>
+			{% endif %}
 		</div>
 	</div>
 {% endblock %}

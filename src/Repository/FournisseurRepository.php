@@ -23,7 +23,6 @@ class FournisseurRepository extends ServiceEntityRepository
      /**
       * @return Fournisseur[] Returns an array of Fournisseur objects
     */
-
     public function findByFamAndNuan($idf, $idn)
     {
         $qb = $this->createQueryBuilder('f')

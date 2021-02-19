@@ -51,10 +51,9 @@ class UpdateType extends AbstractType
             ])
             ->add('plan', FileType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'custom-file-input inputPlan'
                 ],
                 'data_class' => null,
-                'label' => 'Plan pièce',
                 'required'=> false,
                 'constraints' => [
                     new File([
