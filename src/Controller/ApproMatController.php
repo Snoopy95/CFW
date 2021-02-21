@@ -159,7 +159,7 @@ class ApproMatController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $debit = $addligne->getMatiere();
-            $estde=$this->services->selectfamille($debit);
+            $estde = $this->services->selectfamille($debit);
             $addligne->setFamille($estde['famille'])
                 ->setNuance($estde['nuance'])
                 ->setDatecreat(new \DateTime())
@@ -191,7 +191,7 @@ class ApproMatController extends AbstractController
 
         if (empty($debit)) {
             $msg = 'Selectionner un ou plusieurs debit(s) avant Merci !!!';
-            $emails= [];
+            $emails = [];
             return $this->render('appro_mat/appromail.html.twig', [
                 'debit' => $emails,
                 'msg' => $msg
@@ -209,23 +209,23 @@ class ApproMatController extends AbstractController
             };
             return $trydebit;
         };
-        
-        $trydebits=[];
+
+        $trydebits = [];
         foreach ($debit as $value) {
-            $fam= $value->getFamille();
+            $fam = $value->getFamille();
             $nuan = $value->getNuance();
             $fourn = $this->em->getRepository(Fournisseur::class)->findByFamAndNuan($fam->getId(), $nuan->getId());
-            
+
             if (empty($trydebits)) {
                 $trydebits[] = creatMail($value, $fam, $nuan, $fourn);
             } else {
                 foreach ($trydebits as $item) {
                     if ($item->getFamille() == $fam && $item->getNuance() == $nuan) {
                         $item->setDebits($value);
-                        $add=false;
+                        $add = false;
                         break;
                     } else {
-                        $add=true;
+                        $add = true;
                     }
                 }
                 if ($add) {
@@ -234,30 +234,30 @@ class ApproMatController extends AbstractController
             }
         };
 
-        $boucle=[];
+        $boucle = [];
         foreach ($trydebits as $debit) {
             $fourns = $debit->getFournisseurs();
             foreach ($fourns as $fourn) {
                 if (empty($boucle)) {
-                    $boucle[]=$fourn;
+                    $boucle[] = $fourn;
                 }
                 foreach ($boucle as $item) {
                     if ($fourn === $item) {
-                        $add=false;
+                        $add = false;
                         break;
                     }
-                    $add=true;
+                    $add = true;
                 }
-                $add ? $boucle[]=$fourn : null;
+                $add ? $boucle[] = $fourn : null;
             }
         }
 
-        $emails=[];
+        $emails = [];
         foreach ($boucle as $fourn) {
             $email = new Mails();
             $email->setFournisseur($fourn);
             foreach ($fourn->getContacts() as $contact) {
-                $contact->getStatut()== 'OK' ? $email->setAdresmails($contact) : null;
+                $contact->getStatut() == 'OK' ? $email->setAdresmails($contact) : null;
             }
             foreach ($trydebits as $debit) {
                 foreach ($debit->getFournisseurs() as $item) {
@@ -269,7 +269,7 @@ class ApproMatController extends AbstractController
                     }
                 }
             }
-            $emails[]=$email;
+            $emails[] = $email;
         };
 
         return $this->render('appro_mat/appromail.html.twig', [
