@@ -198,7 +198,7 @@ class ApproMatController extends AbstractController
             ]);
         }
 
-        function creatMail($value, $fam, $nuan, $fourn)
+        function creatTrydebit($value, $fam, $nuan, $fourn)
         {
             $trydebit = new TryDebit();
             $trydebit->setDebits($value);
@@ -217,7 +217,7 @@ class ApproMatController extends AbstractController
             $fourn = $this->em->getRepository(Fournisseur::class)->findByFamAndNuan($fam->getId(), $nuan->getId());
 
             if (empty($trydebits)) {
-                $trydebits[] = creatMail($value, $fam, $nuan, $fourn);
+                $trydebits[] = creatTrydebit($value, $fam, $nuan, $fourn);
             } else {
                 foreach ($trydebits as $item) {
                     if ($item->getFamille() == $fam && $item->getNuance() == $nuan) {
@@ -229,7 +229,7 @@ class ApproMatController extends AbstractController
                     }
                 }
                 if ($add) {
-                    $trydebits[] = creatMail($value, $fam, $nuan, $fourn);
+                    $trydebits[] = creatTrydebit($value, $fam, $nuan, $fourn);
                 };
             }
         };
