@@ -209,30 +209,44 @@ class ApproMatController extends AbstractController
             };
             return $trydebit;
         };
-
+        $nofournisseur = [];
+        $undefinetype = [];
         $trydebits = [];
         foreach ($debit as $value) {
             $fam = $value->getFamille();
             $nuan = $value->getNuance();
-            $fourn = $this->em->getRepository(Fournisseur::class)->findByFamAndNuan($fam->getId(), $nuan->getId());
-
-            if (empty($trydebits)) {
-                $trydebits[] = creatTrydebit($value, $fam, $nuan, $fourn);
+            if ($fam == null or $nuan == null) {
+                $undefinetype[] = $value;
             } else {
-                foreach ($trydebits as $item) {
-                    if ($item->getFamille() == $fam && $item->getNuance() == $nuan) {
-                        $item->setDebits($value);
-                        $add = false;
-                        break;
-                    } else {
-                        $add = true;
-                    }
+                $fourn = $this->em->getRepository(Fournisseur::class)->findByFamAndNuan($fam->getId(), $nuan->getId());
+                if (empty($fourn)) {
+                    $nofournisseur[] = $value;
+                    break;
                 }
-                if ($add) {
+
+                if (empty($trydebits)) {
                     $trydebits[] = creatTrydebit($value, $fam, $nuan, $fourn);
-                };
+                } else {
+                    foreach ($trydebits as $item) {
+                        if ($item->getFamille() == $fam && $item->getNuance() == $nuan) {
+                            $item->setDebits($value);
+                            $add = false;
+                            break;
+                        } else {
+                            $add = true;
+                        }
+                    }
+                    if ($add) {
+                        $trydebits[] = creatTrydebit($value, $fam, $nuan, $fourn);
+                    };
+                }
             }
         };
+
+        $defaut = [
+            'nofourn' => $nofournisseur,
+            'notype' => $undefinetype,
+        ];
 
         $boucle = [];
         foreach ($trydebits as $debit) {
@@ -274,7 +288,8 @@ class ApproMatController extends AbstractController
 
         return $this->render('appro_mat/appromail.html.twig', [
             'debit' => $emails,
-            'msg' => false
+            'msg' => false,
+            'defaut' => $defaut,
         ]);
     }
 }
