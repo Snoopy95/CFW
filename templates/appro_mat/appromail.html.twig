@@ -11,31 +11,31 @@
 {% block body %}
 	<div class="">
 		<div class="cadre menu mt-5">
-			<a href='{{path('appro_index')}}' type='button' class='btn btn-sm btn-success'>
+			<a href="{{path('appro_index')}}" type='button' class='btn btn-sm btn-primary'>
+				<i class="fas fa-arrow-alt-circle-left"></i>
+				Retour
+			</a>
+			<a href='{{path('appro_appromail', {'send': 'send'})}}' type='button' class='btn btn-sm btn-success'>
 				<i class="fas fa-paper-plane"></i>
 				Envoyer
 			</a>
-			{# <a href="#" type='button' class='btn btn-sm btn-success'>
-							<i class="fas fa-envelope"></i>
-							mail mat
-						</a> #}
-			<a href='#' type='button' class='btn btn-sm btn-warning'>
+			{# <a href='#' type='button' class='btn btn-sm btn-warning'>
 				<i class="fas fa-history"></i>
 				Historique mat
-			</a>
+			</a> #}
 			{# <a href='{{ path('config_index') }}' type='button' class='btn btn-sm btn-secondary float-right '>
-							<i class="fas fa-tools"></i>
-							Configuration
-						</a> #}
+				<i class="fas fa-tools"></i>
+				Configuration
+				</a> #}
 		</div>
 		<!-- ***** tableau **** -->
 		<div class="liste cadre">
 			{% if msg == false %}
 				{% set cont = 1 %}
 				{% for mail in debit %}
-					<h3 class="ml-3">
-						Mail
-						{{ cont }}</h3>
+					<h4 class="ml-3">
+						Mail {{ cont }}
+					</h4>
 					<ul>
 						<li>
 							<em>
@@ -51,9 +51,7 @@
 							</li>
 							<ul>
 								{% for mail in mail.adressmails %}
-									<li>{{ mail.nom}}
-										=>
-										{{ mail.mail}}</li>
+									<li>{{ mail.nom}}=>{{ mail.mail}}</li>
 								{% endfor %}
 							</ul>
 						</ul>
@@ -70,18 +68,39 @@
 							</ul>
 						</ul>
 					</ul>
-					{% set cont = cont+1 %}
+					{%  set cont = cont+1 %}
 				{% endfor %}
 			{% else %}
 				<h2 class="text-center">
-					{{msg}}</h2>
+					{{msg}}
+				</h2>
 			{% endif %}
-
-			<pre>
-				<pre>
-					{{ dump(defaut) }}
-				</pre>
-			</pre>
+			<div>
+				{% if defaut.notype %}
+					<p>Nuance ou famille introuvable</p>
+					<ul>
+						{% for notype in defaut.notype %}
+							<li>{{notype.matiere}}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+				{% if defaut.nofourn %}
+					<p>Fournisseur introuvable</p>
+					<ul>
+						{% for nofourn in defaut.nofourn %}
+							<li>{{nofourn.matiere}}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+				{% if defaut.nocontact %}
+					<p>Pas de contact</p>
+					<ul>
+						{% for nocontact in defaut.nocontact %}
+							<li>{{nocontact.nom}}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</div>
 		</div>
 	</div>
 {% endblock %}

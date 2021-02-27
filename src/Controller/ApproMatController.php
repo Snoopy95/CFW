@@ -181,10 +181,12 @@ class ApproMatController extends AbstractController
     }
 
     /**
-     * @Route("appromail", name="appromail")
+     * @Route("appromail/{send}", name="appromail")
      */
-    public function appromail(): Response
+    public function appromail($send = null): Response
     {
+
+
         $debit = $this->em->getRepository(AppelOffre::class)->findBy([
             'statut' => 'sending'
         ]);
@@ -215,11 +217,11 @@ class ApproMatController extends AbstractController
         foreach ($debit as $value) {
             $fam = $value->getFamille();
             $nuan = $value->getNuance();
-            if ($fam == null or $nuan == null) {
+            if (!$fam || !$nuan) {
                 $undefinetype[] = $value;
             } else {
                 $fourn = $this->em->getRepository(Fournisseur::class)->findByFamAndNuan($fam->getId(), $nuan->getId());
-                if (empty($fourn)) {
+                if (!$fourn) {
                     $nofournisseur[] = $value;
                     break;
                 }
@@ -242,12 +244,6 @@ class ApproMatController extends AbstractController
                 }
             }
         };
-
-        $defaut = [
-            'nofourn' => $nofournisseur,
-            'notype' => $undefinetype,
-        ];
-
         $boucle = [];
         foreach ($trydebits as $debit) {
             $fourns = $debit->getFournisseurs();
@@ -265,11 +261,15 @@ class ApproMatController extends AbstractController
                 $add ? $boucle[] = $fourn : null;
             }
         }
-
         $emails = [];
+        $nocontact = [];
         foreach ($boucle as $fourn) {
             $email = new Mails();
             $email->setFournisseur($fourn);
+            $contacts = $fourn->getContacts();
+            if (!$contacts) {
+                $nocontact[] = $fourn;
+            }
             foreach ($fourn->getContacts() as $contact) {
                 $contact->getStatut() == 'OK' ? $email->setAdresmails($contact) : null;
             }
@@ -285,6 +285,25 @@ class ApproMatController extends AbstractController
             }
             $emails[] = $email;
         };
+
+        $defaut = [
+            'notype' => $undefinetype,
+            'nofourn' => $nofournisseur,
+            'nocontact' => $nocontact,
+        ];
+
+        if ($send === "send") {
+            $email= $emails[1];
+            $mail = $email->getAdressmails()[0]->getMail();
+            $nom =  $email->getAdressmails()[0]->getNom();
+            $debits = $email->getDebits();
+            
+            return $this->render('Emails/Appeldoffre.html.twig', [
+                'mail' => $mail,
+                'nom' => $nom,
+                'debits' => $debits
+            ]);
+        }
 
         return $this->render('appro_mat/appromail.html.twig', [
             'debit' => $emails,
