@@ -223,24 +223,23 @@ class ApproMatController extends AbstractController
                 $fourn = $this->em->getRepository(Fournisseur::class)->findByFamAndNuan($fam->getId(), $nuan->getId());
                 if (!$fourn) {
                     $nofournisseur[] = $value;
-                    break;
-                }
-
-                if (empty($trydebits)) {
-                    $trydebits[] = creatTrydebit($value, $fam, $nuan, $fourn);
                 } else {
-                    foreach ($trydebits as $item) {
-                        if ($item->getFamille() == $fam && $item->getNuance() == $nuan) {
-                            $item->setDebits($value);
-                            $add = false;
-                            break;
-                        } else {
-                            $add = true;
-                        }
-                    }
-                    if ($add) {
+                    if (empty($trydebits)) {
                         $trydebits[] = creatTrydebit($value, $fam, $nuan, $fourn);
-                    };
+                    } else {
+                        foreach ($trydebits as $item) {
+                            if ($item->getFamille() == $fam && $item->getNuance() == $nuan) {
+                                $item->setDebits($value);
+                                $add = false;
+                                break;
+                            } else {
+                                $add = true;
+                            }
+                        }
+                        if ($add) {
+                            $trydebits[] = creatTrydebit($value, $fam, $nuan, $fourn);
+                        };
+                    }
                 }
             }
         };
@@ -293,11 +292,11 @@ class ApproMatController extends AbstractController
         ];
 
         if ($send === "send") {
-            $email= $emails[1];
+            $email = $emails[1];
             $mail = $email->getAdressmails()[0]->getMail();
             $nom =  $email->getAdressmails()[0]->getNom();
             $debits = $email->getDebits();
-            
+
             return $this->render('Emails/Appeldoffre.html.twig', [
                 'mail' => $mail,
                 'nom' => $nom,
