@@ -23,6 +23,7 @@ class SearchInType extends AbstractType
             ])
             ->add('infield', ChoiceType::class, [
                 'choices' => [
+                    'Numéro dossier' => 'numdossier',
                     'Référence pièce' => 'refpiece',
                     'Client' => 'client',
                     'Désignation pièce' => 'desigpiece'

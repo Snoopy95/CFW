@@ -80,12 +80,13 @@ class ApproMatController extends AbstractController
         if (!empty($debits['content'])) {
             foreach ($debits['content'] as $line) {
                 $estde = $this->services->selectfamille($line[1]);
+                $debit= explode("QTE", $line[2]);
                 $linedebit = (new AppelOffre())
                     ->setDatecreat(new \DateTime())
                     ->setClient($line[7])
                     ->setNaf($line[0])
                     ->setMatiere($line[1])
-                    ->setDebit($line[2])
+                    ->setDebit($debit[0])
                     ->setEpaisseur(substr($line[1], -1, 1))
                     ->setQuantite(ceil($line[3]))
                     ->setStatut("sending")
@@ -290,18 +291,22 @@ class ApproMatController extends AbstractController
             'nofourn' => $nofournisseur,
             'nocontact' => $nocontact,
         ];
-
+    // envoie de mail
         if ($send === "send") {
-            $email = $emails[1];
-            $mail = $email->getAdressmails()[0]->getMail();
-            $nom =  $email->getAdressmails()[0]->getNom();
-            $debits = $email->getDebits();
-
-            return $this->render('Emails/Appeldoffre.html.twig', [
-                'mail' => $mail,
-                'nom' => $nom,
-                'debits' => $debits
-            ]);
+            // $email = $emails[1];
+            // $mail = $email->getAdressmails()[0]->getMail();
+            // $nom =  $email->getAdressmails()[0]->getNom();
+            // $debits = $email->getDebits();
+            foreach ($emails as $item) {
+                $this->services->sendmail($item);
+            }
+            // return $this->render('Emails/Appeldoffre.html.twig', [
+            //     'mail' => $mail,
+            //     'nom' => $nom,
+            //     'debits' => $debits
+            // ]);
+            $this->addFlash('success', 'Mail envoyer');
+            return $this->redirectToRoute('appro_index');
         }
 
         return $this->render('appro_mat/appromail.html.twig', [

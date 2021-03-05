@@ -36,6 +36,10 @@ class DossierRepository extends ServiceEntityRepository
             $query = $query
                 ->where('d.desigpiece LIKE :val')
                 ->setParameter('val', '%' . $search->getSearchin() . '%');
+        } elseif ($search->getInfield() == 'numdossier') {
+            $query = $query
+                ->where('d.numdossier LIKE :val')
+                ->setParameter('val', '%' . $search->getSearchin() . '%');
         } else {
             $query = $query
                 ->where('d.refpiece LIKE :val')
