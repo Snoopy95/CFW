@@ -67,6 +67,11 @@ class AppelOffre
      */
     private $nuance;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateupdate;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -188,6 +193,18 @@ class AppelOffre
     public function setNuance(?Nuance $nuance): self
     {
         $this->nuance = $nuance;
+
+        return $this;
+    }
+
+    public function getDateupdate(): ?\DateTimeInterface
+    {
+        return $this->dateupdate;
+    }
+
+    public function setDateupdate(?\DateTimeInterface $dateupdate): self
+    {
+        $this->dateupdate = $dateupdate;
 
         return $this;
     }

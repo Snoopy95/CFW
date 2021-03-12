@@ -10,21 +10,25 @@
 {% block body %}
 	<div class="">
 		<div class="cadre menu mt-5">
-			<a href='{{path('appro_recupdebit')}}' type='button' class="btn btn-sm btn-secondary">
+			<a href=" {{path('appro_recupdebit')}}" type='button' class="btn btn-sm btn-secondary">
 				<i class="fas fa-download"></i>
-				MAJ Débit
+				Import débit
 			</a>
-			<a href='{{path('appro_adddebit')}}' type='button' class='btn btn-sm btn-success'>
+			<a href="{{path('appro_adddebit')}}" type='button' class='btn btn-sm btn-success'>
 				<i class="fas fa-plus-square"></i>
-				Ajout mat
+				Ajout débit
 			</a>
 			<a href="{{path('appro_appromail')}}" type='button' class='btn btn-sm btn-success'>
 				<i class="fas fa-envelope"></i>
-				mail mat
+				Envoie mail
+			</a>
+			<a href="{{path('appro_suivimail')}}" type='button' class='btn btn-sm btn-primary'>
+				<i class="fas fa-clipboard-check"></i>
+				Suivi mail
 			</a>
 			<a href='#' type='button' class='btn btn-sm btn-warning'>
 				<i class="fas fa-history"></i>
-				Historique mat
+				Historique mail
 			</a>
 			<a href='{{ path('config_index') }}' type='button' class='btn btn-sm btn-secondary float-right '>
 				<i class="fas fa-tools"></i>

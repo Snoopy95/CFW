@@ -117,7 +117,7 @@ class ServicesApproMat
             // dd($item);
             foreach ($item->getAdressmails() as $contact) {
                 $email = (new TemplatedEmail())
-                    ->from('info@CFW.fr')
+                    ->from('ACHAT@CFW.fr')
                     ->to('boxalacon@gmail.com')
                     ->subject('Demande d\'offre de prix')
                     ->htmlTemplate('Emails/Appeldoffre.html.twig')

@@ -20,13 +20,13 @@
 				Envoyer
 			</a>
 			{# <a href='#' type='button' class='btn btn-sm btn-warning'>
-				<i class="fas fa-history"></i>
-				Historique mat
-			</a> #}
+										<i class="fas fa-history"></i>
+										Historique mat
+									</a> #}
 			{# <a href='{{ path('config_index') }}' type='button' class='btn btn-sm btn-secondary float-right '>
-				<i class="fas fa-tools"></i>
-				Configuration
-				</a> #}
+										<i class="fas fa-tools"></i>
+										Configuration
+										</a> #}
 		</div>
 		<!-- ***** tableau **** -->
 		<div class="liste cadre">
@@ -34,7 +34,8 @@
 				{% set cont = 1 %}
 				{% for mail in debit %}
 					<h4 class="ml-3">
-						Mail {{ cont }}
+						Mail
+						{{ cont }}
 					</h4>
 					<ul>
 						<li>
@@ -70,37 +71,38 @@
 					</ul>
 					{%  set cont = cont+1 %}
 				{% endfor %}
+				<div class="card text-white bg-danger rounded m-3 p-3 shadow">
+					{% if defaut.notype %}
+						<p class ="lead"><u>Nuance ou famille introuvable :</u></p>
+						<ul>
+							{% for notype in defaut.notype %}
+								<li>{{notype.matiere}}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+					{% if defaut.nofourn %}
+						<p class="lead"><u>Fournisseur introuvable :</u></p>
+						<ul>
+							{% for nofourn in defaut.nofourn %}
+								<li>{{nofourn.matiere}}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+					{% if defaut.nocontact %}
+						<p class="lead"><u>Pas de contact :</u></p>
+						<ul>
+							{% for nocontact in defaut.nocontact %}
+								<li>{{nocontact.nom}}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</div>
 			{% else %}
 				<h2 class="text-center">
 					{{msg}}
 				</h2>
 			{% endif %}
-			<div>
-				{% if defaut.notype %}
-					<p>Nuance ou famille introuvable</p>
-					<ul>
-						{% for notype in defaut.notype %}
-							<li>{{notype.matiere}}</li>
-						{% endfor %}
-					</ul>
-				{% endif %}
-				{% if defaut.nofourn %}
-					<p>Fournisseur introuvable</p>
-					<ul>
-						{% for nofourn in defaut.nofourn %}
-							<li>{{nofourn.matiere}}</li>
-						{% endfor %}
-					</ul>
-				{% endif %}
-				{% if defaut.nocontact %}
-					<p>Pas de contact</p>
-					<ul>
-						{% for nocontact in defaut.nocontact %}
-							<li>{{nocontact.nom}}</li>
-						{% endfor %}
-					</ul>
-				{% endif %}
-			</div>
+
 		</div>
 	</div>
 {% endblock %}

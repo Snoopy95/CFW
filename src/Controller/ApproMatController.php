@@ -186,18 +186,15 @@ class ApproMatController extends AbstractController
      */
     public function appromail($send = null): Response
     {
-
-
         $debit = $this->em->getRepository(AppelOffre::class)->findBy([
             'statut' => 'sending'
         ]);
-
         if (empty($debit)) {
             $msg = 'Selectionner un ou plusieurs debit(s) avant Merci !!!';
             $emails = [];
             return $this->render('appro_mat/appromail.html.twig', [
                 'debit' => $emails,
-                'msg' => $msg
+                'msg' => $msg,
             ]);
         }
 
@@ -213,13 +210,13 @@ class ApproMatController extends AbstractController
             return $trydebit;
         };
         $nofournisseur = [];
-        $undefinetype = [];
+        $notype = [];
         $trydebits = [];
         foreach ($debit as $value) {
             $fam = $value->getFamille();
             $nuan = $value->getNuance();
             if (!$fam || !$nuan) {
-                $undefinetype[] = $value;
+                $notype[] = $value;
             } else {
                 $fourn = $this->em->getRepository(Fournisseur::class)->findByFamAndNuan($fam->getId(), $nuan->getId());
                 if (!$fourn) {
@@ -287,24 +284,20 @@ class ApproMatController extends AbstractController
         };
 
         $defaut = [
-            'notype' => $undefinetype,
+            'notype' => $notype,
             'nofourn' => $nofournisseur,
             'nocontact' => $nocontact,
         ];
     // envoie de mail
-        if ($send === "send") {
-            // $email = $emails[1];
-            // $mail = $email->getAdressmails()[0]->getMail();
-            // $nom =  $email->getAdressmails()[0]->getNom();
-            // $debits = $email->getDebits();
+        if ($send === "send" && $emails) {
             foreach ($emails as $item) {
-                $this->services->sendmail($item);
+                // $this->services->sendmail($item);
+                foreach ($item->getDebits() as $debit) {
+                    $debit->setStatut('send');
+                    $debit->setDateupdate(new \DateTime());
+                    //$this->em->flush();
+                };
             }
-            // return $this->render('Emails/Appeldoffre.html.twig', [
-            //     'mail' => $mail,
-            //     'nom' => $nom,
-            //     'debits' => $debits
-            // ]);
             $this->addFlash('success', 'Mail envoyer');
             return $this->redirectToRoute('appro_index');
         }
@@ -314,5 +307,18 @@ class ApproMatController extends AbstractController
             'msg' => false,
             'defaut' => $defaut,
         ]);
+    }
+
+    /**
+     * @Route("suivimail", name="suivimail")
+     */
+    public function suivimail(): Response
+    {
+        $encours = $this->em->getRepository(AppelOffre::class)->findBy([
+            'statut' => 'send'
+        ]);
+        dd($encours);
+
+        return $this->redirectToRoute('appro_index');
     }
 }
