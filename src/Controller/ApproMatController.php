@@ -317,8 +317,9 @@ class ApproMatController extends AbstractController
         $encours = $this->em->getRepository(AppelOffre::class)->findBy([
             'statut' => 'send'
         ]);
-        dd($encours);
 
-        return $this->redirectToRoute('appro_index');
+        return $this->render('appro_mat/suivimail.html.twig', [
+            'lignes' => $encours,
+        ]);
     }
 }
