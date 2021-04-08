@@ -14,8 +14,8 @@
 				<i class="fas fa-arrow-alt-circle-left"></i>
 				Retour
 			</a>
-			<a href='{{path('appro_appromail', {'send': 'send'})}}' type='button' class='btn btn-sm btn-success'>
-				<i class="fas fa-paper-plane"></i>
+			<a href='{{path('appro_appromail', {'send': 'send'})}}' type='button' class='btn btn-sm btn-success {% if msg == true %}disabled{% endif %}'>
+				<i class="fas fa-envelope"></i>
 				Envoyer
 			</a>
 		</div>
@@ -62,6 +62,12 @@
 					</ul>
 					{%  set cont = cont+1 %}
 				{% endfor %}
+			{% else %}
+				<h2 class="text-center">
+					{{msg}}
+				</h2>
+			{% endif %}
+			{% if defaut == true %}
 				<div class="card text-white bg-danger rounded m-3 p-3 shadow">
 					{% if defaut.notype %}
 						<p class ="lead"><u>Nuance ou famille introuvable :</u></p>
@@ -88,10 +94,6 @@
 						</ul>
 					{% endif %}
 				</div>
-			{% else %}
-				<h2 class="text-center">
-					{{msg}}
-				</h2>
 			{% endif %}
 
 		</div>

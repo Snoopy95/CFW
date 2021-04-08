@@ -14,26 +14,6 @@
 				<i class="fas fa-arrow-alt-circle-left"></i>
 				Retour
 			</a>
-			{# <a href="{{path('appro_adddebit')}}" type='button' class='btn btn-sm btn-success'>
-				<i class="fas fa-plus-square"></i>
-				Ajout débit
-			</a>
-			<a href="{{path('appro_appromail')}}" type='button' class='btn btn-sm btn-success'>
-				<i class="fas fa-envelope"></i>
-				Envoie mail
-			</a>
-			<a href="{{path('appro_suivimail')}}" type='button' class='btn btn-sm btn-primary'>
-				<i class="fas fa-clipboard-check"></i>
-				Suivi mail
-			</a> 
-			<a href='#' type='button' class='btn btn-sm btn-warning'>
-				<i class="fas fa-history"></i>
-				Historique mail
-			</a>
-			<a href='{{ path('config_index') }}' type='button' class='btn btn-sm btn-secondary float-right '>
-				<i class="fas fa-tools"></i>
-				Configuration
-			</a> #}
 		</div>
 		<!-- ***** tableau **** -->
 		<div class="liste cadre">
@@ -58,32 +38,28 @@
 							<td>{{ ligne.client }}</td>
 							<td>{{ ligne.naf }}</td>
 							<td>
-								<a href="{{ path('appro_updebit', {'id': ligne.id}) }}" class="btn btn-sm">
-									<i class="fas fa-pencil-alt fa-lg fontcolor"></i>
+								<a href="#" class="btn btn-sm">
+									<span class='badge badge-pill badge-success p-2'>
+										<i class="fas fa-paper-plane fa-2x"></i>
+									</span> 
 								</a>
-								/
-								<a href="#" class="btn btn-sm" data-toggle="modal" data-target="#del{{ligne.id}}">
-									<i class="fas fa-trash-alt fa-lg fontcolor"></i>
+								<a href="#" class="btn btn-sm" data-target="">
+									<span class='badge badge-pill badge-info p-2'>
+										<i class="fas fa-file-invoice-dollar fa-2x"></i>
+									</span>
+								</a>
+								<a href="#" class="btn btn-sm" data-target="">
+									<span class='badge badge-pill badge-info p-2'>
+										<i class="fas fa-shipping-fast fa-2x"></i>
+									</span>
+								</a>
+								<a href="#" class="btn btn-sm" data-target="">
+									<span class='badge badge-pill badge-info p-2'>
+										<i class="fas fa-flag-checkered fa-2x"></i>
+									</span>
 								</a>
 							</td>
 						</tr>
-						<!-- **** Modal suppression ligne **** -->
-						<div class="modal fade" id="del{{ligne.id}}" tabindex="-1" aria-labelledby="del" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-body">
-										<h6>Suppression !!!</h6>
-										<h6>Etes-vous sûr de vouloir supprimer la ligne</h6>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-success btn-sm" data-dismiss="modal">
-											Annuler</button>
-										<a href="{{ path('appro_deldebit', {'id' : ligne.id}) }}" type="button" class="btn btn-danger btn-sm">
-											Supprimer !!</a>
-									</div>
-								</div>
-							</div>
-						</div>
 					{% endfor %}
 					{% endif %}
 				</tbody>

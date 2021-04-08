@@ -191,10 +191,9 @@ class ApproMatController extends AbstractController
         ]);
         if (empty($debit)) {
             $msg = 'Selectionner un ou plusieurs debit(s) avant Merci !!!';
-            $emails = [];
             return $this->render('appro_mat/appromail.html.twig', [
-                'debit' => $emails,
                 'msg' => $msg,
+                'defaut' => false
             ]);
         }
 
@@ -302,9 +301,14 @@ class ApproMatController extends AbstractController
             return $this->redirectToRoute('appro_index');
         }
 
+        if (empty($emails)) {
+            $msg =  'Aucun mail n\'a put-être généré';
+        } else {
+            $msg = false;
+        };
         return $this->render('appro_mat/appromail.html.twig', [
             'debit' => $emails,
-            'msg' => false,
+            'msg' => $msg,
             'defaut' => $defaut,
         ]);
     }
