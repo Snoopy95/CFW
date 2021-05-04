@@ -281,12 +281,15 @@ class ApproMatController extends AbstractController
             }
             $emails[] = $email;
         };
-
-        $defaut = [
-            'notype' => $notype,
-            'nofourn' => $nofournisseur,
-            'nocontact' => $nocontact,
-        ];
+        if (empty($notype) and empty($nofournisseur) and empty($nocontact)) {
+            $defaut= false;
+        } else {
+            $defaut = [
+                'notype' => $notype,
+                'nofourn' => $nofournisseur,
+                'nocontact' => $nocontact,
+            ];
+        }
     // envoie de mail
         if ($send === "send" && $emails) {
             foreach ($emails as $item) {
