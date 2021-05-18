@@ -23,7 +23,7 @@ class AppelOffreRepository extends ServiceEntityRepository
     /**
     * @return AppelOffre Returns uniquement les statut wait et sending
     */
-    public function findAo()
+    public function findAo(): ?AppelOffre
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.statut = :val')

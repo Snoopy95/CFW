@@ -12,26 +12,24 @@
 			{{ form_start(form) }}
 			<div class="form-row">
 				<div class="form-group col-1">
-					{{form_row(form.numdossier)}}
+					{{form_widget(form.numdossier)}}
 					<small class="invalid-feedback">{{form_errors(form.numdossier)}}</small>
 				</div>
 				<div class="form-group col-2">
-					{{form_row(form.client)}}
+					{{form_widget(form.client)}}
 				</div>
 				<div class="form-group col-4">
-					{{form_row(form.refpiece)}}
+					{{form_widget(form.refpiece)}}
 				</div>
 				<div class="form-group col-1">
-					{{form_row(form.ind)}}
+					{{form_widget(form.ind)}}
 				</div>
-				<div class="form-row">
-					<div class="custom-file col-5">
-						{{form_row(form.desigpiece)}}
-					</div>
+				<div class="form-group col-4">
+					{{form_widget(form.desigpiece)}}
 				</div>
 			</div>
 			<div class="form-row">
-				<div class="form-group col-3">
+				<div class="custom-file col-5">
 					{{form_widget(form.plan)}}
 					<label class="custom-file-label labelplan" data-browse='Choisir'>Fichier PDF</label>
 				</div>
