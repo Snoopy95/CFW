@@ -34,7 +34,7 @@ class ApproMatController extends AbstractController
     /**
      * @Route("index", name="index")
      */
-    public function index(): Response
+    public function index()
     {
         $debit = $this->getDoctrine()->getRepository(AppelOffre::class)->findAo();
 
