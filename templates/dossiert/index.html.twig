@@ -63,7 +63,7 @@
 	<!-- ***** tableau **** -->
 	<div class='scroll-tab'>
 		<div class="liste cadre">
-			<table class="table table-striped table-sm">
+			<table class="table table-striped table-sm ">
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">Dossier 
@@ -74,7 +74,7 @@
 								<i class="fas fa-caret-square-up"></i>
 							</a>
 						</th>
-						<th>Plan</th>
+						<th scope="col">Plan</th>
 						<th scope="col">Client
 							<a href=" {{path('dossiert', {'try':'cl123'} )}}" type='button' class='icon' data-toggle='tooltip' data-placement="top" title='Ordre croissant'>
 								<i class="fas fa-caret-square-down"></i>
@@ -106,7 +106,7 @@
 							<td>
 								{% if liste.plan %}
 									<a href="{{asset('dossier/plan/' ~ liste.plan)}}" target='_blank' class='btn' type='button'>
-										<img src='{{asset('images/plan.png')}}' width='24px'/>
+										<i class="fas fa-drafting-compass fa-lg text-primary"></i>
 									</a>
 								{% endif %}
 							</td>
@@ -117,10 +117,10 @@
 							<td>{{ liste.datecreat|date('d/m/Y') }}</td>
 							<td>
 								<a href="{{ path('update', {'id': liste.id}) }}" class="btn btn-sm">
-									<img src="{{asset('/images/icons-edit1.png')}}"/>
+									<i class="fas fa-pencil-alt fa-lg text-success"></i>
 								</a>
 								<a href="#" class="btn btn-sm" data-toggle="modal" data-target="#del{{liste.id}}" >
-									<img src="{{asset('/images/icons-delete1.png')}}"/>
+									<i class="fas fa-trash-alt fa-lg text-danger "></i>
 								</a>
 							</td>
 						</tr>

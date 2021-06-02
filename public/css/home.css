@@ -102,16 +102,25 @@ h1 {
         column-count: 1;
     }
 }
-.error{
-    color:red;
+
+.error {
+    color: red;
 }
 
-.taillefiche{
+.taillefiche {
     height: 750px;
     width: 30%;
 }
 
-.taillecadre{
+.taillecadre {
     height: 90%;
     margin: 10px;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.table th {
+    vertical-align: middle;
 }

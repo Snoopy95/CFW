@@ -80,11 +80,10 @@
 							<td>{{ ligne.naf }}</td>
 							<td>
 								<a href="{{ path('appro_updebit', {'id': ligne.id}) }}" class="btn btn-sm">
-									<i class="fas fa-pencil-alt fa-lg fontcolor"></i>
+									<i class="fas fa-pencil-alt fa-lg text-success"></i>
 								</a>
-								/
 								<a href="#" class="btn btn-sm" data-toggle="modal" data-target="#del{{ligne.id}}">
-									<i class="fas fa-trash-alt fa-lg fontcolor"></i>
+									<i class="fas fa-trash-alt fa-lg text-danger"></i>
 								</a>
 							</td>
 						</tr>
