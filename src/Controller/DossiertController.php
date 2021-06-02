@@ -65,12 +65,14 @@ class DossiertController extends AbstractController
             $adddossier->setDatecreat(new \DateTime());
 
             $ind = $adddossier->getInd();
+            $name = $adddossier->getRefpiece();
+            $newname = str_replace("/", "-", $name);
             if (empty($ind)) {
                 $newfilename =
-                    "T" . $adddossier->getNumdossier() . " - " . $adddossier->getRefpiece() . ".pdf";
+                    "T" . $adddossier->getNumdossier() . " - " . $newname . ".pdf";
             } else {
                 $newfilename =
-                    "T" . $adddossier->getNumdossier() . " - " . $adddossier->getRefpiece() . " - " . $ind . ".pdf";
+                    "T" . $adddossier->getNumdossier() . " - " . $newname . " - " . $ind . ".pdf";
             }
             $directory = "dossier/plan/";
             $file = $form->get('plan')->getData();
@@ -121,12 +123,14 @@ class DossiertController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ind = $update->getInd();
+            $name = $update->getRefpiece();
+            $newname = str_replace("/", "-", $name);
             if (!isset($ind)) {
                 $newfilename =
-                    "T" . $update->getNumdossier() . " - " . $update->getRefpiece() . ".pdf";
+                    "T" . $update->getNumdossier() . " - " . $newname . ".pdf";
             } else {
                 $newfilename =
-                    "T" . $update->getNumdossier() . " - " . $update->getRefpiece() . " - ind " . $ind . ".pdf";
+                    "T" . $update->getNumdossier() . " - " . $newname . " - ind " . $ind . ".pdf";
             }
             $directory = "dossier/plan/";
             $file = $form->get('plan')->getData();
@@ -172,7 +176,14 @@ class DossiertController extends AbstractController
             ->setPlan($deldossier->getPlan())
             ->setDatecreat($deldossier->getDatecreat())
             ->setDatedelete(new \DateTime());
-
+        // $plan = $deldossier->getPlan();
+        // $directory = "dossier/plan/";
+        // if (!empty($plan)) {
+        //     $handle = opendir($directory);
+        //             $plan = $directory . $plan;
+        //             unlink($plan);
+        //             closedir($handle);
+        // }
         $em->remove($deldossier);
         $em->persist($backdossier);
         $em->flush();
