@@ -35,7 +35,7 @@ class ConfigApproController extends AbstractController
     public function index(): Response
     {
         return $this->render('config_appro/index.html.twig', [
-            'liste' => '',
+            'liste' => null,
         ]);
     }
 
