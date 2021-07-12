@@ -20,11 +20,13 @@
 	</div>
 	
 	<div class="row cadre liste scroll">
+	{% set var = 0 %}
 	{% if lines|length>0 %}
 		<div class="col-4">
 			<ul>
 				{% for line in lines|slice(0, ((lines|length)/3)|round(0, 'ceil')) %}
-					<li>{{line}}</li>
+					<li {% if var is divisible by(2) %} class='ligne1'{% else %} class='ligne2'{% endif %}>{{line}}</li>
+					{% set var = var  + 1 %}
 				{% endfor %}
 			</ul>
 		</div>
@@ -33,7 +35,8 @@
 		<div class="col-4">
 			<ul>
 				{% for line in lines|slice((lines|length/3)|round(0, 'ceil'), (lines|length/3)|round(0, 'ceil')) %}
-					<li>{{line}}</li>
+					<li {% if var is divisible by(2) %} class='ligne1'{% else %} class='ligne2'{% endif %}>{{line}}</li>
+					{% set var = var + 1 %}
 				{% endfor %}
 			</ul>
 		</div>
@@ -42,7 +45,8 @@
 		<div class="col-4">
 			<ul>
 				{% for line in lines|slice(((lines|length/3)|round(0, 'ceil')*2), (lines|length)) %}
-					<li>{{line}}</li>
+					<li {% if var is divisible by(2) %} class='ligne1'{% else %} class='ligne2'{% endif %}>{{line}}</li>
+					{% set var = var + 1 %}
 				{% endfor %}
 			</ul>
 		</div>

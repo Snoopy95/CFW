@@ -124,3 +124,11 @@ h1 {
 .table th {
     vertical-align: middle;
 }
+
+.ligne1 {
+    color: black;
+}
+
+.ligne2 {
+    color: rgb(0, 79, 197);
+}
