@@ -1,21 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-		<h1 class='col-10'> Ancien DOSSIERS T </h1>
+		<h1> Ancien DOSSIERS T </h1>
 {% endblock %}
 
 {% block body %}
 	<div class='fixe'>
-		<div class="menu cadre row">
-			<a href="{{path('dossiert')}}" type="button" class="btn btn-primary btn-sm mr-5">Retour</a>
-			{{ form_start(form)}}
-			<div class="form-inline">
-				<button type="submit" class="btn btn-success btn-sm mr-2">Recherche</button>
-				<div class="form-group">
-					{{form_widget(form.search)}}
-				</div>		
-			</div>	
-			{{ form_end(form) }}
+		<div class="menu cadre">
+			<div class="d-flex justify-content-between">
+				<div>
+					<a href="{{path('dossiert')}}" type="button" class="btn btn-primary btn-sm">Retour</a>
+				</div>
+				<div> 
+					{{ form_start(form)}}
+					<div class="form-inline">
+						<button type="submit" class="btn btn-success btn-sm">Recherche</button>
+						{{form_widget(form.search)}}
+					</div>			
+					{{ form_end(form) }}
+				</div>
+			</div>
 		</div>
 	</div>
 	
