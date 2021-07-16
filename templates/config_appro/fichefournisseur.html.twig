@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	<h1 class='col-10'>Fiche Fournisseur</h1>
-	<a href="{{path('config_index')}}">
-		<i class="fas fa-backward fa-2x"></i>
-	</a>
+	<div class='d-flex justify-content-between'>
+		<h1 class='flex-grow-1'>Fiche Fournisseur</h1>
+		<a href="{{path('config_index')}}" class='align-self-center'>
+			<i class="fas fa-backward fa-2x"></i>
+		</a>
+	</div>
 {% endblock %}
 
 {% block body %}
@@ -78,10 +80,10 @@
 				</div>
 				<div class='nav nav-fill'>
 					<div class='nav-link'>
-					<div class="custom-control custom-switch">
-						<input type="checkbox" class="custom-control-input switch-tab" id="Switch{{fiche.id}}" data-id="{{fiche.id}}" data-url="../statutfournisseur" {% if fiche.statut == "OK" %} checked {% endif %}>
-						<label class="custom-control-label" for="Switch{{fiche.id}}"></label>
-					</div>
+						<div class="form-check form-switch">
+							<input type="checkbox" class="form-check-input switch-tab" id="Switch{{fiche.id}}" data-id="{{fiche.id}}" data-url="../statutfournisseur" {% if fiche.statut == "OK" %} checked {% endif %}>
+							<label class="form-check-label" for="Switch{{fiche.id}}"></label>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -89,22 +91,22 @@
 				<div class="bg-info taillefiche">
 					<h5 class='text-center m-3'>
 						<strong>MAIL</strong>
-						<button type='btn' class='btn btn-link text-light addcont' data-toggle="modal" data-target='#addcontact' data-id="{{fiche.id}}" data-url="../addcontact">
+						<button type='btn' class='btn btn-link text-secondary addcont' data-bs-toggle="modal" data-bs-target='#addcontact' data-id="{{fiche.id}}" data-url="../addcontact">
 							<i class="fas fa-user-plus fa-lg"></i>
 						</button>
 					</h5>
 					<div class="overflow-auto taillecadre">
 						<ul class="list-group">
 							{% for contact in fiche.contacts %}
-								<li id="card{{contact.id}}" class="list-group-item">
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input switch-tab" id="contact{{contact.id}}" data-id="{{contact.id}}" data-url="../statutcontact" {% if contact.statut == "OK" %} checked {% endif %}>
-										<label id="label{{contact.id}}" class="custom-control-label" for="contact{{contact.id}}">
-											{{contact.mail}},</br>
-										{{contact.nom}}
-									</label>
-									<div class='float-right'>
-										<button type='button' class='btn btn-link text-success upcont' data-toggle="modal" data-target='#addcontact' data-id={{contact.id}} data-url="../updatecontact">
+								<li id="card{{contact.id}}" class="list-group-item mt-1">
+									<div class="form-check form-switch">
+										<input type="checkbox" class="form-check-input switch-tab" id="contact{{contact.id}}" data-id="{{contact.id}}" data-url="../statutcontact" {% if contact.statut == "OK" %} checked {% endif %}>
+										<label id="label{{contact.id}}" class="form-check-label" for="contact{{contact.id}}">
+											{{contact.mail}} <br>
+											{{contact.nom}}
+										</label>
+									<div class='float-end'>
+										<button type='button' class='btn btn-link text-success upcont' data-bs-toggle="modal" data-bs-target='#addcontact' data-id={{contact.id}} data-url="../updatecontact">
 											<i class="fas fa-pencil-alt fa-lg"></i>
 										</button>
 										<button type='button' class="del-btn btn btn-link text-danger" title="Supprimer" data-id="{{contact.id}}">
@@ -127,15 +129,15 @@
 					<div class="overflow-auto taillecadre">
 						<ul class="list-group">
 							{% for famille in familles %}
-								<li class="list-group-item">
-									<div class='row ml-2'>
-										<div class="col-6 custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input selectfamille" id="famille{{famille.id}}" data-idfamille={{famille.id}} data-idfourn={{fiche.id}} {% for item in fiche.familles %} {% if item.id == famille.id %} checked {% endif %} {% endfor %}>
-											<label class="custom-control-label" for="famille{{famille.id}}">
+								<li class="list-group-item mt-1">
+									<div class='row ml-2 align-items-center'>
+										<div class="col form-check text-center">
+											<input type="checkbox" class="form-check-input selectfamille" id="famille{{famille.id}}" data-idfamille={{famille.id}} data-idfourn={{fiche.id}} {% for item in fiche.familles %} {% if item.id == famille.id %} checked {% endif %} {% endfor %}>
+											<label class="form-check-label" for="famille{{famille.id}}">
 												{{famille.nomfamille}}
 											</label>
 										</div>
-										<div class='col-2 badge badge-pill badge-primary'>
+										<div class='col-3 badge rounded-pill bg-primary'>
 											{{famille.codefamille}}
 										</div>
 
@@ -152,15 +154,15 @@
 					<div class="overflow-auto taillecadre">
 						<ul class="list-group">
 							{% for nuance in nuances %}
-								<li class="list-group-item">
-									<div class='row ml-2'>
-										<div class="col-8 custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input selectnuance" id="nuance{{nuance.id}}" data-idnuance={{nuance.id}} data-idfourn={{fiche.id}} {% for item in fiche.nuances %} {% if item.id == nuance.id %} checked {% endif %} {% endfor %}>
-											<label class="custom-control-label" for="nuance{{nuance.id}}">
+								<li class="list-group-item mt-1">
+									<div class='row ml-2 align-items-center'>
+										<div class="col form-check text-center">
+											<input type="checkbox" class="form-check-input selectnuance" id="nuance{{nuance.id}}" data-idnuance={{nuance.id}} data-idfourn={{fiche.id}} {% for item in fiche.nuances %} {% if item.id == nuance.id %} checked {% endif %} {% endfor %}>
+											<label class="form-check-label" for="nuance{{nuance.id}}">
 												{{nuance.name}}
 											</label>
 										</div>
-										<div class="col-3 badge badge-pill badge-primary">
+										<div class="col-3 badge rounded-pill bg-primary">
 											{{nuance.codenuance}}
 										</div>
 									</div>

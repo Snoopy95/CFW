@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	<h1 class='col-10'>Appro Matiere</h1>
-	<a href="{{path('acceuil')}}">
-		<i class="fas fa-home fa-2x"></i>
-	</a>
+	<div class="d-flex justify-content-between">
+		<h1 class="flex-lg-grow-1">Appro Matiere</h1>
+		<a href="{{path('acceuil')}}" class='align-self-center'>
+			<i class="fas fa-home fa-2x"></i>
+		</a>
+	</div>
 {% endblock %}
 
 {% block body %}
@@ -30,7 +32,7 @@
 				<i class="fas fa-history"></i>
 				Historique mail
 			</a>
-			<a href='{{ path('config_index') }}' type='button' class='btn btn-sm btn-secondary float-right '>
+			<a href='{{ path('config_index') }}' type='button' class='btn btn-sm btn-secondary float-end'>
 				<i class="fas fa-tools"></i>
 				Configuration
 			</a>
@@ -54,64 +56,64 @@
 				</thead>
 				<tbody>
 					{% if lignes %}
-					{% for ligne in lignes %}
-						<tr>
-							<td scope="row">
-								<input class="switch-tab" type="checkbox" id="lig{{ligne.id}}" data-id="{{ligne.id}}" data-url="statutdebit"
-								{% if ligne.statut == "sending" %} checked {% endif %}>
-							</td>
-							<td>{{ ligne.client }}</td>
-							<td>{{ ligne.matiere }}</td>
-							<td>{{ ligne.debit }}</td>
-							<td>{{ ligne.epaisseur }}</td>
-							<td>{{ ligne.quantite }}</td>
-							<td> {% if ligne.famille %}
-									{{ ligne.famille.nomfamille }}
+						{% for ligne in lignes %}
+							<tr>
+								<td scope="row">
+									<input class="switch-tab" type="checkbox" id="lig{{ligne.id}}" data-id="{{ligne.id}}" data-url="statutdebit" {% if ligne.statut == "sending" %} checked {% endif %}>
+								</td>
+								<td>{{ ligne.client }}</td>
+								<td>{{ ligne.matiere }}</td>
+								<td>{{ ligne.debit }}</td>
+								<td>{{ ligne.epaisseur }}</td>
+								<td>{{ ligne.quantite }}</td>
+								<td>
+									{% if ligne.famille %}
+										{{ ligne.famille.nomfamille }}
 									{% else %}
-									Inconnue
-								{% endif %}
-							</td>
-							<td>{% if ligne.nuance %}
-									{{ ligne.nuance.name}}
+										Inconnue
+									{% endif %}
+								</td>
+								<td>
+									{% if ligne.nuance %}
+										{{ ligne.nuance.name}}
 									{% else %}
-									Inconnue
-								{% endif %}
-							</tb>
-							<td>{{ ligne.naf }}</td>
-							<td>
-								<a href="{{ path('appro_updebit', {'id': ligne.id}) }}" class="btn btn-sm">
-									<i class="fas fa-pencil-alt fa-lg text-success"></i>
-								</a>
-								<a href="#" class="btn btn-sm" data-toggle="modal" data-target="#del{{ligne.id}}">
-									<i class="fas fa-trash-alt fa-lg text-danger"></i>
-								</a>
-							</td>
-						</tr>
-						<!-- **** Modal suppression ligne **** -->
-						<div class="modal fade" id="del{{ligne.id}}" tabindex="-1" aria-labelledby="del" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-body">
-										<h6>Suppression !!!</h6>
-										<h6>Etes-vous sûr de vouloir supprimer la ligne</h6>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-success btn-sm" data-dismiss="modal">
-											Annuler</button>
-										<a href="{{ path('appro_deldebit', {'id' : ligne.id}) }}" type="button" class="btn btn-danger btn-sm">
-											Supprimer !!</a>
+										Inconnue
+									{% endif %}
+								</td>
+								<td>{{ ligne.naf }}</td>
+								<td>
+									<a href="{{ path('appro_updebit', {'id': ligne.id}) }}" class="btn btn-sm">
+										<i class="fas fa-pencil-alt fa-lg text-success"></i>
+									</a>
+									<a href="#" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#del{{ligne.id}}">
+										<i class="fas fa-trash-alt fa-lg text-danger"></i>
+									</a>
+								</td>
+							</tr>
+							<!-- **** Modal suppression ligne **** -->
+							<div class="modal fade" id="del{{ligne.id}}" tabindex="-1" aria-labelledby="del" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-body">
+											<h6>Suppression !!!</h6>
+											<h6>Etes-vous sûr de vouloir supprimer la ligne</h6>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal">
+												Annuler</button>
+											<a href="{{ path('appro_deldebit', {'id' : ligne.id}) }}" type="button" class="btn btn-danger btn-sm">
+												Supprimer !!</a>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					{% endfor %}
+						{% endfor %}
 					{% endif %}
 				</tbody>
 			</table>
 		</div>
 	</div>
 {% endblock %}
-
 {% block script %}
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script src="{{asset('js/appro.js')}}"></script>

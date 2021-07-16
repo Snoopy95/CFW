@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	<h1 class='col-10'>Suivi</h1>
-	<a href="{{path('appro_index')}}">
-		<i class="fas fa-backward fa-2x"></i>
-	</a>
+	<div class='d-flex justify-content-between'>
+		<h1 class='flex-grow-1'>Suivi</h1>
+		<a href="{{path('appro_index')}}" class='align-self-center'>
+			<i class="fas fa-backward fa-2x"></i>
+		</a>
+	</div>
 {% endblock %}
 
 {% block body %}
@@ -29,66 +31,66 @@
 				</thead>
 				<tbody>
 					{% if lignes %}
-					{% for ligne in lignes %}
-						<tr>
-							<td scope="row">
-								{{ ligne.dateupdate|date('d/m/Y') }}
-							</td>
-							<td>{{ ligne.matiere }}</td>
-							<td>{{ ligne.client }}</td>
-							<td>{{ ligne.naf }}</td>
-							<td>
-								{% if ligne.statut == "send" %}
-								{% set statut = 1 %}
-								{% elseif ligne.statut == "receive" %}
-								{% set statut = 2 %}
-								{% elseif ligne.statut == "order" %}
-								{% set statut = 3 %}
-								{% endif %}
+						{% for ligne in lignes %}
+							<tr>
+								<td scope="row">
+									{{ ligne.dateupdate|date('d/m/Y') }}
+								</td>
+								<td>{{ ligne.matiere }}</td>
+								<td>{{ ligne.client }}</td>
+								<td>{{ ligne.naf }}</td>
+								<td>
+									{% if ligne.statut == "send" %}
+										{% set statut = 1 %}
+									{% elseif ligne.statut == "receive" %}
+										{% set statut = 2 %}
+									{% elseif ligne.statut == "order" %}
+										{% set statut = 3 %}
+									{% endif %}
 									<a href="#" class="btn btn-sm" title="Mail envoyé">
-									<span class='p-2 badge badge-pill 
-										{% if statut == 1 %}
-											badge-primary
-										{% elseif statut > 1 %}
-											badge-success
-										{% else %}
-											badge-info
-										{% endif %}'>
-										<i class="fas fa-paper-plane fa-2x"></i>
-									</span> 
-								</a>
-								<a href="#" class="btn btn-sm" title="Offre reçue" data-target="">
-									<span class='p-2 badge badge-pill 
-										{% if statut == 2 %}
-											badge-primary
-										{% elseif statut > 2 %}
-											badge-success
-										{% else %}
-											badge-info
-										{% endif %}'>
-										<i class="fas fa-file-invoice-dollar fa-2x"></i>
-									</span>
-								</a>
-								<a href="#" class="btn btn-sm" title="Commande passé" data-target="">
-									<span class='p-2 badge badge-pill 
-										{% if statut == 3 %}
-											badge-primary
-										{% elseif statut > 3 %}
-											badge-success
-										{% else %}
-											badge-info
-										{% endif %}'>
-										<i class="fas fa-shipping-fast fa-2x"></i>
-									</span>
-								</a>
-								<a href="#" class="btn btn-sm" title="Commande reçue" data-target="">
-									<span class='p-2 badge badge-pill badge-info'>
-										<i class="fas fa-flag-checkered fa-2x"></i>
-									</span>
-								</a>
-							</td>
-						</tr>
-					{% endfor %}
+										<span class='p-2 badge rounded-pill
+																						{% if statut == 1 %}
+																							bg-primary
+																						{% elseif statut > 1 %}
+																							bg-success
+																						{% else %}
+																							bg-info
+																						{% endif %}'>
+											<i class="fas fa-paper-plane fa-2x"></i>
+										</span>
+									</a>
+									<a href="#" class="btn btn-sm" title="Offre reçue" data-target="">
+										<span class='p-2 badge rounded-pill
+																						{% if statut == 2 %}
+																							bg-primary
+																						{% elseif statut > 2 %}
+																							bg-success
+																						{% else %}
+																							bg-info
+																						{% endif %}'>
+											<i class="fas fa-file-invoice-dollar fa-2x"></i>
+										</span>
+									</a>
+									<a href="#" class="btn btn-sm" title="Commande passé" data-target="">
+										<span class='p-2 badge rounded-pill
+																						{% if statut == 3 %}
+																							bg-primary
+																						{% elseif statut > 3 %}
+																							bg-success
+																						{% else %}
+																							bg-info
+																						{% endif %}'>
+											<i class="fas fa-shipping-fast fa-2x"></i>
+										</span>
+									</a>
+									<a href="#" class="btn btn-sm" title="Commande reçue" data-target="">
+										<span class='p-2 badge rounded-pill bg-info'>
+											<i class="fas fa-flag-checkered fa-2x"></i>
+										</span>
+									</a>
+								</td>
+							</tr>
+						{% endfor %}
 					{% endif %}
 				</tbody>
 			</table>
