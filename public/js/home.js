@@ -1,16 +1,13 @@
 setTimeout(() => {
-    $(".alert").alert("close");
+    var alertNode = document.querySelector('.alert')
+    var alert = bootstrap.Alert.getInstance(alertNode)
+    alert.close()
 }, 5000);
 
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-})
-
 const fileplan = document.querySelector('.inputPlan')
-if (fileplan) {fileplan.addEventListener('change', addname)}
+if (fileplan) { fileplan.addEventListener('change', addname) }
 
 function addname() {
     newtext = fileplan.value.split('\\')
-    document.querySelector('.labelplan').textContent = newtext[newtext.length-1]
+    document.querySelector('.labelplan').textContent = newtext[newtext.length - 1]
 }
-
