@@ -293,11 +293,11 @@ class ApproMatController extends AbstractController
     // envoie de mail
         if ($send === "send" && $emails) {
             foreach ($emails as $item) {
-                // $this->services->sendmail($item);
+                $this->services->sendmail($item);
                 foreach ($item->getDebits() as $debit) {
                     $debit->setStatut('send');
                     $debit->setDateupdate(new \DateTime());
-                    //$this->em->flush();
+                    $this->em->flush();
                 };
             }
             $this->addFlash('success', 'Mail envoyer');

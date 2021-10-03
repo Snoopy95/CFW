@@ -6,21 +6,18 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1 rem;
     color: black;
+    margin-top: 100px ;
 }
 
-.title {
-    background-color: #001aff50;
-    opacity: 70%;
-    width: 50%;
-    margin: auto;
-    margin-top: 30px;
-    border-radius: 20px;
-    padding: 10px;
-}
-
-h1 {
-    color: blue;
-    text-align: center;
+.acceuil {
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    padding: 2%;
+    background-color: rgba(200,205,255, 0.9);
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    margin-top: 10%;
 }
 
 .cadre {
@@ -131,4 +128,11 @@ h1 {
 
 .ligne2 {
     color: rgb(0, 79, 197);
+}
+
+.bg-nav {
+    background-color: rgb(200, 205, 255);
+    border-radius: 20px;
+    width: 99%;
+    margin: auto;
 }

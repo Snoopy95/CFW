@@ -15,26 +15,77 @@
 		<script src="{{asset('js/all.js')}}"></script>
 	</head>
 	<body>
-		<div class="row title">
-			{% block title%}{% endblock %}
+		<nav class="navbar navbar-expand-lg navbar-light bg-nav fixed-top mt-1">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="{{path('acceuil')}}">
+					<img src="{{ asset('/images/cfw-logo.png')}}" alt="logo" width="140" height="40" class="d-inline-block align-text-top">
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('dossiert')}}">Dossier T</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('appro_index')}}">Appro matiere</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Fraisage</a>
+						</li>
+					</ul>
+					<div class='d-flex me-auto'>
+						{% block title%}{% endblock %}
+					</div>
+					<div class="d-flex">
+						{% if app.user %}
+							<i class="fas fa-user-tie fa-2x me-3"></i>
+							<span class="me-5"> Bonjour, .... </span>
+						{% else %}
+							<i class="fas fa-user-circle fa-2x me-3"></i>
+							<button class="btn btn-outline-success me-5" type="button" data-bs-toggle="modal" data-bs-target="#connexion">connexion</button>
+						{% endif %}
+					</div>
+				</div>
 			</div>
-			{% for message in app.flashes('success') %}
-				<div class="mess alert alert-success" role="alert">
-					{{ message }}
+		</nav>
+		<!-- Modal -->
+		<div class="modal fade" id="connexion" tabindex="-1" aria-labelledby="connexionLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="connexionLabel">S'identifer</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						...
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+						<button type="button" class="btn btn-primary">Se connecter</button>
+					</div>
 				</div>
-			{% endfor %}
-			{% for message in app.flashes('danger') %}
-				<div class="mess alert alert-danger" role="alert">
-					{{ message }}
-				</div>
-			{% endfor %}
+			</div>
+		</div>
 
-			{% block body %}{% endblock %}
+		{% for message in app.flashes('success') %}
+			<div class="mess alert alert-success" role="alert">
+				{{ message }}
+			</div>
+		{% endfor %}
+		{% for message in app.flashes('danger') %}
+			<div class="mess alert alert-danger" role="alert">
+				{{ message }}
+			</div>
+		{% endfor %}
 
-			{% block script %}{% endblock %}
-			<!-- Axentix JS minified version -->
-			{# <script src="{{asset('/js/axentix.min.js')}}"></script> #}
-			<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
-			<script src="{{asset('js/home.js')}}"></script>
+		{% block body %}{% endblock %}
+
+		{% block script %}{% endblock %}
+		<!-- Axentix JS minified version -->
+		{# <script src="{{asset('/js/axentix.min.js')}}"></script> #}
+		<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+		<script src="{{asset('js/home.js')}}"></script>
 		</body>
 	</html>

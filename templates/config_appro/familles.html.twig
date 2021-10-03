@@ -1,17 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	<div class='d-flex justify-content-between'>
-		<h1 class='flex-grow-1'>Familles</h1>
-		<a href="{{path('config_index')}}" class='align-self-center'>
-			<i class="fas fa-backward fa-2x"></i>
-		</a>
-	</div>
+	<h1>Familles</h1>
 {% endblock %}
 
 {% block body %}
 	<div class="container">
 		<div class="cadre menu mt-5">
+			<a href="{{path('config_index')}}" type='button' class='btn btn-sm btn-primary'>
+				<i class="fas fa-arrow-alt-circle-left"></i>
+				Retour
+			</a>
 			<a href='{{path('config_fournisseurs')}}' type='button' class="btn btn-sm btn-success">
 				<i class="fas fa-id-card"></i>
 				Fournisseur/Contact
