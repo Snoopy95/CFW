@@ -1,0 +1,103 @@
+NUAN001	1/2 DUR             	8	1/2DUR                                            
+NUAN002	ACIER               	8	100C6                                             
+NUAN003	ACIER               	8	11SMNPB37                                         
+NUAN004	ACIER CHROME-MOLYBDE	8	25CD4S                                            
+NUAN005	25CD4               	8	25CRM04                                           
+NUAN006	INOX RESSORT        	8	301
+NUAN007	304	8	304
+NUAN008	INOX 304L           	8	304L                                              
+NUAN009	316L                	8	316L                                              
+NUAN010	INOX 321            	8	321
+NUAN011	XC38                	8	38
+NUAN012	ALU                 	2.7                                               	5083 H111                                         
+NUAN013	AG3 H22             	2.7                                               	5754 H22                                          
+NUAN014	AGS                 	2.7                                               	6060
+NUAN015	XC75                	8	75
+NUAN016	A5 1050A H111       	2.7                                               	A5                                                
+NUAN017	ABS                 	0	ABS                                               
+NUAN018	ACIER HEXAGONALE    	8	ACIER                                             
+NUAN019	ACIER CUIVRE        	8	ACIER CUIVRE                                      
+NUAN020	ACIER-ZINGUE        	8	ACIER-ZINGUE                                      
+NUAN021	ADX                 	8	ADX                                               
+NUAN022	AG06                	2.7                                               	AG06                                              
+NUAN023	AG3                 	2.7                                               	AG3                                               
+NUAN024	AG4                 	2.7                                               	AG4                                               
+NUAN025	AG4 MC              	2.7                                               	AG4 MC                                            
+NUAN026	AG5                 	2	AG5                                               
+NUAN027	AGS                 	2.7                                               	AGS                                               
+NUAN028	ALTUGLAS            	0	ALTUG                                             
+NUAN029	ALU                 	2.7                                               	ALU                                               
+NUAN030	ALUZINC             	8	ALZN                                              
+NUAN031	ARCAP               	8	ARCAP                                             
+NUAN032	AU4G                	2.7                                               	AU4G                                              
+NUAN033	BRONZE              	8.9                                               	BRONZE                                            
+NUAN034	ACIER               	8	C35R                                              
+NUAN035	ACIER LAMINE A CHAUD	8	C45R                                              
+NUAN036	CUIVRE              	8.9                                               	CUIVRE                                            
+NUAN037	LAITON              	8.6                                               	CUZN36                                            
+NUAN038	DELRIN              	2	DELRIN                                            
+NUAN039	DECAPE              	8	DKP                                               
+NUAN040	ELEC-ZINGUE         	8	ELEC-ZINGUE                                       
+NUAN041	ETAMEE              	8	ETAMEE                                            
+NUAN042	F17                 	8	F17                                               
+NUAN043	FER BLANC           	8	FER BLANC                                         
+NUAN044	GALVA               	8	GALVA                                             
+NUAN045	INOX                	8	INOX                                              
+NUAN046	LAITON              	8.6                                               	LAITON                                            
+NUAN047	LEXAN               	0	LEXAN                                             
+NUAN048	MOUSSE              	0	MOUSSE                                            
+NUAN049	PLEXIGLAS           	0	PLEXI                                             
+NUAN050	POLYPROPYLENE       	0.8                                               	POLYPRO                                           
+NUAN051	TOLE PRELAQUEE      	8	PRELAQ                                            
+NUAN052	PTFE                	2	PTFE                                              
+NUAN053	ACIER SERRUR        	8	S235JRG2                                          
+NUAN054	SANDWICK            	8	SANDWICK                                          
+NUAN055	SIMPLE CANNELURE    	0	SC                                                
+NUAN056	VINDULEX            	0	VINDULEX                                          
+NUAN057	XC18                	8	XC18                                              
+NUAN058	XC35                	8	XC35                                              
+NUAN059	XC38                	8	XC38                                              
+NUAN060	XC45                	8	XC45                                              
+NUAN061	XC48                	8	XC48                                              
+NUAN062	ACIER EMBOUTISSAGE  	8	XES                                               
+NUAN063	321	8	Z10CNT1811                                        
+NUAN064	Z7 CNU 16-04        	8	Z7CNU16-04                                        
+NUAN065	INOX                	8	310S                                              
+NUAN066	AG3                 	2.7                                               	5754 H111                                         
+NUAN067	2017 A (AU4G)       	2.7                                               	2017 A                                            
+NUAN068	INOX                	8	4462 2B                                           
+NUAN069	ALU                 	2.7                                               	1050A H24                                         
+NUAN070	EME(TAF DC04)       	8	EME                                               
+NUAN071	ACIER H360LA        	8	S355MC                                            
+NUAN072	ALU                 	2.7                                               	6061 T4                                           
+NUAN073	BERYLCO25 ETAT A    	8	BERYLCO25                                         
+NUAN074	301	8	Z10CN184/4                                        
+NUAN075	CUBE2               	8.9                                               	CUBE2                                             
+NUAN076	BERYLCO 25          	8	BERYLCO 25                                        
+NUAN077	ALU AERO TL         	2.7                                               	5086 H111                                         
+NUAN078	INOX                	8	Z2CN18-10                                         
+NUAN079	CUIVRE              	8.9                                               	CUB1                                              
+NUAN080	ACIER               	8	Z160CDV12                                         
+NUAN081	CUIVRE              	8.9                                               	CUA1                                              
+NUAN082	B25 (UBE2)          	8	B25 UBE2                                          
+NUAN083	CUIVRE              	8.9                                               	CUC1                                              
+NUAN084	DC04 EMAILLAGE      	8	DC04                                              
+NUAN085	LAITON              	8	CUZN10                                            
+NUAN086	VERRE EPOXY         	0	EPOXY                                             
+NUAN087	DC01                	8	DC01                                              
+NUAN088	TOILE BAKELISE      	2	TOIL BAKEL                                        
+NUAN089	ALU 5005 H14        	2.7                                               	5005 H14                                          
+NUAN090	X10CRNI18-8         	8	X10CRNI                                           
+NUAN091	ALU                 	2.7                                               	6082 T6                                           
+NUAN092	POLYACETAL          	0.8                                               	POLYACETAL                                        
+NUAN093	CUIVRE B25          	8.9                                               	CW101C                                            
+NUAN094	INOX 18-10 (1.4541) 	8	X6CRNITI18                                        
+NUAN095	LAITON              	8.6                                               	CW614N                                            
+NUAN096	ACIER               	8	Z155CDV12                                         
+NUAN097	PVC                 	0.8                                               	PVC                                               
+NUAN098	CORTEN              	8	S355                                              
+NUAN099	ALLIAGE 718         	8.62                                              	718
+NUAN100	ALU AW5205H44       	2.7                                               	AW5205H44                                         
+NUAN101	INOX X2CRNI18-9 (1,4	8	X2CRNI18-9                                        
+NUAN102	X6CR17 (1.4016)     	8	X6CR17                                            
+NUAN103	PCTFE               	2	PCTFE                                             
