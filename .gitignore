@@ -8,5 +8,6 @@
 /public/bundles/
 /var/
 /vendor/
+/public/dossier/
 ###< symfony/framework-bundle ###
 .vscode/settings.json
