@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<h1>Fraisage</h1>
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="cadre menu mt-5">
+			<div class="align-items-center d-flex">
+					<button type='button' class="btn btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#newprg" aria-expanded="false" aria-controls="newprg">
+					<i class="far fa-plus-square"></i>
+					Nouveau PRG
+				</button>
+				<div class="dropdown">
+					<a class="ms-1 btn btn-sm btn-primary dropdown-toggle" href="#" role="button" id="dropdownlist" data-bs-toggle="dropdown" aria-expanded="false">
+						<i class="fas fa-list-ol"></i>
+						Liste des Prg
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownlist">
+						<li><a class="dropdown-item" href="#">Fraisage</a></li>
+						<li><a class="dropdown-item" href="#">Tournage</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" href="#">Tous Prg</a></li>
+					</ul>
+				</div>
+				<a href="#" type='button' class='ms-1 btn btn-sm btn-primary'>
+					<i class="fas fa-search"></i>
+					Rechercher PRG
+				</a>
+				<a href='#' type='button' class='ms-1 btn btn-sm btn-warning'>
+					<i class="fas fa-history"></i>
+					Autre
+				</a>
+			</div>		
+		</div>
+		<div class="liste cadre">
+			<div class="collapse" id="newprg">
+				<div class="card card-body">
+					<div class="form-floating mb-3">
+						<input type="text" class="form-control" id="floatingInput" placeholder="REF12121212">
+						<label for="floatingInput">Reference piece</label>
+					</div>
+					<div class="form-floating">
+						<input type="text" class="form-control" id="floatingPassword" placeholder="Bloc">
+						<label for="floatingPassword">Designation piece</label>
+					</div>
+				</div>
+			</div>
+			<div>
+				{% if list %}
+				<h1>Les 10 derniers programmes ....</h1>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
