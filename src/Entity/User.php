@@ -38,7 +38,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min=4, minMessage="il faut 4 caracteres minium")
      */
-    private $passwordd;
+    private $password;
 
     /**
      * @Assert\EqualTo(propertyPath="password", message="Le mot de passe n'est pas identique")
@@ -91,7 +91,7 @@ class User implements UserInterface
 
     public function getPassword(): ?string
     {
-        return $this->passwordd;
+        return $this->password;
     }
 
     public function setPwd(string $password): self
@@ -144,5 +144,24 @@ class User implements UserInterface
     public function getSalt()
     {
         # code...
+    }
+
+    public function getPasswordd(): ?string
+    {
+        return $this->passwordd;
+    }
+
+    public function setPasswordd(string $passwordd): self
+    {
+        $this->passwordd = $passwordd;
+
+        return $this;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
     }
 }
