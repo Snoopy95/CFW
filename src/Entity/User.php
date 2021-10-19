@@ -2,14 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(
  * fields = {"email"},
  * message ="Cette adresse mail est déjà utilisée"
@@ -94,9 +93,9 @@ class User implements UserInterface
         return $this->password;
     }
 
-    public function setPwd(string $password): self
+    public function setPassword(string $password): self
     {
-        $this->pwd = $password;
+        $this->password = $password;
 
         return $this;
     }
@@ -144,24 +143,5 @@ class User implements UserInterface
     public function getSalt()
     {
         # code...
-    }
-
-    public function getPasswordd(): ?string
-    {
-        return $this->passwordd;
-    }
-
-    public function setPasswordd(string $passwordd): self
-    {
-        $this->passwordd = $passwordd;
-
-        return $this;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
-
-        return $this;
     }
 }
