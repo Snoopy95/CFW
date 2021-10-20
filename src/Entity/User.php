@@ -52,7 +52,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $roles;
+    private $roles = [];
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -112,12 +112,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRoles(): ?string
+    public function getRoles(): ?array
     {
-        return $this->roles;
+        $roles = $this->roles;
+
+        return array_unique($roles);
     }
 
-    public function setRoles(string $roles): self
+    public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 

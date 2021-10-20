@@ -334,6 +334,9 @@
             "./config/routes.yaml"
         ]
     },
+    "symfony/security": {
+        "version": "v4.4.31"
+    },
     "symfony/security-bundle": {
         "version": "4.4",
         "recipe": {
@@ -345,18 +348,6 @@
         "files": [
             "./config/packages/security.yaml"
         ]
-    },
-    "symfony/security-core": {
-        "version": "v4.4.31"
-    },
-    "symfony/security-csrf": {
-        "version": "v4.4.27"
-    },
-    "symfony/security-guard": {
-        "version": "v4.4.27"
-    },
-    "symfony/security-http": {
-        "version": "v4.4.30"
     },
     "symfony/service-contracts": {
         "version": "v2.1.3"
