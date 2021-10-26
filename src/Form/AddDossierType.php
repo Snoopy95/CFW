@@ -63,6 +63,21 @@ class AddDossierType extends AbstractType
                         ]
                     ])
                     ]
+            ])
+            ->add('step', FileType::class, [
+                'attr' => [
+                    'class' => 'form-control inputStep',
+                ],
+                'required'=> false,
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
+                            'application/step',
+                            'application/sat',
+                            'application/sldprt'
+                        ]
+                    ])
+                    ]
             ]);
     }
 
