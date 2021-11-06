@@ -10,7 +10,10 @@
 		<div class="menu cadre">
 			<div class='d-flex justify-content-between'>
 				<div class=''>
-					<button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#ajouter" aria-expanded="false" aria-controls="ajouter">
+					<button class="btn btn-primary btn-sm" type="button"
+					{% if app.user %} data-bs-toggle="collapse" data-bs-target="#ajouter" aria-expanded="false" aria-controls="ajouter" {% endif %}
+					{% if not app.user %} disabled {% endif %}
+					>
 						Ajouter
 					</button>
 					<a href='{{path('oldfile')}}' type='button' class='btn btn-primary btn-sm'>Ancien dossier</a>
@@ -96,7 +99,9 @@
 								<i class="fas fa-caret-square-up"></i>
 							</a>
 						</th>
-						<th scope="col">Actions</th>
+						{% if app.user %}
+							<th scope="col">Actions</th>
+						{% endif %} 
 					</tr>
 				</thead>
 				<tbody>
@@ -124,14 +129,16 @@
 							<td>{{liste.ind}}</td>
 							<td>{{ liste.desigpiece }}</td>
 							<td>{{ liste.datecreat|date('d/m/Y') }}</td>
-							<td>
-								<a href="{{ path('update', {'id': liste.id}) }}" class="btn btn-sm">
-									<i class="fas fa-pencil-alt fa-lg text-success"></i>
-								</a>
-								<a href="#" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#del{{liste.id}}">
-									<i class="fas fa-trash-alt fa-lg text-danger "></i>
-								</a>
-							</td>
+							{% if app.user %}
+								<td>
+									<a href="{{ path('update', {'id': liste.id}) }}" class="btn btn-sm">
+										<i class="fas fa-pencil-alt fa-lg text-success"></i>
+									</a>
+									<a href="#" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#del{{liste.id}}">
+										<i class="fas fa-trash-alt fa-lg text-danger "></i>
+									</a>
+								</td>
+							{% endif %}
 						</tr>
 						<!-- **** Modal suppression ligne **** -->
 						<div class="modal fade" id="del{{liste.id}}" tabindex="-1" aria-labelledby="del" aria-hidden="true">

@@ -21,11 +21,13 @@ security:
                 login_path: login
                 check_path: login 
                 csrf_token_generator: security.csrf.token_manager
+
             logout:
                 path: logout
                 target: index
+
             remember_me:
-                secret:   '%kernel.secret%'
+                secret: '%kernel.secret%'
                 lifetime: 15768000
                 remember_me_parameter: Check_me                
 
