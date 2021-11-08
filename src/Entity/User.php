@@ -42,7 +42,7 @@ class User implements UserInterface
     /**
      * @Assert\EqualTo(propertyPath="password", message="Le mot de passe n'est pas identique")
      */
-    private $cfpassword;
+    public $cfpassword;
 
     /**
      * @ORM\Column(type="datetime")
