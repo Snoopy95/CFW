@@ -2,15 +2,13 @@
 
 namespace App\Entity;
 
-use App\Entity\Roles;
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(
  * fields = {"email"},
  * message ="Cette adresse mail est déjà utilisée"
@@ -27,7 +25,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Email()
      */
     private $email;
 
@@ -38,14 +35,14 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="4", minMessage="il faut 4 caracteres minium")
+     * @Assert\Length(min=4, minMessage="il faut 4 caracteres minium")
      */
     private $password;
 
     /**
      * @Assert\EqualTo(propertyPath="password", message="Le mot de passe n'est pas identique")
      */
-    public $cfpassword;
+    private $cfpassword;
 
     /**
      * @ORM\Column(type="datetime")
@@ -53,8 +50,7 @@ class User implements UserInterface
     private $datecreat;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Roles::class, inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
     private $roles;
 
@@ -116,14 +112,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRoles()
+    public function getRoles(): ?array
     {
-        $roles[] = $this->roles->getRole();
-        
-        return $roles;
+        $roles[] = $this->roles;
+
+        return array_unique($roles);
     }
 
-    public function setRoles(?Roles $roles): self
+    public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 
@@ -135,7 +131,7 @@ class User implements UserInterface
         return $this->token;
     }
 
-    public function setToken(string $token): self
+    public function setToken(?string $token): self
     {
         $this->token = $token;
 
@@ -148,6 +144,6 @@ class User implements UserInterface
     }
     public function getSalt()
     {
-        # code ...
+        # code...
     }
 }

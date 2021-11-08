@@ -53,12 +53,11 @@ class SecurityController extends AbstractController
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
             $user->setDatecreat(new \DateTime());
-            
-            $em = $this->getDoctrine()->getManager();
-            $role = $em->getRepository(Roles::class)->find(1);
+            $role[] = 'ROLE_USER';
             $user->setRoles($role);
 
             // dd($user);
+            $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
