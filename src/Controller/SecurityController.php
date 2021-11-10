@@ -40,10 +40,12 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/newuser", name="newuser")
+     * @Route("/gestionuser", name="gestionuser")
      */
-    public function newuser(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em)
+    public function gestionuser(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em)
     {
+        $listeuser = $this->getDoctrine()->getRepository(User::class)->findAll();
+
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
 
@@ -52,10 +54,14 @@ class SecurityController extends AbstractController
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
             $user->setDatecreat(new \DateTime());
-            $role[] = 'ROLE_USER';
+            $rolesel = $user->getSelectroles();
+            if ($rolesel === 'ADMIN') {
+                $role[] = 'ROLE_ADMIN';
+            } else {
+                $role[] = 'ROLE_USER';
+            };
             $user->setRoles($role);
 
-            // dd($user);
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
@@ -63,8 +69,9 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('index');
         }
 
-        return $this->render('security/newuser.html.twig', [
-            'form' => $form->createView()
+        return $this->render('security/gestionuser.html.twig', [
+            'form' => $form->createView(),
+            'listeuser' => $listeuser
         ]);
     }
 }

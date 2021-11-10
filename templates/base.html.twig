@@ -51,6 +51,11 @@
 							<button class='btn btn-outline-danger me-3' type='button'>
 								<a href="{{ path('logout') }}">Se deconnecter</a>
 							</button>
+							{% if is_granted('ROLE_ADMIN') %}
+								<a class=" text-secondary " href="{{ path('gestionuser') }}" type='button'>
+								<i class="fas fa-users-cog fa-2x me-2"></i>
+								</a>
+							{% endif %}
 						{% else %}
 							<i class="fas fa-user-circle fa-2x me-3"></i>
 							<button class="btn btn-outline-success me-5" type="button" data-bs-toggle="modal" data-bs-target="#connexion">connexion</button>
@@ -69,8 +74,8 @@
 					</div>
 					<div class="modal-body">
 						<form action="{{path('login')}}" method="POST">
-							<label for="inputEmail">Email</label>
-							<input type="email" name="_username" id="inputEmail" class="form-control" required autofocus>
+							<label for="inputName">Nom</label>
+							<input type="text" name="_username" id="inputName" class="form-control" required autofocus>
 							<label for="inputPassword">Mot de Passe</label>
 							<input type="password" name="_password" id="inputPassword" class="form-control" required>
 							<input type="hidden" name="_csrf_token"	value="{{ csrf_token('authenticate') }}">

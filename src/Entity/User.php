@@ -10,8 +10,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(
- * fields = {"email"},
- * message ="Cette adresse mail est déjà utilisée"
+ * fields = {"username"},
+ * message ="Ce nom est déjà utilisée"
  * )
  */
 class User implements UserInterface
@@ -24,7 +24,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $email;
 
@@ -50,9 +50,13 @@ class User implements UserInterface
     private $datecreat;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="json")
      */
-    private $roles;
+    private $roles = [];
+
+    /**
+     */
+    private $selectroles;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -114,15 +118,26 @@ class User implements UserInterface
 
     public function getRoles(): ?array
     {
-        $roles[] = $this->roles;
-
+        $roles = $this->roles;
+        $roles[] =  'ROLE_USER';
+        
         return array_unique($roles);
     }
 
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+        return $this;
+    }
 
+    public function getSelectroles(): ?string
+    {
+        return $this->selectroles;
+    }
+
+    public function setSelectroles(string $selectroles): self
+    {
+        $this->selectroles = $selectroles;
         return $this;
     }
 

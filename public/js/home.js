@@ -21,14 +21,17 @@ function addnamestep() {
     document.querySelector('.labelstep').textContent = newtext[newtext.length - 1]
 }
 
-// --------- Show password ---------
-document.querySelectorAll(".btnpwd").forEach(function (selected) {
+console.log("coucou ca marche !!")
+    // --------- Show password ---------
+document.querySelectorAll(".btnpwd").forEach(function(selected) {
     selected.addEventListener("click", showpwd)
-  })
-  function showpwd() {
+})
+
+function showpwd() {
+    console.log('j ai click')
     inputpwd = document.querySelector("." + this.dataset.btn)
     inputpwd.type == 'password' ? inputpwd.type = 'text' : inputpwd.type = 'password';
     iconpwd = this.querySelector('.iconpwd')
     iconpwd.classList.toggle("fa-eye")
     iconpwd.classList.toggle("fa-eye-slash")
-  }
+}

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -17,24 +18,36 @@ class UserType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'placeholder' => 'Adresse Email'
-                ]
+                    'class' => 'form-control',
+                    'placeholder' => 'Adresse Email',
+                ],
+                'required' => false
             ])
             ->add('username', TextType::class, [
                 'attr' => [
+                    'class' => 'form-control',
                     'placeholder' => 'Nom ou Pseudo'
                 ]
             ])
             ->add('password', PasswordType::class, [
                 'attr' => [
-                    'class' => 'newpwd',
+                    'class' => 'form-control newpwd',
                     'placeholder' => 'Votre mot de passe'
                 ]
             ])
             ->add('cfpassword', PasswordType::class, [
                 'attr' => [
-                    'class' => 'confpwd',
+                    'class' => 'form-control confpwd',
                     'placeholder' => 'Confirmez votre mot de passe'
+                ]
+            ])
+            ->add('selectroles', ChoiceType::class, [
+                'choices' => [
+                    'User' => 'USER',
+                    'Admin' => 'ADMIN'
+                ],
+                'attr' => [
+                    'class' => 'form-select'
                 ]
             ]);
     }
