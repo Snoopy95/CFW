@@ -45,7 +45,12 @@ class SecurityController extends AbstractController
     public function gestionuser(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em)
     {
         $listeuser = $this->getDoctrine()->getRepository(User::class)->findAll();
+        $listeadmin = $this->getDoctrine()->getRepository(User::class)->findby(
+            ['roles' => 'ROLE_ADMIN']
+        );
 
+        dd($listeuser);
+        
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
 
@@ -71,7 +76,7 @@ class SecurityController extends AbstractController
 
         return $this->render('security/gestionuser.html.twig', [
             'form' => $form->createView(),
-            'listeuser' => $listeuser
+            'listeadmin' => $listeadmin
         ]);
     }
 }

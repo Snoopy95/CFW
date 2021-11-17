@@ -4,7 +4,7 @@
 
 {% block body %}
 	<div class='cadre'>
-		<div class='menu p-3'>
+		<div class='cadre menu p-3'>
 			<div class='card text-center'>
 				<div class='card-header'>
 					<p>Ajouter un utilisateur</p>
@@ -47,17 +47,47 @@
 							{{form_widget(form.selectroles)}}
 						</div>
 						<div class='col-12'>
-							<button type="submit" class="btn btn-success">Valider</button>
+							<a href="#" role="submit" class="btn btn-success">Valider</a>
 						</div>
 					</div>
 					{{form_end(form)}}
 				</div>
 			</div>
 		</div>
-		<div class='liste'>
-			<pre>
-			{{ dump(listeuser) }}
-			</pre>
+		<div class='liste cadre'>
+			<table class="table table-warning table-striped table-sm">
+				<thead class="thead-dark">
+					<h3 class="text-center">Admin</h3>
+					<tr>
+						<th scope="col">Nom/Pseudo</th>
+						<th scope="col">Mail</th>
+						<th colspan="3">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for liste in listeadmin %}
+						<tr>
+							<th scope="row">{{ liste.username}}</th>
+							<td>{{ liste.email }}</td>
+							<td>
+								<a href="#" role='button' title="Changement de Role" class='btn btn-outline-primary'>
+									<i class="fas fa-chevron-down fa-lg"></i>
+								</a>
+							</td>
+							<td>
+								<a href="#" role='button' title="Changement du MdP" class='btn btn-outline-warning'>
+									<i class="fas fa-key fa-lg"></i>
+								</a>
+							</td>
+							<td>
+								<a href="#" role='button' title="Suppression de l'utilisateur" class='btn btn-outline-danger'>
+									<i class="far fa-trash-alt fa-lg"></i>
+								</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
 		</div>
 	</div>
 {% endblock %}
