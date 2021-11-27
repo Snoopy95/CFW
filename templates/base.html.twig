@@ -95,12 +95,14 @@
 
 		{% for message in app.flashes('success') %}
 			<div class="mess alert alert-success" role="alert">
-				{{ message }}
+				<i class="fas fa-check-circle"></i>
+				<span> {{ message }} </span>
 			</div>
 		{% endfor %}
 		{% for message in app.flashes('danger') %}
 			<div class="mess alert alert-danger" role="alert">
-				{{ message }}
+				<i class="fas fa-exclamation-triangle"></i>
+				<span> {{ message }} </span>
 			</div>
 		{% endfor %}
 

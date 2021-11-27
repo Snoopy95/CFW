@@ -44,13 +44,13 @@ class SecurityController extends AbstractController
      */
     public function gestionuser(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em)
     {
-        $listeuser = $this->getDoctrine()->getRepository(User::class)->findAll();
+        $listeuser = $this->getDoctrine()->getRepository(User::class)->findby(
+            ['roles' => 'ROLE_USER']
+        );
         $listeadmin = $this->getDoctrine()->getRepository(User::class)->findby(
             ['roles' => 'ROLE_ADMIN']
         );
 
-        dd($listeuser);
-        
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
 
@@ -61,9 +61,9 @@ class SecurityController extends AbstractController
             $user->setDatecreat(new \DateTime());
             $rolesel = $user->getSelectroles();
             if ($rolesel === 'ADMIN') {
-                $role[] = 'ROLE_ADMIN';
+                $role = 'ROLE_ADMIN';
             } else {
-                $role[] = 'ROLE_USER';
+                $role = 'ROLE_USER';
             };
             $user->setRoles($role);
 
@@ -71,12 +71,74 @@ class SecurityController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('gestionuser');
         }
 
         return $this->render('security/gestionuser.html.twig', [
             'form' => $form->createView(),
+            'listeuser' => $listeuser,
             'listeadmin' => $listeadmin
         ]);
+    }
+
+    /**
+     * @Route("chgtrole/{id}", name="chgtrole")
+     */
+    public function chgtrole($id, EntityManagerInterface $em)
+    {
+        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+        $nowrole = $user->getRoles();
+        $nowrole = $nowrole[0];
+
+        if ($nowrole === 'ROLE_USER') {
+            $newrole = "ROLE_ADMIN";
+        } else {
+            $newrole = "ROLE_USER";
+        };
+        $user->setRoles($newrole);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+
+        $this->addFlash('info', 'Role utilisateur modifier');
+        return $this->redirectToRoute('gestionuser');
+    }
+
+    /**
+     * @Route("deluser/{id}", name="deluser")
+     */
+    public function deluser($id, EntityManagerInterface $em)
+    {
+        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+
+        $em->remove($user);
+        $em->flush();
+        $this->addFlash('success', 'Utilisateur supprimer');
+        return $this->redirectToRoute('gestionuser');
+    }
+
+    /**
+     * @Route("restpwd/{slug}", name="restpwd")
+     */
+    public function restpwd(string $slug, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em, Request $request)
+    {
+        if (isset($slug)) {
+            $type = substr($slug, 0, 2);
+            $key = substr($slug, 2);
+
+            if ($type === 'id') {
+                $this->denyAccessUnlessGranted('ROLE_ADMIN');
+                $user = $this->getDoctrine()->getRepository(User::class)->find($key);
+                dd($user);
+            } elseif ($type === 'to') {
+                $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(
+                    ['token' => $key]
+                );
+                dd($user);
+            };
+        };
+
+        $this->addFlash('danger', 'Cette page n\'existe pas !!!');
+        return $this->redirectToRoute('index');
     }
 }

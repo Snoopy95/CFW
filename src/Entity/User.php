@@ -50,9 +50,9 @@ class User implements UserInterface
     private $datecreat;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="string", length="255")
      */
-    private $roles = [];
+    private $roles;
 
     /**
      */
@@ -118,13 +118,12 @@ class User implements UserInterface
 
     public function getRoles(): ?array
     {
-        $roles = $this->roles;
-        $roles[] =  'ROLE_USER';
-        
-        return array_unique($roles);
+        $roles[] = $this->roles;
+
+        return $roles;
     }
 
-    public function setRoles(array $roles): self
+    public function setRoles(string $roles): self
     {
         $this->roles = $roles;
         return $this;
