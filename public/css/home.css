@@ -1,0 +1,141 @@
+body {
+    background-image: url("../images/fonddepage.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    line-height: 1.2em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1 rem;
+    color: black;
+    margin-top: 100px ;
+}
+
+.accueil {
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    padding: 2%;
+    background-color: rgba(200,205,255, 0.9);
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    margin-top: 10%;
+}
+
+.cadre {
+    width: 80%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.cadre-2 {
+    width: 80%;
+    height: 850px;
+    margin: auto;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.menu {
+    background-color: #303030;
+    margin-top: 5px;
+}
+
+.liste {
+    background-color: rgb(200, 200, 200, 0.8);
+    margin-top: 10px;
+}
+
+.mess {
+    width: 50%;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.fixe {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+.scroll {
+    position: relative;
+    top: 55px;
+}
+
+.fixe-tab {
+    position: fixed;
+    z-index: 1;
+    top: 175px;
+}
+
+.scroll-tab {
+    position: relative;
+    top: 60px;
+}
+
+.formul {
+    z-index: 10;
+}
+
+.animate_buttom:hover {
+    animation: rubberBand;
+    animation-duration: 1s;
+}
+
+.animate_buttom a {
+    text-decoration: none;
+}
+
+.scroll-y {
+    overflow-y: scroll;
+}
+
+.card-columns {
+    column-count: 4;
+}
+
+@media only screen and (max-width: 950px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+.error {
+    color: red;
+}
+
+.taillefiche {
+    height: 750px;
+    width: 30%;
+}
+
+.taillecadre {
+    height: 90%;
+    margin: 10px;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.table th {
+    vertical-align: middle;
+}
+
+.ligne1 {
+    color: black;
+}
+
+.ligne2 {
+    color: rgb(0, 79, 197);
+}
+
+.bg-nav {
+    background-color: rgb(200, 205, 255);
+    border-radius: 20px;
+    width: 99%;
+    margin: auto;
+}
+.btnpwd {
+    cursor: pointer;
+}

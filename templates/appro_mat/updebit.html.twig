@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<h1>Edition débit</h1>
+{% endblock %}
+
+{% block body %}
+	<div class="menu cadre mt-5">
+		<div class="card card-body">
+			{{ form_start(form) }}
+			<div class="row mt-2">
+				<div class="col-lg-4">
+					{{form_row(form.matiere)}}
+				</div>
+				<div class="col-lg-2">
+					{{form_row(form.quantite)}}
+				</div>
+			</div>
+			<div class='row mt-2'>
+				<div class="col-lg-4">
+					{{form_row(form.debit)}}
+				</div>			
+				<div class="col-lg-2">
+					{{form_row(form.epaisseur)}}
+				</div>
+			</div>
+			<div class='row mt-2 mb-3'>
+				<div class="col-lg-4">
+					{{form_row(form.client)}}
+				</div>
+				<div class="col-lg-2">
+					{{form_row(form.naf)}}
+				</div>
+			</div>
+		</div>
+		<div class="p-3">
+			<button type="submit" class="ml-5 btn btn-success">Valider !</button>
+			<a href="{{ path('appro_index') }}" type="button" class="ml-5 btn btn-danger">Annuler</a>
+			{{ form_end(form)}}
+		</div>		
+	</div>
+{% endblock %}

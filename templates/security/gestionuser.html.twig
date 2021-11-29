@@ -1,0 +1,188 @@
+{% extends "base.html.twig" %}
+
+{% block titlebar %}{% endblock %}
+
+{% block body %}
+	<div class='cadre'>
+		<div class='cadre menu p-3'>
+			<div class='card text-center'>
+				<div class='card-header'>
+					<p>Ajouter un utilisateur</p>
+				</div>
+				<div class="card-body">
+					{{form_start(form)}}
+					<div class="row g-3">
+						<div class='col-6'>
+							{{ form_errors(form.username) }}
+							<div class='input-group mb-2'>
+								<span class='input-group-text'>Nom/Pseudo</span>
+								{{form_widget(form.username)}}
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="input-group mb-2">
+								<span class="input-group-text">Email</span>
+								{{form_widget(form.email)}}
+							</div>
+						</div>
+						{{ form_errors(form.password) }}
+						<div class="col-6">
+							<div class="input-group mb-2">
+								{{form_widget(form.password)}}
+								<span class="input-group-text btnpwd" data-btn="newpwd">
+									<i class="iconpwd far fa-eye fa-lg"></i>
+								</span>
+							</div>
+						</div>
+						{{ form_errors(form.cfpassword) }}
+						<div class="col-6">
+							<div class="input-group mb-2">
+								{{form_widget(form.cfpassword)}}
+								<span class="input-group-text btnpwd" data-btn="confpwd">
+									<i class="iconpwd far fa-eye fa-lg"></i>
+								</span>
+							</div>
+						</div>
+						<div class='col-2'>
+							{{form_widget(form.selectroles)}}
+						</div>
+						<div class='col-12'>
+							<button type="submit" class="btn btn-success">Valider</button>
+						</div>
+					</div>
+					{{form_end(form)}}
+				</div>
+			</div>
+		</div>
+		<div class='liste cadre'>
+			<table class="table table-warning table-striped table-sm caption-top">
+				<caption class="text-center h3">Admin</caption>
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Nom/Pseudo</th>
+						<th scope="col">Mail</th>
+						<th colspan="3">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for liste in listeadmin %}
+						<tr>
+							<th scope="row">{{ liste.username}}</th>
+							<td>{{ liste.email }}</td>
+							<td>
+								<button type='button' title="Changement de Role" class='btn btn-outline-primary' data-bs-toggle="modal" data-bs-target="#downrole{{liste.id}}">
+									<i class="fas fa-chevron-down fa-lg"></i>
+								</button>
+							</td>
+							<td>
+								<a href="#" role='button' title="Changement du MdP" class='btn btn-outline-warning'>
+									<i class="fas fa-key fa-lg"></i>
+								</a>
+							</td>
+							<td>
+								<button type='button' title="Suppression de l'utilisateur" class='btn btn-outline-danger' data-bs-toggle="modal" data-bs-target="#deladmin{{liste.id}}">
+									<i class="far fa-trash-alt fa-lg"></i>
+								</button>
+							</td>
+						</tr>
+						<!-- Modal -->
+						<div class="modal fade" id="downrole{{liste.id}}" tabindex="-1" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-body">
+										<p class="texte-center">
+											Confirmer le changement de role pour {{liste.username}} ?
+										</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non, il reste Admin</button>
+										<a href="{{ path('chgtrole', {'id': liste.id}) }}" role="button" class="btn btn-primary">Oui, il passe User</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal fade" id="deladmin{{liste.id}}" tabindex="-1" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-body">
+										<p class="texte-center">
+											Confirmer la suppression de {{liste.username}} ?
+										</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Non</button>
+										<a href="{{ path('deluser', {'id': liste.id}) }}" role="button" class="btn btn-danger">Supprimer</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</tbody>
+			</table>
+			<table class="table table-warning table-striped table-sm caption-top">
+				<caption class="text-center h3">User</caption>
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Nom/Pseudo</th>
+						<th scope="col">Mail</th>
+						<th colspan="3">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for liste in listeuser %}
+						<tr>
+							<th scope="row">{{ liste.username}}</th>
+							<td>{{ liste.email }}</td>
+							<td>
+								<button type='button' title="Changement de Role" class='btn btn-outline-primary' data-bs-toggle="modal" data-bs-target='#uprole{{liste.id}}'>
+									<i class="fas fa-chevron-up fa-lg"></i>
+								</button>
+							</td>
+							<td>
+								<a href="#" role='button' title="Changement du MdP" class='btn btn-outline-warning'>
+									<i class="fas fa-key fa-lg"></i>
+								</a>
+							</td>
+							<td>
+								<button type='button' title="Suppression de l'utilisateur" class='btn btn-outline-danger' data-bs-toggle="modal" data-bs-target="#deluser{{liste.id}}">
+									<i class="far fa-trash-alt fa-lg"></i>
+								</button>
+							</td>
+						</tr>
+						<!-- Modal -->
+						<div class="modal fade" id="uprole{{liste.id}}" tabindex="-1" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-body">
+										<p class="text-center">
+											Confirmer le changement de role pour {{liste.username}} ?
+										</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non, il reste User</button>
+										<a href="{{ path('chgtrole', {'id': liste.id}) }}" role="button" class="btn btn-primary">Oui, il passe Admin</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal fade" id="deluser{{liste.id}}" tabindex="-1" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-body">
+										<p class="texte-center">
+											Confirmer la suppression de {{liste.username}} ?
+										</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Non</button>
+										<a href="{{ path('deluser', {'id': liste.id}) }}" role="button" class="btn btn-danger">Supprimer</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

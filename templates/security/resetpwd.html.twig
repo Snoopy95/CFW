@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block titlebar %}{% endblock %}
+
+{% block body %}
+	<div class='cadre'>
+		<div class='cadre menu p-3'>
+			<div class='card text-center'>
+				<div class='card-header'>
+					<p>Changement de mot de passe</p>
+				</div>
+				<div class="card-body">
+					{{form_start(form)}}
+					<div class="row g-3">
+						{{ form_errors(form.password) }}
+						<div class="col-6">
+							<div class="input-group mb-2">
+								{{form_widget(form.password)}}
+								<span class="input-group-text btnpwd" data-btn="newpwd">
+									<i class="iconpwd far fa-eye fa-lg"></i>
+								</span>
+							</div>
+						</div>
+						{{ form_errors(form.cfpassword) }}
+						<div class="col-6">
+							<div class="input-group mb-2">
+								{{form_widget(form.cfpassword)}}
+								<span class="input-group-text btnpwd" data-btn="confpwd">
+									<i class="iconpwd far fa-eye fa-lg"></i>
+								</span>
+							</div>
+						</div>
+						<div class='col-12'>
+							<button type="submit" class="btn btn-success">Valider</button>
+						</div>
+					</div>
+					{{form_end(form)}}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+<div class="header-mail" style="margin: 25px 0 0 15px">
+	<h3>
+		Demande de prix
+	</h3>
+</div>
+
+<div class="container-mail" style="margin: 50px 0 25px 15px">
+	<p>Bonjour
+		{{ nom }},
+	</p>
+
+	<p>
+		Pourriez-vous me faire parvenir votre meilleur offre de prix pour
+		{% if debits|length > 1 %}
+			les debits suivants
+		{% else %}
+			le debit suivant
+		{% endif %}:</p>
+	<p>
+		<ul>
+			{% for debit in debits %}
+				<li>
+					{{debit.famille.nomfamille}}
+					-
+					{{debit.nuance.name}}
+					- Dimension:
+					{{debit.debit}}
+					- Qt:
+					{{debit.quantite}}
+				</li>
+			{% endfor %}
+		</ul>
+		{# <table style="margin: 10px 0 0 30px">
+			<thead>
+				<tr>
+					<th>Famille</th>
+					<th>Nuance</th>
+					<th>Dimension</th>
+					<th>Quantite</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for debit in debits %}
+					<tr>
+						<td>{{debit.famille.nomfamille}}</td>
+						<td>{{debit.nuance.name}}</td>
+						<td>{{debit.debit}}</td>
+						<td>{{debit.quantite}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table> #}
+
+	</p>
+	<p style="margin-top: 15px">
+		Cordialement
+	</p>
+</div>
+
+<div class="footer-mail" style="line-height: 1px; margin-left: 15px">
+	<img src="{{ email.image('@images/cfw-logo.png') }}" alt="logo">
+	<p>8 Mail Marie Joliot Curie,</p>
+	<p>95310 Saint Ouen L’aumône</p>
+	<p>01.30.37.91.27</p>
+	<a href="https:\\cfw-tolerie.com">CFW-TOLERIE</a>
+</div>

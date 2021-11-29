@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<h1>Mail Appro Matiere</h1>
+{% endblock %}
+
+{% block body %}
+	<div class="">
+		<div class="cadre menu mt-5">
+			<a href="{{path('appro_index')}}" type='button' class='btn btn-sm btn-primary'>
+				<i class="fas fa-arrow-alt-circle-left"></i>
+				Retour
+			</a>
+			<a href='{{path('appro_appromail', {'send': 'send'})}}' type='button' class='btn btn-sm btn-success {% if msg == true %}disabled{% endif %}'>
+				<i class="fas fa-envelope"></i>
+				Envoyer
+			</a>
+		</div>
+		<!-- ***** tableau **** -->
+		<div class="liste cadre">
+			{% if msg == false %}
+				{% set cont = 1 %}
+				{% for mail in debit %}
+					<h4 class="ml-3">
+						Mail
+						{{ cont }}
+					</h4>
+					<ul>
+						<li>
+							<em>
+								<strong>Fournisseur :
+								</strong>
+							</em>
+							{{ mail.fournisseur.nom}}</li>
+						<ul>
+							<li>
+								<em>
+									<strong>Contacts</strong>
+								</em>
+							</li>
+							<ul>
+								{% for mail in mail.adressmails %}
+									<li>{{ mail.nom}}=>{{ mail.mail}}</li>
+								{% endfor %}
+							</ul>
+						</ul>
+						<ul>
+							<li>
+								<em>
+									<strong>Matieres</strong>
+								</em>
+							</li>
+							<ul>
+								{% for mat in mail.debits %}
+									<li>{{ mat.matiere }}</li>
+								{% endfor %}
+							</ul>
+						</ul>
+					</ul>
+					{%  set cont = cont+1 %}
+				{% endfor %}
+			{% else %}
+				<h2 class="text-center">
+					{{msg}}
+				</h2>
+			{% endif %}
+			{% if defaut == true %}
+				<div class="card text-white bg-danger rounded m-3 p-3 shadow">
+					{% if defaut.notype %}
+						<p class ="lead"><u>Nuance ou famille introuvable :</u></p>
+						<ul>
+							{% for notype in defaut.notype %}
+								<li>{{notype.matiere}}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+					{% if defaut.nofourn %}
+						<p class="lead"><u>Fournisseur introuvable :</u></p>
+						<ul>
+							{% for nofourn in defaut.nofourn %}
+								<li>{{nofourn.matiere}}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+					{% if defaut.nocontact %}
+						<p class="lead"><u>Pas de contact :</u></p>
+						<ul>
+							{% for nocontact in defaut.nocontact %}
+								<li>{{nocontact.nom}}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</div>
+			{% endif %}
+
+		</div>
+	</div>
+{% endblock %}
+
+{% block script %}
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="{{asset('js/appro.js')}}"></script>
+{% endblock %}

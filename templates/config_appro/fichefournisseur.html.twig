@@ -1,0 +1,180 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<h1>Fiche Fournisseur</h1>
+{% endblock %}
+
+{% block body %}
+	<div class="">
+		<div class="cadre menu mt-5 d-flex justify-content-between">
+			<div>
+				<a href="{{path('config_index')}}" type='button' class='btn btn-sm btn-primary'>
+					<i class="fas fa-arrow-alt-circle-left"></i>
+					Retour
+				</a>
+				<a href='{{path('config_fournisseurs')}}' type='button' class="btn btn-sm btn-success">
+					<i class="fas fa-id-card"></i>
+					Fournisseur |
+					<i class="fas fa-user-friends"></i>
+					Contact
+				</a>
+				<a href='{{path('config_familles')}}' type='button' class='btn btn-sm btn-success'>
+					<i class="fas fa-tags"></i>
+					Famille
+				</a>
+				<a href="{{path('config_nuances')}}" type='button' class='btn btn-sm btn-success'>
+					<i class="fas fa-tags"></i>
+					Nuance
+				</a>
+				<a href='#' type='button' class='btn btn-sm btn-warning'>
+					<i class="fas fa-history"></i>
+					Autre
+				</a>
+			</div>
+			<div></div>
+			<div class='invisible' id='cadre-del'>
+				<button type="button" class='btn btn-success btn-sm mr-2' id='btn-undo'>
+					<i class="fas fa-undo"></i>
+					Undo
+				</button>
+				<button type="button" class='btn btn-danger btn-sm' id='btn-delete' data-url="../delcontact">
+					Supprimer
+					<span class="badge badge-pill badge-light">
+						0
+					</span>
+				</button>
+			</div>
+		</div>
+		<div class="liste cadre">
+			<div class='d-flex justify-content-around mt-2 border border-dark rounded-pill p-4'>
+				<div class='nav nav-fill'>
+					<h4 class='nav-link'>
+						<em id='titrecode'>{{fiche.codefour}}</em>
+					</h4>
+					<div class='nav-link'>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<button type='button' class='btn btn-link text-success' id='codeedit'>
+									<i class="fas fa-pencil-alt fa-lg"></i>
+								</button>
+							</div>
+							<input type="text" class="form-control invisible" placeholder="{{fiche.codefour}}" id='code' data-id="{{fiche.id}}">
+						</div>
+					</div>
+				</div>
+				<div class='nav nav-fill'>
+					<h3 class='nav-link'>
+						<strong id='titrename'>{{fiche.nom}}</strong>
+					</h3>
+					<div class='nav-link'>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<button type='button' class='btn btn-link text-success' id='nameedit'>
+									<i class="fas fa-pencil-alt fa-lg"></i>
+								</button>
+							</div>
+							<input type="text" class="form-control invisible" placeholder="{{fiche.nom}}" id='name' data-id="{{fiche.id}}">
+						</div>
+					</div>
+				</div>
+				<div class='nav nav-fill'>
+					<div class='nav-link'>
+						<div class="form-check form-switch">
+							<input type="checkbox" class="form-check-input switch-tab" id="Switch{{fiche.id}}" data-id="{{fiche.id}}" data-url="../statutfournisseur" {% if fiche.statut == "OK" %} checked {% endif %}>
+							<label class="form-check-label" for="Switch{{fiche.id}}"></label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex justify-content-around mt-3">
+				<div class="bg-info taillefiche">
+					<h5 class='text-center m-3'>
+						<strong>MAIL</strong>
+						<button type='btn' class='btn btn-link text-secondary addcont' data-bs-toggle="modal" data-bs-target='#addcontact' data-id="{{fiche.id}}" data-url="../addcontact">
+							<i class="fas fa-user-plus fa-lg"></i>
+						</button>
+					</h5>
+					<div class="overflow-auto taillecadre">
+						<ul class="list-group">
+							{% for contact in fiche.contacts %}
+								<li id="card{{contact.id}}" class="list-group-item mt-1">
+									<div class="form-check form-switch">
+										<input type="checkbox" class="form-check-input switch-tab" id="contact{{contact.id}}" data-id="{{contact.id}}" data-url="../statutcontact" {% if contact.statut == "OK" %} checked {% endif %}>
+										<label id="label{{contact.id}}" class="form-check-label" for="contact{{contact.id}}">
+											{{contact.mail}} <br>
+											{{contact.nom}}
+										</label>
+									<div class='float-end'>
+										<button type='button' class='btn btn-link text-success upcont' data-bs-toggle="modal" data-bs-target='#addcontact' data-id={{contact.id}} data-url="../updatecontact">
+											<i class="fas fa-pencil-alt fa-lg"></i>
+										</button>
+										<button type='button' class="del-btn btn btn-link text-danger" title="Supprimer" data-id="{{contact.id}}">
+											<i class="far fa-trash-alt fa-lg"></i>
+										</button>
+									</div>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+					<!-- Modals-->
+					<div class="modal fade" id="addcontact" tabindex="-1" data-backdrop="static" aria-hidden="true">
+						{% include '/config_appro/modaladdcontact.html.twig' %}
+					</div>
+				</div>
+				<div class="bg-info taillefiche">
+					<h5 class="text-center m-4">
+						<strong>FAMILLES</strong>
+					</h5>
+					<div class="overflow-auto taillecadre">
+						<ul class="list-group">
+							{% for famille in familles %}
+								<li class="list-group-item mt-1">
+									<div class='row ml-2 align-items-center'>
+										<div class="col form-check text-center">
+											<input type="checkbox" class="form-check-input selectfamille" id="famille{{famille.id}}" data-idfamille={{famille.id}} data-idfourn={{fiche.id}} {% for item in fiche.familles %} {% if item.id == famille.id %} checked {% endif %} {% endfor %}>
+											<label class="form-check-label" for="famille{{famille.id}}">
+												{{famille.nomfamille}}
+											</label>
+										</div>
+										<div class='col-3 badge rounded-pill bg-primary'>
+											{{famille.codefamille}}
+										</div>
+
+									</div>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+				<div class="bg-info taillefiche">
+					<h5 class="text-center m-4">
+						<strong>NUANCES</strong>
+					</h5>
+					<div class="overflow-auto taillecadre">
+						<ul class="list-group">
+							{% for nuance in nuances %}
+								<li class="list-group-item mt-1">
+									<div class='row ml-2 align-items-center'>
+										<div class="col form-check text-center">
+											<input type="checkbox" class="form-check-input selectnuance" id="nuance{{nuance.id}}" data-idnuance={{nuance.id}} data-idfourn={{fiche.id}} {% for item in fiche.nuances %} {% if item.id == nuance.id %} checked {% endif %} {% endfor %}>
+											<label class="form-check-label" for="nuance{{nuance.id}}">
+												{{nuance.name}}
+											</label>
+										</div>
+										<div class="col-3 badge rounded-pill bg-primary">
+											{{nuance.codenuance}}
+										</div>
+									</div>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block script %}
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="{{asset('js/appro.js')}}"></script>
+{% endblock %}

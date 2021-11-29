@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+		<h1> Ancien DOSSIERS T </h1>
+{% endblock %}
+
+{% block body %}
+	<div class='fixe'>
+		<div class="menu cadre">
+			<div class="d-flex justify-content-between">
+				<div>
+				<a href="{{path('dossiert')}}" type='button' class='btn btn-sm btn-primary'>
+					<i class="fas fa-arrow-alt-circle-left"></i>
+					Retour
+				</a>
+				</div>
+				<div> 
+					{{ form_start(form)}}
+					<div class="form-inline">
+						<button type="submit" class="btn btn-success btn-sm">Recherche</button>
+						{{form_widget(form.search)}}
+					</div>			
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row cadre liste scroll">
+	{% set var = 0 %}
+	{% if lines|length>0 %}
+		<div class="col-4">
+			<ul>
+				{% for line in lines|slice(0, ((lines|length)/3)|round(0, 'ceil')) %}
+					<li {% if var is divisible by(2) %} class='ligne1'{% else %} class='ligne2'{% endif %}>{{line}}</li>
+					{% set var = var  + 1 %}
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+	{% if lines|length>1 %}
+		<div class="col-4">
+			<ul>
+				{% for line in lines|slice((lines|length/3)|round(0, 'ceil'), (lines|length/3)|round(0, 'ceil')) %}
+					<li {% if var is divisible by(2) %} class='ligne1'{% else %} class='ligne2'{% endif %}>{{line}}</li>
+					{% set var = var + 1 %}
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+	{% if lines|length>2 %}
+		<div class="col-4">
+			<ul>
+				{% for line in lines|slice(((lines|length/3)|round(0, 'ceil')*2), (lines|length)) %}
+					<li {% if var is divisible by(2) %} class='ligne1'{% else %} class='ligne2'{% endif %}>{{line}}</li>
+					{% set var = var + 1 %}
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+	</div>
+{% endblock %}

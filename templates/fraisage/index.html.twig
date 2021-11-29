@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<h1>Fraisage</h1>
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="cadre menu mt-5">
+			<div class="align-items-center d-flex">
+					<button type='button' class="btn btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#newprg" aria-expanded="false" aria-controls="newprg">
+					<i class="far fa-plus-square"></i>
+					Nouveau PRG
+				</button>
+				<div class="dropdown">
+					<a class="ms-1 btn btn-sm btn-primary dropdown-toggle" href="#" role="button" id="dropdownlist" data-bs-toggle="dropdown" aria-expanded="false">
+						<i class="fas fa-list-ol"></i>
+						Liste des Prg
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownlist">
+						<li><a class="dropdown-item" href="#">Fraisage</a></li>
+						<li><a class="dropdown-item" href="#">Tournage</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" href="#">Tous Prg</a></li>
+					</ul>
+				</div>
+				<a href="#" type='button' class='ms-1 btn btn-sm btn-primary'>
+					<i class="fas fa-search"></i>
+					Rechercher PRG
+				</a>
+				<a href='#' type='button' class='ms-1 btn btn-sm btn-warning'>
+					<i class="fas fa-history"></i>
+					Autre
+				</a>
+			</div>
+			<div class="collapse mt-3" id="newprg">
+				<div class="card card-body">
+					<div class='row g-3'>
+						<div class="form-check col-md-1">
+							<input class="form-check-input" type="radio" name="flexRadioDefault" id="Radiofraisage">
+							<label class="form-check-label" for="Radiofraisage">
+								Fraisage
+							</label>
+						</div>
+						<div class="form-check col-md-1">
+							<input class="form-check-input" type="radio" name="flexRadioDefault" id="Radiotournage" checked>
+							<label class="form-check-label" for="Radiotournage">
+								Tournage
+							</label>
+						</div>
+						<div class='col-10'>
+							<h3 class='text-end'> N° Prg = FTOTO1155 </h3>
+						</div>
+						<div class="col-md-3">
+							<div class="form-floating">
+								<input type="text" class="form-control" id="floatingInput" placeholder="Abcdefgh Ijklmn">
+								<label for="floatingInput">Client</label>
+							</div>
+						</div>
+						<div class='col-md-4'>
+							<div class="form-floating">
+								<input type="text" class="form-control" id="floatingInput" placeholder="REF12121212">
+								<label for="floatingInput">Reference piece</label>
+							</div>
+						</div>
+						<div class="col-md-1">
+							<div class="form-floating">
+								<input type="text" class="form-control" id="floatingInput" placeholder="IND A">
+								<label for="floatingInput">Indice</label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-floating">
+								<input type="text" class="form-control" id="floatingPassword" placeholder="Bloc">
+								<label for="floatingPassword">Designation piece</label>
+							</div>
+						</div>
+						<div class="col-12">
+							<button type='submit' class='btn btn-success'>Valider</button>
+						</div>	
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div class="liste cadre">
+			<div>
+				{% if list %}
+				<h1>Les 10 derniers programmes ....</h1>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+		<h1>Config Appro</h1>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="cadre menu mt-5 d-flex justify-content-between">
+			<div>
+				<a href="{{path('appro_index')}}" type='button' class='btn btn-sm btn-primary'>
+					<i class="fas fa-arrow-alt-circle-left"></i>
+					Retour
+				</a>
+				<a href='{{path('config_fournisseurs')}}' type='button' class="btn btn-sm btn-success">
+					<i class="fas fa-id-card"></i>
+					Fournisseur |
+					<i class="fas fa-user-friends"></i>
+					Contact
+				</a>
+				<a href='{{path('config_familles')}}' type='button' class='btn btn-sm btn-success'>
+					<i class="fas fa-tags"></i>
+					Famille
+				</a>
+				<a href="{{path('config_nuances')}}" type='button' class='btn btn-sm btn-success'>
+					<i class="fas fa-tags"></i>
+					Nuance
+				</a>
+				<a href='#' type='button' class='btn btn-sm btn-warning'>
+					<i class="fas fa-history"></i>
+					Autre
+				</a>
+			</div>
+			<div>
+				<div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="recup" data-bs-toggle="dropdown" aria-expanded="false">
+						Import
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="recup">
+						<li><a class="dropdown-item" href="{{path('config_recupfournisseur')}}">Import Fournisseurs/Contacts</a></li>
+						<li><a class="dropdown-item" href="{{path('config_recupfamille')}}">Import Familles</a></li>
+						<li><a class="dropdown-item" href="{{path('config_recupnuance')}}">Import Nuances</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="liste cadre">
+			{% if liste %}
+				<p>un truc</p>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
