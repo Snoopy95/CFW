@@ -3,14 +3,21 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\RestpwdType;
 use App\Form\UserType;
+use App\Form\UpuserType;
+use App\Entity\Forgetpwd;
+use App\Form\RestpwdType;
+use App\Form\ForgetPwdType;
+use Symfony\Component\Mime\Email;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 class SecurityController extends AbstractController
 {
@@ -119,42 +126,119 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("restpwd/{slug}", name="restpwd")
+     * @Route("/forgetpwd", name="forgetpwd")
      */
-    public function restpwd(string $slug, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em, Request $request)
-    {
-        if (isset($slug)) {
-            $type = substr($slug, 0, 2);
-            $key = substr($slug, 2);
+    public function mdpoublie(
+        Request $request,
+        TokenGeneratorInterface $tokenGenerator,
+        MailerInterface $mailer,
+        EntityManagerInterface $em
+    ) {
+        $useremail = new Forgetpwd();
+        $form = $this->createForm(ForgetPwdType::class, $useremail);
 
-            if ($type === 'id') {
-                $this->denyAccessUnlessGranted('ROLE_ADMIN');
-                $user = $this->getDoctrine()->getRepository(User::class)->find($key);
-            } elseif ($type === 'to') {
-                $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(
-                    ['token' => $key]
-                );
-            };
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $email = $useremail->getEmail();
+            $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(
+                ['email' => $email]
+            );
             if ($user) {
-                $form = $this->createForm(RestpwdType::class, $user);
-                $form->handleRequest($request);
-                if ($form->isSubmitted() && $form->isValid()) {
-                    $hash = $encoder->encodePassword($user, $user->getPassword());
-                    $user->setPassword($hash);
-                    $user->setToken(null);
-        
-                    $this->em->persist($user);
-                    $this->em->flush();
-        
-                    $this->addFlash('success', 'Mot de passe a bien été changé !!!');
-                    return $this->redirectToRoute('index');
-                }
-                
-                return $this->render('security/resetpwd.html.twig', [
-                    'form' => $form->createView()
-                ]);
+                $token = $tokenGenerator->generateToken();
+                $user->setToken($token);
+                $em->persist($user);
+                $em->flush();
+
+                $url = $this->generateUrl('restpwd', ['id' => 'to' . $token], UrlGeneratorInterface::ABSOLUTE_URL);
+
+                $email = (new Email())
+                    ->from('admin@cfw.fr')
+                    ->to($user->getEmail())
+                    ->subject('Mot de passe perdu !!')
+                    ->html('<h2> Bonjours ' . $user->getUsername() . '</h2>
+                    <p> Cliquez sur le lien suivant pour réinitialiser votre mot de passe </p>
+                    <h3>' . $url . '</h3>');
+                //$mailer->send($email);
+
+                dd($email);
+                $this->addFlash('success', 'Mail bien envoyer');
+                return $this->redirectToRoute('index');
+            } else {
+                $this->addFlash('mailerror', 'L\'adresse d\'email saisie n\'existe pas !!!');
+                return $this->redirectToRoute('forgetpwd');
             }
         };
+
+        return $this->render('security/forgetpwd.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("restpwd/{id}", name="restpwd")
+     */
+    public function restpwd(
+        string $id,
+        UserPasswordEncoderInterface $encoder,
+        EntityManagerInterface $em,
+        Request $request
+    ) {
+        $type = substr($id, 0, 2);
+        $key = substr($id, 2);
+
+        if ($type === 'id') {
+            $this->denyAccessUnlessGranted('ROLE_ADMIN');
+            $user = $this->getDoctrine()->getRepository(User::class)->find($key);
+            if (!$user) {
+                goto error;
+            };
+            $oldpwd = $user->getPassword();
+            $form = $this->createForm(UpuserType::class, $user);
+            $mail = true;
+            $titre = 'Mise à jour utilisateur';
+            $message = 'Mis à jour utilisateur fait !!!';
+            $url = 'gestionuser';
+        } elseif ($type === 'to') {
+            $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(
+                ['token' => $key]
+            );
+            if (!$user) {
+                goto error;
+            };
+            $form = $this->createForm(RestpwdType::class, $user);
+            $mail = false;
+            $titre = "Changement mot de passe";
+            $message = "Mot de passe a bien été changé !!!";
+            $url = 'index';
+        } else {
+            goto error;
+        }
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $pwd = $user->getPassword();
+            if ($pwd !== "empty") {
+                $hash = $encoder->encodePassword($user, $user->getPassword());
+                $user->setPassword($hash);
+                $user->setToken(null);
+            } else {
+                $user->setPassword($oldpwd);
+            };
+
+            // $em->persist($user);
+            // $em->flush();
+            $this->addFlash('success', $message);
+            return $this->redirectToRoute($url);
+        }
+
+        return $this->render('security/resetpwd.html.twig', [
+            'titre' => $titre,
+            'mail' => $mail,
+            'user' => $user,
+            'form' => $form->createView()
+        ]);
+
+        error:
         $this->addFlash('danger', 'Cette page n\'existe pas !!!');
         return $this->redirectToRoute('index');
     }

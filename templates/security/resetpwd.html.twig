@@ -7,11 +7,19 @@
 		<div class='cadre menu p-3'>
 			<div class='card text-center'>
 				<div class='card-header'>
-					<p>Changement de mot de passe</p>
+					<p>{{titre}}</p>
 				</div>
 				<div class="card-body">
 					{{form_start(form)}}
 					<div class="row g-3">
+						{% if mail %}
+						<div class="col-12">
+							<div class="input-group mb-2">
+								<span class="input-group-text">Email</span>
+								{{form_widget(form.email, {'value': user.email})}}
+							</div>
+						</div>
+						{% endif %}
 						{{ form_errors(form.password) }}
 						<div class="col-6">
 							<div class="input-group mb-2">
