@@ -8,20 +8,22 @@
 	<div class="container-fluid">
 		<div class="cadre menu mt-5">
 			<div class="align-items-center d-flex">
-					<button type='button' class="btn btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#newprg" aria-expanded="false" aria-controls="newprg">
-					<i class="far fa-plus-square"></i>
-					Nouveau PRG
-				</button>
 				<div class="dropdown">
 					<a class="ms-1 btn btn-sm btn-primary dropdown-toggle" href="#" role="button" id="dropdownlist" data-bs-toggle="dropdown" aria-expanded="false">
 						<i class="fas fa-list-ol"></i>
 						Liste des Prg
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownlist">
-						<li><a class="dropdown-item" href="#">Fraisage</a></li>
-						<li><a class="dropdown-item" href="#">Tournage</a></li>
+						<li>
+							<a class="dropdown-item" href="#">Fraisage</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Tournage</a>
+						</li>
 						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="#">Tous Prg</a></li>
+						<li>
+							<a class="dropdown-item" href="#">Tous Prg</a>
+						</li>
 					</ul>
 				</div>
 				<a href="#" type='button' class='ms-1 btn btn-sm btn-primary'>
@@ -33,60 +35,93 @@
 					Autre
 				</a>
 			</div>
-			<div class="collapse mt-3" id="newprg">
-				<div class="card card-body">
-					<div class='row g-3'>
-						<div class="form-check col-md-1">
-							<input class="form-check-input" type="radio" name="flexRadioDefault" id="Radiofraisage">
-							<label class="form-check-label" for="Radiofraisage">
-								Fraisage
-							</label>
-						</div>
-						<div class="form-check col-md-1">
-							<input class="form-check-input" type="radio" name="flexRadioDefault" id="Radiotournage" checked>
-							<label class="form-check-label" for="Radiotournage">
-								Tournage
-							</label>
-						</div>
-						<div class='col-10'>
-							<h3 class='text-end'> N° Prg = FTOTO1155 </h3>
-						</div>
-						<div class="col-md-3">
-							<div class="form-floating">
-								<input type="text" class="form-control" id="floatingInput" placeholder="Abcdefgh Ijklmn">
-								<label for="floatingInput">Client</label>
+			<div class="mt-3">
+				<div class="card">
+					<div class='card-body'>
+						<div class="d-flex justify-content-around">
+							<div class="p-2">
+								<div class='row g-3'>
+									<div class="col-12">
+										<div class="form-floating">
+											<input type="number"  min="0" class="form-control" id="inputDossier" placeholder="numdossier">
+											<label for="inputDossier">Numero de dossier</label>
+										</div>
+									</div>
+									<div class="col-12">
+										<button type='submit' id='checkDossier' class='btn btn-success'>Recherche</button>
+									</div>
+									<div id="liveAlertPlaceholder"></div>
+								</div>
+							</div>
+							<div class="p-2">
+								<div class="row">
+									<div class="col-6">
+										<div class="form-floating">
+											<input type="text" class="form-control" id="inputClient" placeholder="client">
+											<label for="inputClient">Client</label>
+										</div>
+									</div>
+									<div class='row g-3'>
+										<div class='col-10'>
+											<div class="form-floating">
+												<input type="text" class="form-control" id="inputRef" placeholder="ref">
+												<label for="inputRef">Reference piece</label>
+											</div>
+										</div>
+										<div class="col-2">
+											<div class="form-floating">
+												<input type="text" class="form-control" id="inputInd" placeholder="indice">
+												<label for="inputInd">Indice</label>
+											</div>
+										</div>
+									</div>
+									<div class="row g-3">
+										<div class="col-12">
+											<div class="form-floating">
+												<input type="text" class="form-control" id="inputDesign" placeholder="design">
+												<label for="inputDesign">Designation piece</label>
+											</div>
+										</div>
+									</div>
+									<div class="row g-2">
+										<div class="col-12">
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="radioMachine" id="Radiofraisage">
+												<label class="form-check-label" for="Radiofraisage">
+													Fraisage
+												</label>
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="radioMachine" id="Radiotournage">
+												<label class="form-check-label" for="Radiotournage">
+													Tournage
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 mt-4">
+									<button type='submit' class='btn btn-success'>Valider le nouveau PRG</button>
+								</div>
 							</div>
 						</div>
-						<div class='col-md-4'>
-							<div class="form-floating">
-								<input type="text" class="form-control" id="floatingInput" placeholder="REF12121212">
-								<label for="floatingInput">Reference piece</label>
-							</div>
-						</div>
-						<div class="col-md-1">
-							<div class="form-floating">
-								<input type="text" class="form-control" id="floatingInput" placeholder="IND A">
-								<label for="floatingInput">Indice</label>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-floating">
-								<input type="text" class="form-control" id="floatingPassword" placeholder="Bloc">
-								<label for="floatingPassword">Designation piece</label>
-							</div>
-						</div>
-						<div class="col-12">
-							<button type='submit' class='btn btn-success'>Valider</button>
-						</div>	
 					</div>
 				</div>
-			</div>	
+			</div>
 		</div>
-		<div class="liste cadre">
-			<div>
-				{% if list %}
+	</div>
+	<div class="liste cadre">
+		<div>
+			{% if list %}
 				<h1>Les 10 derniers programmes ....</h1>
 			{% endif %}
 		</div>
 	</div>
+{% endblock %}
+
+{% block script %}
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="{{asset('js/fraisage.js')}}"></script>
 {% endblock %}

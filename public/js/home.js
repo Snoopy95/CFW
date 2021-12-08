@@ -1,5 +1,5 @@
 setTimeout(() => {
-    var alertList = document.querySelectorAll('.alert')
+    var alertList = document.querySelectorAll('.mess')
     alertList.forEach(function(alert) {
         new bootstrap.Alert(alert).close()
     })
