@@ -2,24 +2,38 @@
 
 namespace App\Controller;
 
-use App\Entity\Dossier;
+use App\Entity\ProgMeca;
+use App\Form\AddProgType;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Serializer\Serializer;
 
-class FraisageController extends AbstractController
+class ProgMecaController extends AbstractController
 {
     /**
      * @Route("/fraisage", name="fraisage")
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        return $this->render('fraisage/index.html.twig', [
-            'list' => 'FraisageController',
+        $list = $this->getDoctrine()->getRepository(ProgMeca::class)->findBy(
+            [],
+            ['datecreat' => 'DESC'],
+            10
+        );
+        $addprog = new ProgMeca();
+        $form = $this->createForm(AddProgType::class, $addprog);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+        }
+
+        return $this->render('progmeca/index.html.twig', [
+            'list' => $list,
+            'form' => $form->createView()
         ]);
     }
 

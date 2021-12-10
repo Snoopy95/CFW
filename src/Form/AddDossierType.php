@@ -38,7 +38,7 @@ class AddDossierType extends AbstractType
             ])
             ->add('refpiece', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Ref pièce',
+                    'placeholder' => 'Réf pièce',
                     'class' => 'form-control'
                 ]
             ])
