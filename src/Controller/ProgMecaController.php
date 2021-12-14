@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Dossier;
 use App\Entity\ProgMeca;
 use App\Form\AddProgType;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Query\AST\Functions\UpperFunction;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,15 +14,16 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ProgMecaController extends AbstractController
 {
     /**
      * @Route("/fraisage", name="fraisage")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, EntityManagerInterface $em): Response
     {
-        $list = $this->getDoctrine()->getRepository(ProgMeca::class)->findBy(
+        $listes = $this->getDoctrine()->getRepository(ProgMeca::class)->findBy(
             [],
             ['datecreat' => 'DESC'],
             10
@@ -29,10 +33,38 @@ class ProgMecaController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $addprog->setDatecreat(new \DateTime());
+            $client = $addprog->getClient();
+            $lastclient = $this->getDoctrine()->getRepository(ProgMeca::class)->findOneBy(
+                ['client' => $client],
+                ['compteur' => 'DESC']
+            );
+            if (empty($lastclient)) {
+                $addprog->setCompteur(1000);
+                $compteur = 1000;
+            } else {
+                $lastcompt = $lastclient->getCompteur();
+                $compteur = $lastcompt+1;
+                $addprog->setCompteur($compteur);
+            }
+            $typemachine = $addprog->getTypemachine();
+            if ($typemachine === 'fraisage') {
+                $type= 'F';
+            } else {
+                $type= 'T';
+            }
+            $numprog = $type. strtoupper(substr($client, 0, 4)) . $compteur;
+            $addprog->setNumprog($numprog);
+
+            $em->persist($addprog);
+            $em->flush();
+            $this->addFlash('success', 'Prog bien enregistré');
+
+            return $this->redirectToRoute('fraisage');
         }
 
         return $this->render('progmeca/index.html.twig', [
-            'list' => $list,
+            'listes' => $listes,
             'form' => $form->createView()
         ]);
     }
@@ -53,10 +85,9 @@ class ProgMecaController extends AbstractController
 
             $objSerial = $serializer->serialize($dossier, 'json');
 
-            return $this->json([
-                $objSerial
-            ], 200);
+            // return new Response('hello world', 200);
+            return $this->Json($objSerial, 200);
         }
-        return new Response('Ce numero de dossier n\'existe pas !!!', 400);
+        return new Response('Le dossier '. $data .' n\'existe pas !!!', 400);
     }
 }

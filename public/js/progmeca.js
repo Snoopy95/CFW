@@ -11,46 +11,48 @@ if (input_dossier) {
     })
 }
 
+const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+function alert(message, type) {
+    var wrapper = document.createElement('div')
+    wrapper.classList = 'col-10'
+    wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert"><i class="fas fa-exclamation-triangle"></i><span> ' + message + '</span><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+    alertPlaceholder.append(wrapper)
+    input_dossier.value = null
+}
+
+function remplir(data) {
+    console.log(data)
+    document.querySelector('#add_prog_client').value = data.client
+    document.querySelector('#add_prog_refpiece').value = data.refpiece
+    document.querySelector('#add_prog_ind').value = data.ind
+    document.querySelector('#add_prog_desigpiece').value = data.desigpiece
+    let plan = document.querySelector('#add_prog_plan')
+    plan.name = data.plan
+    plan.textContent = data.plan
+    let step = document.querySelector('#add_prog_step')
+    step.name = data.step
+    step.textContent = data.step
+}
+
 function checkDossier() {
-
     let content = input_dossier.value
-    console.log("je cherche le dossier :", content)
-
-    var alertNode = document.querySelector('.alert')
+    const alertNode = document.querySelector('.alert')
     if (alertNode) {
         new bootstrap.Alert(alertNode).close()
     }
+    console.log("je cherche le dossier :", content)
 
     axios
         .post("checkdossier", content)
         .then(function (response) {
-            dossier = response.data
-            const obj = JSON.parse(dossier)
-            const data = obj[0]
-            document.querySelector('#inputClient').value = data.client
-            document.querySelector('#inputRef').value = data.refpiece
-            document.querySelector('#inputInd').value = data.ind
-            document.querySelector('#inputDesign').value = data.desigpiece
-            let plan = document.querySelector('#inputPlan')
-            plan.name = data.plan
-            plan.textContent = data.plan
-            let step = document.querySelector('#inputStep')
-            step.name = data.step
-            step.textContent = data.step
+            const obj = JSON.parse(response.data)
+            data = obj[0]
+            remplir(data)
         })
         .catch(function (error) {
             if (error.response.status === 400) {
-                var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
-
-                function alert(message, type) {
-                    var wrapper = document.createElement('div')
-                    wrapper.classList = 'col-10'
-                    wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert"><i class="fas fa-exclamation-triangle"></i><span> ' + message + '</span><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
-
-                    alertPlaceholder.append(wrapper)
-                }
                 alert(error.response.data, 'danger')
-                input_dossier.value = null
             }
-        })
+        });
 }

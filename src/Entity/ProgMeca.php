@@ -96,12 +96,12 @@ class ProgMeca
         return $this;
     }
 
-    public function getNumprog(): ?int
+    public function getNumprog(): ?string
     {
         return $this->numprog;
     }
 
-    public function setNumprog(int $numprog): self
+    public function setNumprog(string $numprog): self
     {
         $this->numprog = $numprog;
 

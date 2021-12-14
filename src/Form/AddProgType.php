@@ -4,10 +4,11 @@ namespace App\Form;
 
 use App\Entity\ProgMeca;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AddProgType extends AbstractType
 {
@@ -17,28 +18,25 @@ class AddProgType extends AbstractType
             ->add('client', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                    'id' => 'inputClient',
                     'placeholder' => 'Client'
                 ]
             ])
             ->add('refpiece', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                    'id' => 'inputRef',
                     'placeholder' => 'Référence pièce'
                 ]
             ])
             ->add('ind', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                    'id' => 'inputInd',
                     'placeholder' => 'Ind'
-                ]
+                ],
+                'required' => false
             ])
             ->add('desigpiece', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                    'id' => 'inputDesign',
                     'placeholder' => 'Désignation pièce'
                 ]
             ])
@@ -52,7 +50,27 @@ class AddProgType extends AbstractType
                 'attr' => [
                     'class' => 'form-check-input'
                 ],
-                'label' => "false",
+                'label_attr' => [
+                    'class' => 'form-check-label'
+                ]
+            ])
+            ->add('plan', FileType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label_attr' => [
+                    'class' => 'input-group-text'
+                ],
+                'required' => false
+            ])
+            ->add('step', FileType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label_attr' => [
+                    'class' => 'input-group-text'
+                ],
+                'required' => false
             ])
         ;
     }
