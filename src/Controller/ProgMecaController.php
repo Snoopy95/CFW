@@ -44,17 +44,27 @@ class ProgMecaController extends AbstractController
                 $compteur = 1000;
             } else {
                 $lastcompt = $lastclient->getCompteur();
-                $compteur = $lastcompt+1;
+                $compteur = $lastcompt + 1;
                 $addprog->setCompteur($compteur);
             }
-            $typemachine = $addprog->getTypemachine();
+            $typemachine = (isset($_POST['typemachine']));
+            $addprog->setTypemachine($typemachine);
             if ($typemachine === 'fraisage') {
-                $type= 'F';
+                $type = 'F';
             } else {
-                $type= 'T';
+                $type = 'T';
             }
-            $numprog = $type. strtoupper(substr($client, 0, 4)) . $compteur;
+            $numprog = $type . strtoupper(substr($client, 0, 4)) . $compteur;
             $addprog->setNumprog($numprog);
+            $retourplan = $addprog->getRetourplan();
+            $file = $form->get('plan')->getData();
+            if ($retourplan) {
+                dd('il y a un plan');
+            }
+            if ($file) {
+                dd('il  y a un fichier');
+            }
+            dd('sinon rien');
 
             $em->persist($addprog);
             $em->flush();
@@ -88,6 +98,6 @@ class ProgMecaController extends AbstractController
             // return new Response('hello world', 200);
             return $this->Json($objSerial, 200);
         }
-        return new Response('Le dossier '. $data .' n\'existe pas !!!', 400);
+        return new Response('Le dossier ' . $data . ' n\'existe pas !!!', 400);
     }
 }

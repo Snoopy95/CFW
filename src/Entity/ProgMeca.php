@@ -67,6 +67,10 @@ class ProgMeca
      */
     private $desigpiece;
 
+    private $retourplan;
+
+    private $retourstep;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -188,6 +192,28 @@ class ProgMeca
     public function setDesigpiece(string $desigpiece): self
     {
         $this->desigpiece = $desigpiece;
+
+        return $this;
+    }
+    public function getRetourplan(): ?string
+    {
+        return $this->retourplan;
+    }
+
+    public function setRetourplan(string $retourplan): self
+    {
+        $this->retourplan = $retourplan;
+
+        return $this;
+    }
+    public function getRetourstep(): ?string
+    {
+        return $this->retourstep;
+    }
+
+    public function setRetourstep(string $retourstep): self
+    {
+        $this->retourstep = $retourstep;
 
         return $this;
     }

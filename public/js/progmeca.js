@@ -28,11 +28,21 @@ function remplir(data) {
     document.querySelector('#add_prog_ind').value = data.ind
     document.querySelector('#add_prog_desigpiece').value = data.desigpiece
     let plan = document.querySelector('#add_prog_plan')
-    plan.name = data.plan
-    plan.textContent = data.plan
+    let label_plan = document.querySelector('.label-plan')
+    let retour_plan = document.querySelector('.retourplan')
+    if (data.plan) {
+        plan.disabled= true
+        label_plan.textContent = data.plan
+        retour_plan.value = data.plan
+    }
     let step = document.querySelector('#add_prog_step')
-    step.name = data.step
-    step.textContent = data.step
+    let label_step = document.querySelector('.label-step')
+    let retour_step = document.querySelector('.retourstep')
+    if (data.step) {
+        step.disabled= true
+        label_step.textContent = data.step
+        retour_step.value = data.step
+    }
 }
 
 function checkDossier() {

@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\ProgMeca;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -40,39 +41,48 @@ class AddProgType extends AbstractType
                     'placeholder' => 'Désignation pièce'
                 ]
             ])
-            ->add('typemachine', ChoiceType::class, [
-                'expanded' => true,
-                'multiple' => false,
-                'choices' => [
-                    'Fraisage' => 'fraisage',
-                    'Tournage' => 'tournage'
-                ],
-                'attr' => [
-                    'class' => 'form-check-input'
-                ],
-                'label_attr' => [
-                    'class' => 'form-check-label'
-                ]
-            ])
             ->add('plan', FileType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
                 'label_attr' => [
-                    'class' => 'input-group-text'
+                    'class' => 'label-plan input-group-text'
                 ],
-                'required' => false
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
+                            'application/pdf',
+                            'application/x-pdf',
+                        ]
+                    ])
+                    ]
+            ])
+            ->add('retourplan', TextType::class, [
+                'required' => false,
+                'attr' => [
+                    'class' => 'retourplan',
+                    'hidden' => true
+                ],
+                'label' => false
             ])
             ->add('step', FileType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
                 'label_attr' => [
-                    'class' => 'input-group-text'
+                    'class' => 'label-step input-group-text'
                 ],
                 'required' => false
             ])
-        ;
+            ->add('retourstep', TextType::class, [
+                'required' => false,
+                'attr' => [
+                    'class' => 'retourstep',
+                    'hidden' => true
+                ],
+                'label' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
