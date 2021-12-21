@@ -86,7 +86,7 @@
 								<div class="row g-2 ms-auto">
 									<div class="col-3">
 										<div class="form-check">
-											<input class='form-check-input'type='radio' name='Typemachine' value='fraisage' id='fraisage'>
+											<input class='form-check-input'type='radio' name='typemachine' value='fraisage' id='fraisage' required>
 											<label class="form-check-label" for="fraisage">
 												Fraisage
 											</label>
@@ -95,13 +95,13 @@
 									<div class="col-8">
 										<div class="input-group">
 											{{ form_widget(form.plan)}}
-											{{ form_label(form.plan)}}
+											<label class="label-plan input-group-text">Plan</label>
 											{{ form_widget(form.retourplan) }}
 										</div>
 									</div>
 									<div class="col-3">
 										<div class="form-check">
-											<input class='form-check-input' type='radio' name='Typemachine' value='tournage' id='tournage'>
+											<input class='form-check-input' type='radio' name='typemachine' value='tournage' id='tournage'>
 											<label class="form-check-label" for="tournage">
 												Tournage
 											</label>
@@ -110,7 +110,7 @@
 									<div class="col-8">
 										<div class="input-group">
 											{{ form_widget(form.step)}}
-											{{ form_label(form.step)}}
+											<label class="label-step input-group-text">Step</label>
 											{{ form_widget(form.retourstep)}}
 										</div>
 									</div>
@@ -157,6 +157,10 @@
 			</table>
 		{% endif %}
 	</div>
-</div>{% endblock %}{% block script %}
+</div>
+{% endblock %}
+
+{% block script %}
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="{{asset('js/progmeca.js')}}"></script>{% endblock %}
+<script src="{{asset('js/progmeca.js')}}"></script>
+{% endblock %}

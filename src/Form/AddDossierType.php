@@ -62,7 +62,7 @@ class AddDossierType extends AbstractType
                             'application/x-pdf',
                         ]
                     ])
-                    ]
+                ]
             ])
             ->add('step', FileType::class, [
                 'attr' => [

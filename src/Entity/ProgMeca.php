@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\ProgMecaRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -44,6 +45,10 @@ class ProgMeca
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(
+     * mimeTypes={ "application/pdf" },
+     * mimeTypesMessage ="Uniquement un PDF"
+     * )
      */
     private $plan;
 

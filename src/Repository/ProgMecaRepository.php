@@ -11,6 +11,8 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method ProgMeca|null findOneBy(array $criteria, array $orderBy = null)
  * @method ProgMeca[]    findAll()
  * @method ProgMeca[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ProgMeca|null findByNumprog(numprog)
+ *
  */
 class ProgMecaRepository extends ServiceEntityRepository
 {
@@ -22,19 +24,18 @@ class ProgMecaRepository extends ServiceEntityRepository
     // /**
     //  * @return ProgMeca[] Returns an array of ProgMeca objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findByNumprog($value)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+            ->Where('p.numprog LIKE :val')
+            ->setParameter('val', $value.'%')
+            ->orderBy('p.numprog', 'DESC')
+            ->setMaxResults(1)
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?ProgMeca

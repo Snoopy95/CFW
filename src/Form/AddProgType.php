@@ -9,7 +9,6 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AddProgType extends AbstractType
 {
@@ -43,10 +42,7 @@ class AddProgType extends AbstractType
             ])
             ->add('plan', FileType::class, [
                 'attr' => [
-                    'class' => 'form-control'
-                ],
-                'label_attr' => [
-                    'class' => 'label-plan input-group-text'
+                    'class' => 'form-control',
                 ],
                 'required' => false,
                 'constraints' => [
@@ -56,7 +52,7 @@ class AddProgType extends AbstractType
                             'application/x-pdf',
                         ]
                     ])
-                    ]
+                ]
             ])
             ->add('retourplan', TextType::class, [
                 'required' => false,
@@ -69,9 +65,6 @@ class AddProgType extends AbstractType
             ->add('step', FileType::class, [
                 'attr' => [
                     'class' => 'form-control'
-                ],
-                'label_attr' => [
-                    'class' => 'label-step input-group-text'
                 ],
                 'required' => false
             ])

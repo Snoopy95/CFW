@@ -6,7 +6,6 @@ use App\Entity\Dossier;
 use App\Entity\ProgMeca;
 use App\Form\AddProgType;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Query\AST\Functions\UpperFunction;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ProgMecaController extends AbstractController
 {
@@ -35,36 +33,38 @@ class ProgMecaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $addprog->setDatecreat(new \DateTime());
             $client = $addprog->getClient();
-            $lastclient = $this->getDoctrine()->getRepository(ProgMeca::class)->findOneBy(
-                ['client' => $client],
-                ['compteur' => 'DESC']
-            );
-            if (empty($lastclient)) {
-                $addprog->setCompteur(1000);
-                $compteur = 1000;
-            } else {
-                $lastcompt = $lastclient->getCompteur();
-                $compteur = $lastcompt + 1;
-                $addprog->setCompteur($compteur);
+            $typemachine = $_POST["typemachine"];
+            if (!isset($typemachine)) {
+                $typemachine = 'fraisage';
             }
-            $typemachine = (isset($_POST['typemachine']));
-            $addprog->setTypemachine($typemachine);
             if ($typemachine === 'fraisage') {
                 $type = 'F';
             } else {
                 $type = 'T';
             }
-            $numprog = $type . strtoupper(substr($client, 0, 4)) . $compteur;
+            $addprog->setTypemachine($typemachine);
+            $lastnum = $type . strtoupper(substr($client, 0, 4));
+            $lastprog = $this->getDoctrine()->getRepository(ProgMeca::class)->findByNumprog($lastnum);
+            if (empty($lastprog)) {
+                $compteur = 1000;
+            } else {
+                $compteur = $lastprog->getCompteur();
+                $compteur++;
+            }
+            $addprog->setCompteur($compteur);
+            $numprog = $lastnum . $compteur;
+
             $addprog->setNumprog($numprog);
             $retourplan = $addprog->getRetourplan();
             $file = $form->get('plan')->getData();
             if ($retourplan) {
-                dd('il y a un plan');
+                //dd('il y a un plan');
             }
             if ($file) {
-                dd('il  y a un fichier');
+                //dd('il  y a un fichier');
             }
-            dd('sinon rien');
+            //dd('sinon rien');
+            // dd($addprog, $file);
 
             $em->persist($addprog);
             $em->flush();
