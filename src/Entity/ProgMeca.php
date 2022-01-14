@@ -54,6 +54,7 @@ class ProgMeca
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File()
      */
     private $step;
 

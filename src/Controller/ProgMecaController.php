@@ -33,16 +33,12 @@ class ProgMecaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $addprog->setDatecreat(new \DateTime());
             $client = $addprog->getClient();
-            $typemachine = $_POST["typemachine"];
-            if (!isset($typemachine)) {
-                $typemachine = 'fraisage';
-            }
-            if ($typemachine === 'fraisage') {
+            $typemachine = $addprog->getTypemachine();
+            if ($typemachine === 'Fraisage') {
                 $type = 'F';
             } else {
                 $type = 'T';
             }
-            $addprog->setTypemachine($typemachine);
             $lastnum = $type . strtoupper(substr($client, 0, 4));
             $lastprog = $this->getDoctrine()->getRepository(ProgMeca::class)->findByNumprog($lastnum);
             if (empty($lastprog)) {
@@ -53,18 +49,31 @@ class ProgMecaController extends AbstractController
             }
             $addprog->setCompteur($compteur);
             $numprog = $lastnum . $compteur;
-
             $addprog->setNumprog($numprog);
+            $plan_name = $numprog.'-PLAN.pdf';
+            $step_name = $numprog.'-3D.step';
+
             $retourplan = $addprog->getRetourplan();
-            $file = $form->get('plan')->getData();
+            $retourstep = $addprog->getRetourstep();
+            $plan = $form->get('plan')->getData();
+            $step = $form->get('step')->getData();
+
             if ($retourplan) {
-                //dd('il y a un plan');
+                copy('dossier/plan/'.$retourplan, 'meca/plan/'.$plan_name);
+                $addprog->setPlan($plan_name);
             }
-            if ($file) {
-                //dd('il  y a un fichier');
+            if ($retourstep) {
+                copy('dossier/3D/'.$retourstep, 'meca/3D/'.$step_name);
+                $addprog->setStep($step_name);
             }
-            //dd('sinon rien');
-            // dd($addprog, $file);
+            if ($plan) {
+                $plan->move('meca/plan/'.$plan_name);
+                $addprog->setPlan($plan_name);
+            }
+            if ($step) {
+                $step->move('meca/3D/'.$step_name);
+                $addprog->setStep($step_name);
+            }
 
             $em->persist($addprog);
             $em->flush();
@@ -85,7 +94,7 @@ class ProgMecaController extends AbstractController
     public function checkdossier(Request $request): Response
     {
         $data = $request->getContent();
-        $dossier = $this->getDoctrine()->getRepository(Dossier::class)->findby(
+        $dossier = $this->getDoctrine()->getRepository(Dossier::class)->findBy(
             ['numdossier' => $data]
         );
         if (!empty($dossier)) {
@@ -99,5 +108,59 @@ class ProgMecaController extends AbstractController
             return $this->Json($objSerial, 200);
         }
         return new Response('Le dossier ' . $data . ' n\'existe pas !!!', 400);
+    }
+
+    /**
+     * @Route("listeprog/{mac}", name="listeprog")
+     */
+    public function listeprog($mac): Response
+    {
+        switch ($mac) {
+            case 'fraise':
+                $type = 'Fraisage';
+                break;
+            case 'tour':
+                $type = 'Tournage';
+                break;
+            case 'all':
+                $type = null;
+                break;
+        }
+        if ($type) {
+            $listes = $this->getDoctrine()->getRepository(ProgMeca::class)->findBy(
+                ['typemachine' => $type],
+                ['datecreat' => 'DESC']
+            );
+        } else {
+            $listes = $this->getDoctrine()->getRepository(ProgMeca::class)->findBy(
+                [],
+                ['datecreat' => 'DESC']
+            );
+        }
+
+        $clients = [];
+        foreach ($listes as $value) {
+            $client = strtoupper($value->getClient());
+            if (empty($clients)) {
+                $clients[] = $client;
+            } else {
+                foreach ($clients as $item) {
+                    if ($client === strtoupper($item)) {
+                        $add = false;
+                        break;
+                    }
+                    $add = true;
+                }
+                if ($add) {
+                    $clients[] = $client;
+                }
+            }
+        }
+        sort($clients);
+
+        return $this->render('progmeca/listeprog.html.twig', [
+            'listes' => $listes,
+            'clients' => $clients,
+        ]);
     }
 }

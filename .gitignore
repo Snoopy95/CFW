@@ -9,5 +9,6 @@
 /var/
 /vendor/
 /public/dossier/
+/public/meca/
 ###< symfony/framework-bundle ###
 .vscode/settings.json

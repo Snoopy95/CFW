@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AddProgType extends AbstractType
 {
@@ -75,6 +76,23 @@ class AddProgType extends AbstractType
                     'hidden' => true
                 ],
                 'label' => false
+            ])
+            ->add('typemachine', ChoiceType::class, [
+                'choices' => [
+                    'Fraise' => 'Fraisage',
+                    'Tour' => 'Tournage'
+                ],
+                'choice_attr' => [
+                    'Fraise' => [
+                        'class' => 'form-check-input',
+                        'checked' => true,
+                    ],
+                    'Tour' => [
+                        'class' => 'form-check-input'
+                    ]
+                    ],
+                'expanded' => true,
+                'multiple' => false,
             ]);
     }
 
