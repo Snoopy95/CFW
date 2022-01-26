@@ -69,16 +69,22 @@ class DossiertController extends AbstractController
             $newname = str_replace("/", "-", $name);
             if (empty($ind)) {
                 $newfilename =
-                    "T" . $adddossier->getNumdossier() . " - " . $newname . ".pdf";
+                    "T{$adddossier->getNumdossier()} - {$newname}";
             } else {
                 $newfilename =
-                    "T" . $adddossier->getNumdossier() . " - " . $newname . " - " . $ind . ".pdf";
+                    "T{$adddossier->getNumdossier()} - {$newname} - {$ind}";
             }
-            $directory = "dossier/plan/";
-            $file = $form->get('plan')->getData();
-            if (isset($file)) {
-                $file->move($directory, $newfilename);
-                $adddossier->setPlan($newfilename);
+            $directoryplan = "dossier/plan/";
+            $directorystep = "dossier/3D/";
+            $plan = $form->get('plan')->getData();
+            $step = $form->get('step')->getData();
+            if (isset($plan)) {
+                $plan->move($directoryplan, $newfilename.".pdf");
+                $adddossier->setPlan($newfilename.".pdf");
+            }
+            if (isset($step)) {
+                $step->move($directorystep, $newfilename.".step");
+                $adddossier->setStep($newfilename.".step");
             }
 
             $em->persist($adddossier);
@@ -117,6 +123,7 @@ class DossiertController extends AbstractController
     {
         $update = $this->getDoctrine()->getRepository(Dossier::class)->find($id);
         $oldplan = $update->getPlan();
+        $oldstep = $update->getStep();
 
         $form = $this->createForm(UpdateType::class, $update);
         $form->handleRequest($request);
@@ -127,30 +134,47 @@ class DossiertController extends AbstractController
             $newname = str_replace("/", "-", $name);
             if (!isset($ind)) {
                 $newfilename =
-                    "T" . $update->getNumdossier() . " - " . $newname . ".pdf";
+                    "T{$update->getNumdossier()} - {$newname}";
             } else {
                 $newfilename =
-                    "T" . $update->getNumdossier() . " - " . $newname . " - ind " . $ind . ".pdf";
+                    "T{$update->getNumdossier()} - {$newname} - {$ind}";
             }
-            $directory = "dossier/plan/";
-            $file = $form->get('plan')->getData();
-            if (isset($file)) {
+            $directoryplan = "dossier/plan/";
+            $directorystep = "dossier/3D/";
+            $plan = $form->get('plan')->getData();
+            $step = $form->get('step')->getData();
+            if (isset($plan)) {
                 if (isset($oldplan)) {
-                    $handle = opendir($directory);
-                    $oldplan = $directory . $oldplan;
+                    $handle = opendir($directoryplan);
+                    $oldplan = $directoryplan . $oldplan;
                     unlink($oldplan);
                     closedir($handle);
                 }
-                $file->move($directory, $newfilename);
-                $update->setPlan($newfilename);
+                $plan->move($directoryplan, $newfilename.".pdf");
+                $update->setPlan($newfilename.".pdf");
             } elseif (isset($oldplan)) {
-                $handle = opendir($directory);
-                $oldplan = $directory . $oldplan;
-                rename($oldplan, $directory . $newfilename);
+                $handle = opendir($directoryplan);
+                $oldplan = $directoryplan . $oldplan;
+                rename($oldplan, $directoryplan . $newfilename.".pdf");
                 closedir($handle);
-                $update->setPlan($newfilename);
+                $update->setPlan($newfilename.".pdf");
             }
-
+            if (isset($step)) {
+                if (isset($oldstep)) {
+                    $handle = opendir($directorystep);
+                    $oldstep = $directorystep . $oldstep;
+                    unlink($oldstep);
+                    closedir($handle);
+                }
+                $step->move($directorystep, $newfilename.".step");
+                $update->setStep($newfilename.".step");
+            } elseif (isset($oldstep)) {
+                $handle = opendir($directorystep);
+                $oldstep = $directorystep . $oldstep;
+                rename($oldstep, $directorystep . $newfilename.".step");
+                closedir($handle);
+                $update->setStep($newfilename.".step");
+            }
             $update->setDateupdate(new \DateTime());
             $em->flush();
             $this->addFlash('success', 'Mise à jour reussi');
@@ -174,6 +198,7 @@ class DossiertController extends AbstractController
             ->setDesigpiece($deldossier->getDesigpiece())
             ->setInd($deldossier->getInd())
             ->setPlan($deldossier->getPlan())
+            ->setStep($deldossier->getStep())
             ->setDatecreat($deldossier->getDatecreat())
             ->setDatedelete(new \DateTime());
         // $plan = $deldossier->getPlan();
