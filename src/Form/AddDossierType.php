@@ -72,9 +72,6 @@ class AddDossierType extends AbstractType
                 'constraints' => [
                     new File([
                         'mimeTypes' => [
-                            'application/step',
-                            'application/sat',
-                            'application/sldprt'
                         ]
                     ])
                     ]
