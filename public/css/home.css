@@ -139,3 +139,20 @@ body {
 .btnpwd {
     cursor: pointer;
 }
+.client {
+    cursor: pointer;
+    margin: 5px 25px 5px 0;
+    padding: 1px;
+    border-radius: 5px;
+}
+.client:hover {
+    animation: color_change 1s;
+    background-color: rgb(255, 200, 100)
+}
+.select {
+    background-color: rgb(255, 200, 100) ;
+}
+@keyframes color_change {
+    from {background-color: rgba(200,200,200, 0.8);}
+    to {background-color: rgb(255, 200, 100) ;}
+}

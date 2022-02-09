@@ -161,6 +161,34 @@ class ProgMecaController extends AbstractController
         return $this->render('progmeca/listeprog.html.twig', [
             'listes' => $listes,
             'clients' => $clients,
+            'mac' => $type,
         ]);
+    }
+    
+    /**
+     * @Route("filtreclient", name="filtreclient")
+     */
+    public function filtreclient(Request $request): Response
+    {
+        $filtre = json_decode($request->getContent(), true);
+        if (!empty($filtre)) {
+            $machine = $filtre[0];
+            $client = $filtre[1];
+
+            $listes = $this->getDoctrine()->getRepository(ProgMeca::class)->findBy(
+                ['typemachine' => $machine,
+                'client' => $client],
+                ['datecreat' => 'DESC']
+            );
+            $encoder = [new JsonEncoder()];
+            $normalizers = [new ObjectNormalizer()];
+            $serializer = new Serializer($normalizers, $encoder);
+
+            $objSerial = $serializer->serialize($listes, 'json');
+            return $this->Json($objSerial, 200);
+
+            // return new Response('recu : '.$client, 200);
+        }
+        return new Response('Erreur de data', 400);
     }
 }

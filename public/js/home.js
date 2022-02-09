@@ -21,7 +21,6 @@ function addnamestep() {
     document.querySelector('.labelstep').textContent = newtext[newtext.length - 1]
 }
 
-console.log("coucou ca marche !!")
     // --------- Show password ---------
 document.querySelectorAll(".btnpwd").forEach(function(selected) {
     selected.addEventListener("click", showpwd)

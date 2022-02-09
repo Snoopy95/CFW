@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	<h1>Liste des Prog</h1>
+	<h1>Liste des Prog {{mac}}</h1>
 {% endblock %}
 
 {% block body %}
@@ -9,6 +9,10 @@
 		<div class="cadre menu mt-5">
 			<div class="align-items-center d-flex">
 				<div class="dropdown">
+					<a href="{{ path('fraisage')}}" type='button' class='ms-1 btn btn-sm btn-primary'>
+						<i class="fas fa-plus"></i>
+						Ajouter Prg
+					</a>
 					<a class="ms-1 btn btn-sm btn-primary dropdown-toggle" href="#" role="button" id="dropdownlist" data-bs-toggle="dropdown" aria-expanded="false">
 						<i class="fas fa-list-ol"></i>
 						Liste des Prg
@@ -47,7 +51,7 @@
 				<div class="liste">
 					<ul>
 					{% for client in clients %}
-						<li>{{client}}</li>
+						<li class="client" data-mac='{{mac}}'>{{client}}</li>
 					{% endfor %}
 					</ul>
 				</div>
@@ -70,7 +74,7 @@
 						</thead>
 						<tbody>
 							{% for liste in listes %}
-								<tr>
+								<tr class="ligne">
 									<th scope="row">{{ liste.numprog}}</th>
 									<td>{{ liste.client }}</td>
 									<td>{{ liste.refpiece }}</td>
@@ -82,7 +86,6 @@
 												<i class="fas fa-drafting-compass fa-lg text-primary"></i>
 											</a>
 										{% endif %}
-
 										{% if liste.step %}
 											<a href="{{asset('meca/3D/' ~ liste.step)}}" class='btn' type='button' downdload='{{ liste.step }}'>
 												<i class="fab fa-unity fa-lg text-primary"></i>
@@ -98,6 +101,25 @@
 			</div>
 		</div>
 	</div>
+	<template id="ligne">
+		<tr class="ligne">
+			<th scope="row"></th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>
+				<a href="" target='_blank' class='btn plan' type='button'>
+					<i class="fas fa-drafting-compass fa-lg text-primary"></i>
+				</a>
+				<a href="" class='btn step' type='button' downdload=''>
+					<i class="fab fa-unity fa-lg text-primary"></i>
+				</a>
+			</td>
+			<td></td>
+		</tr>
+	</template>
+
 {% endblock %}
 
 {% block script %}
