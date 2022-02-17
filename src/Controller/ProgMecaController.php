@@ -127,16 +127,14 @@ class ProgMecaController extends AbstractController
                 break;
         }
         if ($type) {
-            $listes = $this->getDoctrine()->getRepository(ProgMeca::class)->findBy(
-                ['typemachine' => $type],
-                ['datecreat' => 'DESC']
-            );
+            $typemac = ['typemachine' => $type];
         } else {
-            $listes = $this->getDoctrine()->getRepository(ProgMeca::class)->findBy(
-                [],
-                ['datecreat' => 'DESC']
-            );
+            $typemac=[];
         }
+        $listes = $this->getDoctrine()->getRepository(ProgMeca::class)->findBy(
+            $typemac,
+            ['datecreat' => 'DESC']
+        );
 
         $clients = [];
         foreach ($listes as $value) {
@@ -175,9 +173,15 @@ class ProgMecaController extends AbstractController
             $machine = $filtre[0];
             $client = $filtre[1];
 
+            if (empty($machine)) {
+                $type=['client' => $client];
+            } else {
+                $type=['typemachine' => $machine,
+                    'client' => $client];
+            };
+
             $listes = $this->getDoctrine()->getRepository(ProgMeca::class)->findBy(
-                ['typemachine' => $machine,
-                'client' => $client],
+                $type,
                 ['datecreat' => 'DESC']
             );
             $encoder = [new JsonEncoder()];

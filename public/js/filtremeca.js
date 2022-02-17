@@ -1,4 +1,3 @@
-console.log("je vais filtrer")
 
 const client= document.querySelectorAll(".client")
 
@@ -7,14 +6,22 @@ client.forEach(function (selected) {
 })
 
 function selectionner() {
+    sect = this.classList
+    sect.forEach( (s)=> {
+        s === "select" ? reset = true : reset =false
+    })
     client.forEach(function (e) {
         e.classList.remove("select")
     })
+    if (reset) {
+        document.location.reload()
+    } else {
     this.classList.add("select")
     content=[]
     content.push(this.dataset.mac)
     content.push(this.textContent)
     ajaxpost(content)
+    }
 }
 
 function ajaxpost(data) {
@@ -22,7 +29,6 @@ function ajaxpost(data) {
         .post('../filtreclient', data)
         .then(function (response) {
             const listes = JSON.parse(response.data)
-            console.log(listes)
             var template = document.querySelector("#ligne")
             var tbody = document.querySelector("tbody")
 
@@ -55,9 +61,8 @@ function ajaxpost(data) {
                 astep.remove()
             }
         }
-            date = new Date(liste.datecreat)
-            td[5].textContent = date
-            tbody.appendChild(clone);
+            td[5].textContent = date(liste.datecreat.timestamp*1000)
+            tbody.appendChild(clone)
             })
         })
         .catch(function (error) {
@@ -65,4 +70,15 @@ function ajaxpost(data) {
                 alert(error.response.data)
             }
         })
+}
+
+function date(timestamp) {
+        time = new Date(timestamp)
+        if ((time.getMonth()+1) < 10) {
+            month = "/0"+(time.getMonth()+1)
+        } else {
+            month = "/"+(time.getMonth()+1)
+        }
+        data = time.getDate()+month+"/"+time.getFullYear()
+    return data
 }
