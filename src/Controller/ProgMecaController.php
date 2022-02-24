@@ -190,8 +190,6 @@ class ProgMecaController extends AbstractController
 
             $objSerial = $serializer->serialize($listes, 'json');
             return $this->Json($objSerial, 200);
-
-            // return new Response('recu : '.$client, 200);
         }
         return new Response('Erreur de data', 400);
     }

@@ -158,7 +158,7 @@ class SecurityController extends AbstractController
                     ->html('<h2> Bonjours ' . $user->getUsername() . '</h2>
                     <p> Cliquez sur le lien suivant pour réinitialiser votre mot de passe </p>
                     <h3>' . $url . '</h3>');
-                //$mailer->send($email);
+                $mailer->send($email);
 
                 dd($email);
                 $this->addFlash('success', 'Mail bien envoyer');
@@ -225,8 +225,8 @@ class SecurityController extends AbstractController
                 $user->setPassword($oldpwd);
             };
 
-            // $em->persist($user);
-            // $em->flush();
+            $em->persist($user);
+            $em->flush();
             $this->addFlash('success', $message);
             return $this->redirectToRoute($url);
         }
