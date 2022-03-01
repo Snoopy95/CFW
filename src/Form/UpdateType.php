@@ -68,6 +68,7 @@ class UpdateType extends AbstractType
                 'attr' => [
                     'class' => 'form-control inputStep'
                 ],
+                'data_class' => null,
                 'required'=> false,
                 'constraints' => [
                     new File([
