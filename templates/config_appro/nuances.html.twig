@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	<h1 class='col-10'>Nuances</h1>
-	<a href="{{path('config_index')}}">
-		<i class="fas fa-backward fa-2x"></i>
-	</a>
+	<div class='d-flex justify-content-between'>
+		<h1 class='flex-grow-1'>Nuances</h1>
+		<a href="{{path('config_index')}}" class='align-self-center'>
+			<i class="fas fa-backward fa-2x"></i>
+		</a>
+	</div>
 {% endblock %}
 
 {% block body %}
@@ -45,11 +47,9 @@
 								<th scope="row">{{line.codenuance}}</th>
 								<td>{{line.name}}</td>
 								<td>
-									<div class="custom-control custom-switch">
-										<input type="checkbox" class="custom-control-input switch-tab" id="Switchfamille{{line.id}}" data-id="{{line.id}}"
-											data-url="statutnuance"
-											{% if line.statutnuance =="OK" %} checked {% endif %}>
-										<label class="custom-control-label" for="Switchfamille{{line.id}}"></label>
+									<div class="form-check form-switch">
+										<input type="checkbox" class="form-check-input switch-tab" id="Switchfamille{{line.id}}" data-id="{{line.id}}" data-url="statutnuance" {% if line.statutnuance =="OK" %} checked {% endif %}>
+										<label class="form-check-label" for="Switchfamille{{line.id}}"></label>
 									</div>
 								</td>
 							</tr>

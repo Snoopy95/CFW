@@ -52,7 +52,7 @@ class AddDossierType extends AbstractType
             ])
             ->add('plan', FileType::class, [
                 'attr' => [
-                    'class' => 'custom-file-input inputPlan',
+                    'class' => 'form-control inputPlan',
                 ],
                 'required'=> false,
                 'constraints' => [

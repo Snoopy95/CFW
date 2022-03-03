@@ -11,7 +11,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method AppelOffre|null findOneBy(array $criteria, array $orderBy = null)
  * @method AppelOffre[]    findAll()
  * @method AppelOffre[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- * @method AppelOffre|null findAo()
+ * @method AppelOffre[]    findAo()
  */
 class AppelOffreRepository extends ServiceEntityRepository
 {
@@ -23,7 +23,7 @@ class AppelOffreRepository extends ServiceEntityRepository
     /**
     * @return AppelOffre Returns uniquement les statut wait et sending
     */
-    public function findAo()
+    public function findAo(): ?Array
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.statut = :val')
