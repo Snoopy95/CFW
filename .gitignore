@@ -1,14 +1,14 @@
 
 ###> symfony/framework-bundle ###
-.vscode
 /.env
 /.env.local
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
-/src/preload.php
 /var/
 /vendor/
-/public/dossier
+/public/dossier/
+/public/meca/
 ###< symfony/framework-bundle ###
+.vscode/settings.json

@@ -38,7 +38,7 @@ class AddDossierType extends AbstractType
             ])
             ->add('refpiece', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Ref pièce',
+                    'placeholder' => 'Réf pièce',
                     'class' => 'form-control'
                 ]
             ])
@@ -60,6 +60,18 @@ class AddDossierType extends AbstractType
                         'mimeTypes' => [
                             'application/pdf',
                             'application/x-pdf',
+                        ]
+                    ])
+                ]
+            ])
+            ->add('step', FileType::class, [
+                'attr' => [
+                    'class' => 'form-control inputStep',
+                ],
+                'required'=> false,
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
                         ]
                     ])
                     ]

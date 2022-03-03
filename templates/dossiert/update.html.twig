@@ -1,9 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-<h1>
-	Edition Dossier
-</h1>
+	<h1>Edition Dossier</h1>
 {% endblock %}
 
 {% block body %}
@@ -31,6 +29,9 @@
 			<div class="row mt-3">
 				<div class="col-6">
 					{{form_widget(form.plan)}}
+				</div>
+				<div class="col-6">
+					{{form_widget(form.step)}}
 				</div>
 			</div>
 				<button type="submit" class="mt-3 btn btn-success">Valider !</button>

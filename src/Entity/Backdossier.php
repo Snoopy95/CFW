@@ -52,6 +52,11 @@ class Backdossier
      */
     private $plan;
 
+        /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $step;
+
     /**
      * @ORM\Column(type="string", length=4, nullable=true)
      */
@@ -142,6 +147,18 @@ class Backdossier
     public function setPlan(?string $plan): self
     {
         $this->plan = $plan;
+
+        return $this;
+    }
+
+    public function getStep(): ?string
+    {
+        return $this->step;
+    }
+
+    public function setStep(?string $step): self
+    {
+        $this->step = $step;
 
         return $this;
     }

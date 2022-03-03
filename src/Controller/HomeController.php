@@ -16,17 +16,17 @@ class HomeController extends AbstractController
         // page de choix du services
         // couper le controle pour separer les services
 
-        return $this->redirectToRoute('acceuil');
+        return $this->redirectToRoute('accueil');
         // return $this->redirectToRoute('dossiert');
     }
 
     /**
-     * @Route("/acceuil", name="acceuil")
+     * @Route("/accueil", name="accueil")
      */
-    public function acceuil() :Response
+    public function accueil() :Response
     {
         # code...
-        return $this->render("home/acceuil.html.twig", [
+        return $this->render("home/accueil.html.twig", [
         
         ]);
     }

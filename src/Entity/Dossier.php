@@ -63,6 +63,12 @@ class Dossier
      * )
      */
     private $plan;
+    
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\File()
+     */
+    private $step;
 
     /**
      * @ORM\Column(type="string", length=4, nullable=true)
@@ -154,6 +160,18 @@ class Dossier
     public function setPlan($plan)
     {
         $this->plan = $plan;
+
+        return $this;
+    }
+
+    public function getStep()
+    {
+        return $this->step;
+    }
+
+    public function setStep($step)
+    {
+        $this->step = $step;
 
         return $this;
     }

@@ -63,6 +63,19 @@ class UpdateType extends AbstractType
                         ]
                     ])
                     ]
+            ])
+            ->add('step', FileType::class, [
+                'attr' => [
+                    'class' => 'form-control inputStep'
+                ],
+                'data_class' => null,
+                'required'=> false,
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
+                            ]
+                    ])
+                    ]
             ]);
         ;
     }
