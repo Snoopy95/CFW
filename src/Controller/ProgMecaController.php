@@ -193,4 +193,12 @@ class ProgMecaController extends AbstractController
         }
         return new Response('Erreur de data', 400);
     }
+
+    /**
+     * @Route("searchmeca", name="searchmeca")
+     */
+    public function searchmeca(): Response
+    {
+        return new Response('ok');
+    }
 }

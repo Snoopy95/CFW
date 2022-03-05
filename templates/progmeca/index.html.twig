@@ -26,7 +26,7 @@
 						</li>
 					</ul>
 				</div>
-				<a href="#" type='button' class='ms-1 btn btn-sm btn-primary'>
+				<a href="{{ path('searchmeca')}}" type='button' class='ms-1 btn btn-sm btn-primary'>
 					<i class="fas fa-search"></i>
 					Rechercher PRG
 				</a>
@@ -128,44 +128,7 @@
 	<div class="p-3">
 		<div class="cadre liste">
 			{% if listes %}
-				<table class="table table-striped table-secondary table-sm ">
-					<thead class="table-dark">
-						<tr>
-							<th scope="col">Num Prog</th>
-							<th scope="col">Client</th>
-							<th scope="col">Référence pièce</th>
-							<th scope="col">Indice</th>
-							<th scope="col">Désignation pièce</th>
-							<th scope="col">Plan/3D</th>
-							<th scope="col">Date de création</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for liste in listes %}
-							<tr>
-								<th scope="row">{{ liste.numprog}}</th>
-								<td>{{ liste.client }}</td>
-								<td>{{ liste.refpiece }}</td>
-								<td>{{liste.ind}}</td>
-								<td>{{ liste.desigpiece }}</td>
-								<td>
-									{% if liste.plan %}
-										<a href="{{asset('meca/plan/' ~ liste.plan)}}" target='_blank' class='btn' type='button'>
-											<i class="fas fa-drafting-compass fa-lg text-primary"></i>
-										</a>
-									{% endif %}
-
-									{% if liste.step %}
-										<a href="{{asset('meca/3D/' ~ liste.step)}}" class='btn' type='button' downdload='{{ liste.step }}'>
-											<i class="fab fa-unity fa-lg text-primary"></i>
-										</a>
-									{% endif %}
-								</td>
-								<td>{{ liste.datecreat|date('d/m/Y') }}</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+				{% include "progmeca/include_table.html.twig" %}
 			{% endif %}
 		</div>
 	</div>

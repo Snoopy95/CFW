@@ -22,7 +22,6 @@ function alert(message, type) {
 }
 
 function remplir(data) {
-    console.log(data)
     document.querySelector('#add_prog_client').value = data.client
     document.querySelector('#add_prog_refpiece').value = data.refpiece
     document.querySelector('#add_prog_ind').value = data.ind
@@ -51,7 +50,6 @@ function checkDossier() {
     if (alertNode) {
         new bootstrap.Alert(alertNode).close()
     }
-    console.log("je cherche le dossier :", content)
 
     axios
         .post("checkdossier", content)

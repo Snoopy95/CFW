@@ -33,7 +33,6 @@ function ajaxpost(data) {
             var tbody = document.querySelector("tbody")
 
             var oldtr = document.querySelectorAll(".ligne")
-
             oldtr.forEach((e) => e.remove())
 
             listes.forEach (function(liste) {
