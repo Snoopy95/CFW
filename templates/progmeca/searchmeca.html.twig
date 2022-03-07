@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<h1>Recherche Prog</h1>
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="cadre menu mt-5">
+			<div class="align-items-center d-flex">
+				<div class="dropdown">
+					<a href="{{ path('fraisage')}}" type='button' class='ms-1 btn btn-sm btn-primary'>
+						<i class="fas fa-plus"></i>
+						Ajouter Prg
+					</a>
+					<a class="ms-1 btn btn-sm btn-primary dropdown-toggle" href="#" role="button" id="dropdownlist" data-bs-toggle="dropdown" aria-expanded="false">
+						<i class="fas fa-list-ol"></i>
+						Liste des Prg
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownlist">
+						<li>
+							<a class="dropdown-item" href="{{ path('listeprog', {'mac' : 'fraise'}) }}">Fraisage</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('listeprog', {'mac' : 'tour'}) }}">Tournage</a>
+						</li>
+						<li><hr class="dropdown-divider"></li>
+						<li>
+							<a class="dropdown-item" href="{{ path('listeprog',{'mac' : 'all'}) }}">Tous Prg</a>
+						</li>
+					</ul>
+				</div>
+				<a href="{{ path('searchmeca')}}" type='button' class='ms-1 btn btn-sm btn-primary'>
+					<i class="fas fa-search"></i>
+					Rechercher PRG
+				</a>
+				<a href='#' type='button' class='ms-1 btn btn-sm btn-warning'>
+					<i class="fas fa-history"></i>
+					Autre
+				</a>
+			</div>
+			<div class="card mt-3">
+				<div class='card-body'>
+					<div class="d-flex">
+						<div class="row g-3">
+							<div class="form-floating">
+								<input type="text" class="form-control" id="searchmeca" placeholder="Recherche">
+								<label for="searchmeca">Rechercher</label>
+						    </div>
+							<button type='buttom' id='gosearchmeca' class='btn btn-success'>Recherche</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
