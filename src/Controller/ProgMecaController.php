@@ -199,6 +199,10 @@ class ProgMecaController extends AbstractController
      */
     public function searchmeca(): Response
     {
-        return new Response('ok');
+        $listes = [];
+
+        return $this->render('progmeca/searchmeca.html.twig', [
+            'listes' => $listes,
+        ]);
     }
 }
