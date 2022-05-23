@@ -56,6 +56,13 @@
 			</div>
 		</div>
 	</div>
+	<div class="p-3">
+		<div class="cadre liste">
+			{% if listes %}
+				{% include "progmeca/include_table.html.twig" %}
+			{% endif %}
+		</div>
+	</div>
 {% endblock %}
 
 {% block script %}
