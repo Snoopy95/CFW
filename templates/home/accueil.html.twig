@@ -5,22 +5,22 @@
 {% endblock %}
 
 {% block body %}
-	<div class="d-flex justify-content-center accueil">
+	<div class="d-flex justify-content-center accueil ombre">
 		<div>
-			<h1 class='animate_buttom'>
+			<h2 class='animate_buttom'>
 				<a href="{{path('dossiert')}}">Dossier Mécanique</a>
-			</h1>
-			<h1 class='animate_buttom'>
+			</h2>
+			<h2 class='animate_buttom'>
 				<a href="{{path('fraisage')}}">Prog Mécanique</a>
-			</h1>
+			</h2>
 			{% if app.user %}
-				<h1	class='animate_buttom'>
+				<h2	class='animate_buttom'>
 				<a href="{{path('appro_index')}}">
 				{% else %}
-				<h1><a disable>
+				<h2><a disable>
 			{% endif %}
-				Appro matiere
-				</a></h1>		
+				Appro matière
+				</a></h2>		
 		</div>
 	</div>
 {% endblock %}

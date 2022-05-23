@@ -9,6 +9,10 @@ body {
     margin-top: 100px;
 }
 
+.ombre {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
 .accueil {
     margin-left: auto;
     margin-right: auto;
@@ -16,7 +20,6 @@ body {
     padding: 2%;
     background-color: rgba(200, 205, 255, 0.9);
     border-radius: 30px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     margin-top: 10%;
 }
 

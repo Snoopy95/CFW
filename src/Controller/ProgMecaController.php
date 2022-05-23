@@ -199,7 +199,16 @@ class ProgMecaController extends AbstractController
      */
     public function searchmeca(): Response
     {
-        $listes = [];
+        $val="1000";
+        $cli="STAGO";
+        $mach = null;
+        $listes = $this->getDoctrine()->getRepository(ProgMeca::class)->findInProg(
+            $val,
+            [
+            'client' => $cli,
+            'machine' => $mach
+            ]
+        );
 
         return $this->render('progmeca/searchmeca.html.twig', [
             'listes' => $listes,
