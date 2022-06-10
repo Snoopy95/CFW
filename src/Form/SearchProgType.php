@@ -4,10 +4,10 @@ namespace App\Form;
 
 use App\Entity\SearchProg;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class SearchProgType extends AbstractType
 {
@@ -17,26 +17,25 @@ class SearchProgType extends AbstractType
             ->add('search', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Recherche',
-                    'class' => 'form-control-sm'
+                    'class' => 'form-control',
                 ],
-                'required' => true
+                'required' => true,
             ])
             ->add('machine', ChoiceType::class, [
                 'choices' => [
                     'Fraise' => 'Fraisage',
-                    'Tour' => 'Tournage'
+                    'Tour' => 'Tournage',
                 ],
                 'choice_attr' => [
                     'Fraise' => [
                         'class' => 'form-check-input',
                     ],
                     'Tour' => [
-                        'class' => 'form-check-input'
-                    ]
+                        'class' => 'form-check-input',
                     ],
+                ],
                 'expanded' => true,
                 'multiple' => false,
-                'required' => false,
             ]);
     }
 
