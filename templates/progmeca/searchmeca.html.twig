@@ -42,28 +42,30 @@
 			<div class="card mt-3">
 				<div class='card-body'>
 					<div class="row g-3">
-						<div class='col-6'>
+						{{ form_start(form)}}
+						<div class='col-3'>
 							<div class="form-floating">
-								<input type="text" class="form-control" id="searchmeca" placeholder="Recherche">
+								{{ form_widget(form.search)}}
 								<label for="searchmeca">Rechercher</label>
 							</div>
 						</div>
-						<div class='col'>
-					<div class="d-flex">
-						<div class="row g-3">
-							<div class="form-floating">
-								<input type="text" class="form-control" id="searchmeca" placeholder="Recherche">
-								<label for="searchmeca">Rechercher</label>
-						    </div>
-
-							<button type='buttom' id='gosearchmeca' class='btn btn-success'>Recherche</button>
+						<div class='row g-2'>
+							<div class="form-check mt-3">
+								{{ form_widget(form.machine.0)}}
+								<label for='search_prog_machine_0' class='form-check-label'>Fraisage</label>
+							</div>
+							<div class="form-check mt-2">
+								{{ form_widget(form.machine.1)}}
+								<label for='search_prog_machine_1' class='form-check-label'>Tournage</label>
+							</div>
 						</div>
+						<button type='buttom' id='gosearchmeca' class='btn btn-success'>Recherche</button>
+						{{ form_end(form) }}
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<div class="p-3">
 		<div class="cadre liste">
 			{% if listes %}
@@ -73,6 +75,4 @@
 	</div>
 {% endblock %}
 
-{% block script %}
-
-{% endblock %}
+{% block script %}{% endblock %}

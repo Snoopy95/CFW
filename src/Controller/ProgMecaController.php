@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Dossier;
 use App\Entity\ProgMeca;
 use App\Form\AddProgType;
+use App\Entity\SearchProg;
+use App\Form\SearchProgType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
@@ -197,21 +199,34 @@ class ProgMecaController extends AbstractController
     /**
      * @Route("searchmeca", name="searchmeca")
      */
-    public function searchmeca(): Response
+    public function searchmeca(Request $request): Response
     {
-        $val="1000";
-        $cli="STAGO";
-        $mach = null;
-        $listes = $this->getDoctrine()->getRepository(ProgMeca::class)->findInProg(
-            $val,
-            [
-            'client' => $cli,
-            'machine' => $mach
-            ]
-        );
+        $searchprog = new SearchProg();
+        $form = $this->createForm(SearchProgType::class, $searchprog);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $client = $searchprog->getClient();
+            $machine = $searchprog->getMachine();
+            $search = $searchprog->getSearch();
+
+            $listes = $this->getDoctrine()->getRepository(ProgMeca::class)->findInProg(
+                $search,
+                [
+                'client' => $client,
+                'machine' => $machine
+                ]
+            );
+
+            return $this->render('progmeca/searchmeca.html.twig', [
+            'listes' => $listes,
+            'form' => $form->createView()
+            ]);
+        };
 
         return $this->render('progmeca/searchmeca.html.twig', [
-            'listes' => $listes,
+            'form' => $form->createView(),
+            'listes' => null,
         ]);
     }
 }
