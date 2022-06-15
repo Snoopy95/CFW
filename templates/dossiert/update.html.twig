@@ -1,42 +1,48 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	<h1>Edition Dossier</h1>
+  <h1>Edition Dossier</h1>
 {% endblock %}
 
 {% block body %}
-	<div class="menu cadre">
-		<div class="card card-body">
-			{{ form_start(form) }}
-			<div class="row">
-				<div class="col-1">
-					{{form_widget(form.numdossier)}}
-					<small class="invalid-feedback">{{form_errors(form.numdossier)}}</small>
-				</div>
-				<div class="col-2">
-					{{form_widget(form.client)}}
-				</div>
-				<div class="col-4">
-					{{form_widget(form.refpiece)}}
-				</div>
-				<div class="col-1">
-					{{form_widget(form.ind)}}
-				</div>
-				<div class="col-4">
-					{{form_widget(form.desigpiece)}}
-				</div>
-			</div>
-			<div class="row mt-3">
-				<div class="col-6">
-					{{form_widget(form.plan)}}
-				</div>
-				<div class="col-6">
-					{{form_widget(form.step)}}
-				</div>
-			</div>
-				<button type="submit" class="mt-3 btn btn-success">Valider !</button>
-				<a href="{{ path('dossiert') }}" type="button" class="mt-3 ml-4 btn btn-danger">Annuler</a>
-			{{ form_end(form)}}
-		</div>
-	</div>
+  <div class="menu cadre">
+    <div class="card card-body">
+      {{ form_start(form) }}
+      <div class="row">
+        <div class="col-1">
+          {{form_widget(form.numdossier)}}
+          <small class="invalid-feedback">{{form_errors(form.numdossier)}}</small>
+        </div>
+        <div class="col-2">
+          {{form_widget(form.client)}}
+        </div>
+        <div class="col-4">
+          {{form_widget(form.refpiece)}}
+        </div>
+        <div class="col-1">
+          {{form_widget(form.ind)}}
+        </div>
+        <div class="col-4">
+          {{form_widget(form.desigpiece)}}
+        </div>
+      </div>
+      <div class='row mt-3'>
+        <div class="col-6">
+          <div class="input-group">
+            {{form_widget(form.plan)}}
+            <label class="input-group-text">PDF</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="input-group">
+            {{form_widget(form.step)}}
+            <label class="input-group-text">3D</label>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="mt-3 btn btn-success">Valider !</button>
+      <a href="{{ path('dossiert') }}" type="button" class="mt-3 ml-4 btn btn-danger">Annuler</a>
+      {{ form_end(form)}}
+    </div>
+  </div>
 {% endblock %}

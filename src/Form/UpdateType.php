@@ -18,24 +18,28 @@ class UpdateType extends AbstractType
         $builder
             ->add('numdossier', IntegerType::class, [
                 'attr' => [
+                    'placeholder' => "N° dossier",
                     'class' => 'form-control'
                 ],
                 'label' => 'N° Dossier',
             ])
             ->add('client', TextType::class, [
                 'attr' => [
+                    'placeholder' => 'Client',
                     'class' => 'form-control'
                 ],
                 'label' => 'Client',
             ])
             ->add('refpiece', TextType::class, [
                 'attr' => [
+                    'placeholder' => 'Réf pièce',
                     'class' => 'form-control'
                 ],
                 'label' => 'Ref pièce',
             ])
             ->add('ind', TextType::class, [
                 'attr' => [
+                    'placeholder' => 'Indice',
                     'class' => 'form-control'
                 ],
                 'label' => 'Indice',
@@ -43,6 +47,7 @@ class UpdateType extends AbstractType
             ])
             ->add('desigpiece', TextType::class, [
                 'attr' => [
+                    'placeholder' => 'Désignation pièce',
                     'class' => 'form-control'
                 ],
                 'empty_data' => '--',
