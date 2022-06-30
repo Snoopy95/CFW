@@ -23,10 +23,15 @@ class SearchProgType extends AbstractType
             ])
             ->add('machine', ChoiceType::class, [
                 'choices' => [
+                    'Toutes' => false,
                     'Fraise' => 'Fraisage',
                     'Tour' => 'Tournage',
                 ],
                 'choice_attr' => [
+                    'Toutes' => [
+                        'class' => 'form-check-input',
+                        'checked' => true,
+                    ],                    
                     'Fraise' => [
                         'class' => 'form-check-input',
                     ],

@@ -52,11 +52,15 @@
 						<div class='row g-2'>
 							<div class="form-check mt-3">
 								{{ form_widget(form.machine.0)}}
-								<label for='search_prog_machine_0' class='form-check-label'>Fraisage</label>
+								<label for='search_prog_machine_0' class='form-check-label'>Toutes</label>
 							</div>
 							<div class="form-check mt-2">
 								{{ form_widget(form.machine.1)}}
-								<label for='search_prog_machine_1' class='form-check-label'>Tournage</label>
+								<label for='search_prog_machine_1' class='form-check-label'>Fraisage</label>
+							</div>
+							<div class="form-check mt-2">
+								{{ form_widget(form.machine.2)}}
+								<label for='search_prog_machine_2' class='form-check-label'>Tournage</label>
 							</div>
 						</div>
 						<button type='buttom' id='gosearchmeca' class='btn btn-success'>Recherche</button>
