@@ -74,8 +74,8 @@ class DossiertController extends AbstractController
                 $newfilename =
                     "T{$adddossier->getNumdossier()} - {$newname} - {$ind}";
             }
-            $directoryplan = "dossier/plan/";
-            $directorystep = "dossier/3D/";
+            $directoryplan = $this->getParameter('upload_plan_dossier');
+            $directorystep = $this->getParameter('upload_3d_dossier');
             $plan = $form->get('plan')->getData();
             $step = $form->get('step')->getData();
             if (isset($plan)) {
@@ -139,8 +139,8 @@ class DossiertController extends AbstractController
                 $newfilename =
                     "T{$update->getNumdossier()} - {$newname} - {$ind}";
             }
-            $directoryplan = "dossier/plan/";
-            $directorystep = "dossier/3D/";
+            $directoryplan = $this->getParameter('upload_plan_dossier');
+            $directorystep = $this->getParameter('upload_3d_dossier');
             $plan = $form->get('plan')->getData();
             $step = $form->get('step')->getData();
             if (isset($plan)) {
