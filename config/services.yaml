@@ -8,6 +8,15 @@ parameters:
     upload_3d_dossier : '%kernel.project_dir%/public/dossier/3D/'
     upload_plan_meca : '%kernel.project_dir%/public/meca/plan/'
     upload_3d_meca : '%kernel.project_dir%/public/meca/3D/'
+    machine : 
+        fraisage :
+            nom : Fraisage
+            prefix : F
+        tournage : 
+            nom : Tournage
+            prefix : T
+        all :
+            nom : Toutes
 
 services:
     # default configuration for services in *this* file

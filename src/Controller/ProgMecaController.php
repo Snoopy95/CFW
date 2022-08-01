@@ -229,4 +229,13 @@ class ProgMecaController extends AbstractController
             'listes' => null,
         ]);
     }
+
+    /**
+     * @Route("test", name="test")
+     */
+    public function test()
+    {
+        $test = $this->getParameter('machine');
+        dd($test['fraisage']);
+    }
 }
