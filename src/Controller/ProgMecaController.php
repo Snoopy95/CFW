@@ -236,6 +236,6 @@ class ProgMecaController extends AbstractController
     public function test()
     {
         $test = $this->getParameter('machine');
-        dd($test['fraisage']);
+        dd($test);
     }
 }

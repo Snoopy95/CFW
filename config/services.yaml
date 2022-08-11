@@ -15,8 +15,6 @@ parameters:
         tournage : 
             nom : Tournage
             prefix : T
-        all :
-            nom : Toutes
 
 services:
     # default configuration for services in *this* file

@@ -27,18 +27,14 @@ class SearchProgType extends AbstractType
                     'Fraise' => 'Fraisage',
                     'Tour' => 'Tournage',
                 ],
-                'choice_attr' => [
-                    'Toutes' => [
-                        'class' => 'form-check-input',
-                        'checked' => true,
-                    ],                    
-                    'Fraise' => [
-                        'class' => 'form-check-input',
-                    ],
-                    'Tour' => [
-                        'class' => 'form-check-input',
-                    ],
-                ],
+                'choice_attr' => function($choices) {
+                    if ($choices === false) {
+                        $style = ['class' => 'form-check-input', 'checked' => true];
+                    } else {
+                        $style = ['class' => 'form-check-input'];
+                    }
+                    return $style;
+                },           
                 'expanded' => true,
                 'multiple' => false,
             ]);

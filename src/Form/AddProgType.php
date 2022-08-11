@@ -82,14 +82,9 @@ class AddProgType extends AbstractType
                     'Fraise' => 'Fraisage',
                     'Tour' => 'Tournage'
                 ],
-                'choice_attr' => [
-                    'Fraise' => [
-                        'class' => 'form-check-input',
-                    ],
-                    'Tour' => [
-                        'class' => 'form-check-input'
-                    ]
-                    ],
+                'choice_attr' => function() {
+                    return ['class' => 'form-check-input'];
+                },
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
