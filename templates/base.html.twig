@@ -12,6 +12,7 @@
 		<link type="text/css" rel="stylesheet" href="{{asset('/css/home.css')}}"/>
 		<link rel="stylesheet" href="{{asset('css/all.css')}}"/>
 		<link rel="stylesheet" href="{{asset('css/animate.min.css')}}"/>
+		<script src="{{asset('js/print.js')}}"></script>
 		<script src="{{asset('js/all.js')}}"></script>
 	</head>
 	<body>
@@ -97,11 +98,14 @@
 			</div>
 		</div>
 
-		{% for message in app.flashes('success') %}
+		{# {% for message in app.flashes('success') %}
 			<div class="mess alert alert-success" role="alert">
 				<i class="fas fa-check-circle"></i>
 				<span> {{ message }} </span>
 			</div>
+		{% endfor %} #}
+		{% for message in app.flashes('print') %}
+			<script type="text/javascript">print({{ message }})</script>
 		{% endfor %}
 		{% for message in app.flashes('danger') %}
 			<div class="mess alert alert-danger" role="alert">

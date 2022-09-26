@@ -90,6 +90,7 @@ class DossiertController extends AbstractController
             $em->persist($adddossier);
             $em->flush();
             $this->addFlash('success', 'Dossier bien enregistré');
+            $this->addFlash('print', $directoryplan.$newfilename.'.PDF');
             return $this->redirectToRoute('dossiert');
         }
 
