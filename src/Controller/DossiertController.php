@@ -86,7 +86,6 @@ class DossiertController extends AbstractController
                 $step->move($directorystep, $newfilename.".step");
                 $adddossier->setStep($newfilename.".step");
             }
-
             $em->persist($adddossier);
             $em->flush();
             $this->addFlash('success', 'Dossier bien enregistré');

@@ -98,12 +98,12 @@
 			</div>
 		</div>
 
-		{# {% for message in app.flashes('success') %}
+		{% for message in app.flashes('success') %}
 			<div class="mess alert alert-success" role="alert">
 				<i class="fas fa-check-circle"></i>
 				<span> {{ message }} </span>
 			</div>
-		{% endfor %} #}
+		{% endfor %}
 		{% for message in app.flashes('print') %}
 			<script type="text/javascript">print({{ message }})</script>
 		{% endfor %}
