@@ -2,19 +2,19 @@
 
 namespace App\Controller;
 
-use App\Entity\Backdossier;
-use App\Entity\Dossier;
 use App\Entity\Search;
+use App\Entity\Dossier;
 use App\Entity\SearchIn;
-use App\Form\AddDossierType;
-use App\Form\SearchInType;
 use App\Form\SearchType;
 use App\Form\UpdateType;
+use App\Form\SearchInType;
+use App\Entity\Backdossier;
+use App\Form\AddDossierType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DossiertController extends AbstractController
 {
@@ -86,10 +86,13 @@ class DossiertController extends AbstractController
                 $step->move($directorystep, $newfilename.".step");
                 $adddossier->setStep($newfilename.".step");
             }
+            if($adddossier->print) {
+                $this->addFlash('print', '/dossier/plan/'.$newfilename.'.PDF');
+            }
+
             $em->persist($adddossier);
             $em->flush();
             $this->addFlash('success', 'Dossier bien enregistré');
-            $this->addFlash('print', $directoryplan.$newfilename.'.PDF');
             return $this->redirectToRoute('dossiert');
         }
 

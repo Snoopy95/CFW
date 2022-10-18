@@ -1,5 +1,6 @@
 function print(pdf) {
     // Créer un IFrame.
+    console.log(pdf)
     var iframe = document.createElement('iframe');  
     // Cacher le IFrame.    
     iframe.style.visibility = "hidden"; 

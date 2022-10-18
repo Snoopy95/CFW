@@ -104,9 +104,6 @@
 				<span> {{ message }} </span>
 			</div>
 		{% endfor %}
-		{% for message in app.flashes('print') %}
-			<script type="text/javascript">print({{ message }})</script>
-		{% endfor %}
 		{% for message in app.flashes('danger') %}
 			<div class="mess alert alert-danger" role="alert">
 				<i class="fas fa-exclamation-triangle"></i>
@@ -117,6 +114,11 @@
 		{% block body %}{% endblock %}
 
 		{% block script %}{% endblock %}
+
+		{% for doc in app.flashes('print') %}
+			<script type="text/javascript">print('{{ doc }}')</script>
+		{% endfor %}
+		
 		<!-- Axentix JS minified version -->
 		{# <script src="{{asset('/js/axentix.min.js')}}"></script> #}
 		<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
