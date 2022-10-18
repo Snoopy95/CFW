@@ -2,6 +2,10 @@
 
 {% block title %}
 	<h1>Dossier T</h1>
+	{# {% if app.session.get('docprint') %}	
+		<script type="text/javascript">print('{{app.session.get('docprint')}}')</script>
+		app.session.set('docprint')
+	{% endif %} #}
 {% endblock %}
 
 {% block body %}
@@ -64,7 +68,16 @@
 							</div>
 						</div>
 					</div>
+					<div class='row mt-2'>
+						<div class='col-12'>
+							<div class="form-check form-switch">
+								{{form_widget(form.print)}}
+								{{form_label(form.print)}}
+							</div>
+						</div>
+					</div>
 					<button type="submit" class="mt-3 btn btn-success">Valider !</button>
+
 					{{ form_end(form)}}
 				</div>
 			</div>

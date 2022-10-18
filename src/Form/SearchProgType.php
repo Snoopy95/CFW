@@ -23,17 +23,18 @@ class SearchProgType extends AbstractType
             ])
             ->add('machine', ChoiceType::class, [
                 'choices' => [
+                    'Toutes' => false,
                     'Fraise' => 'Fraisage',
                     'Tour' => 'Tournage',
                 ],
-                'choice_attr' => [
-                    'Fraise' => [
-                        'class' => 'form-check-input',
-                    ],
-                    'Tour' => [
-                        'class' => 'form-check-input',
-                    ],
-                ],
+                'choice_attr' => function($choices) {
+                    if ($choices === false) {
+                        $style = ['class' => 'form-check-input', 'checked' => true];
+                    } else {
+                        $style = ['class' => 'form-check-input'];
+                    }
+                    return $style;
+                },           
                 'expanded' => true,
                 'multiple' => false,
             ]);

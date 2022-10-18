@@ -2,19 +2,19 @@
 
 namespace App\Controller;
 
-use App\Entity\Backdossier;
-use App\Entity\Dossier;
 use App\Entity\Search;
+use App\Entity\Dossier;
 use App\Entity\SearchIn;
-use App\Form\AddDossierType;
-use App\Form\SearchInType;
 use App\Form\SearchType;
 use App\Form\UpdateType;
+use App\Form\SearchInType;
+use App\Entity\Backdossier;
+use App\Form\AddDossierType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DossiertController extends AbstractController
 {
@@ -74,8 +74,8 @@ class DossiertController extends AbstractController
                 $newfilename =
                     "T{$adddossier->getNumdossier()} - {$newname} - {$ind}";
             }
-            $directoryplan = "dossier/plan/";
-            $directorystep = "dossier/3D/";
+            $directoryplan = $this->getParameter('upload_plan_dossier');
+            $directorystep = $this->getParameter('upload_3d_dossier');
             $plan = $form->get('plan')->getData();
             $step = $form->get('step')->getData();
             if (isset($plan)) {
@@ -85,6 +85,9 @@ class DossiertController extends AbstractController
             if (isset($step)) {
                 $step->move($directorystep, $newfilename.".step");
                 $adddossier->setStep($newfilename.".step");
+            }
+            if($adddossier->print) {
+                $this->addFlash('print', '/dossier/plan/'.$newfilename.'.PDF');
             }
 
             $em->persist($adddossier);
@@ -139,8 +142,8 @@ class DossiertController extends AbstractController
                 $newfilename =
                     "T{$update->getNumdossier()} - {$newname} - {$ind}";
             }
-            $directoryplan = "dossier/plan/";
-            $directorystep = "dossier/3D/";
+            $directoryplan = $this->getParameter('upload_plan_dossier');
+            $directorystep = $this->getParameter('upload_3d_dossier');
             $plan = $form->get('plan')->getData();
             $step = $form->get('step')->getData();
             if (isset($plan)) {

@@ -12,6 +12,7 @@
 		<link type="text/css" rel="stylesheet" href="{{asset('/css/home.css')}}"/>
 		<link rel="stylesheet" href="{{asset('css/all.css')}}"/>
 		<link rel="stylesheet" href="{{asset('css/animate.min.css')}}"/>
+		<script src="{{asset('js/print.js')}}"></script>
 		<script src="{{asset('js/all.js')}}"></script>
 	</head>
 	<body>
@@ -113,6 +114,11 @@
 		{% block body %}{% endblock %}
 
 		{% block script %}{% endblock %}
+
+		{% for doc in app.flashes('print') %}
+			<script type="text/javascript">print('{{ doc }}')</script>
+		{% endfor %}
+		
 		<!-- Axentix JS minified version -->
 		{# <script src="{{asset('/js/axentix.min.js')}}"></script> #}
 		<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>

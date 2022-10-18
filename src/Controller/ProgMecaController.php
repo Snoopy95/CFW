@@ -61,19 +61,19 @@ class ProgMecaController extends AbstractController
             $step = $form->get('step')->getData();
 
             if ($retourplan) {
-                copy('dossier/plan/'.$retourplan, 'meca/plan/'.$plan_name);
+                copy($this->getParameter('upload_plan_dossier').$retourplan, 'meca/plan/'.$plan_name);
                 $addprog->setPlan($plan_name);
             }
             if ($retourstep) {
-                copy('dossier/3D/'.$retourstep, 'meca/3D/'.$step_name);
+                copy($this->getParameter('upload_3d_dossier').$retourstep, 'meca/3D/'.$step_name);
                 $addprog->setStep($step_name);
             }
             if ($plan) {
-                $plan->move('meca/plan/'.$plan_name);
+                $plan->move($this->getParameter('upload_plan_meca').$plan_name);
                 $addprog->setPlan($plan_name);
             }
             if ($step) {
-                $step->move('meca/3D/'.$step_name);
+                $step->move($this->getParameter('upload_3d_meca').$step_name);
                 $addprog->setStep($step_name);
             }
 
@@ -228,5 +228,14 @@ class ProgMecaController extends AbstractController
             'form' => $form->createView(),
             'listes' => null,
         ]);
+    }
+
+    /**
+     * @Route("test", name="test")
+     */
+    public function test()
+    {
+        $test = $this->getParameter('machine');
+        dd($test);
     }
 }

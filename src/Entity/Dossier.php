@@ -75,6 +75,8 @@ class Dossier
      */
     private $ind;
 
+    public $print;
+
     public function getId(): ?int
     {
         return $this->id;

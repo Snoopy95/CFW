@@ -4,6 +4,19 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    upload_plan_dossier : '%kernel.project_dir%/public/dossier/plan/'
+    upload_3d_dossier : '%kernel.project_dir%/public/dossier/3D/'
+    upload_plan_meca : '%kernel.project_dir%/public/meca/plan/'
+    upload_3d_meca : '%kernel.project_dir%/public/meca/3D/'
+    machine : 
+        fraisage :
+            nom : Fraise
+            type : Fraisage
+            prefix : F
+        tournage : 
+            nom : Tour
+            type : Tournage
+            prefix : T
 
 services:
     # default configuration for services in *this* file
