@@ -86,7 +86,7 @@ class DossiertController extends AbstractController
                 $step->move($directorystep, $newfilename.".step");
                 $adddossier->setStep($newfilename.".step");
             }
-            if($adddossier->print) {
+            if($adddossier->print and isset($plan)) {
                 $this->addFlash('print', '/dossier/plan/'.$newfilename.'.PDF');
             }
 
