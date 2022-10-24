@@ -194,16 +194,21 @@ class DossiertController extends AbstractController
     public function delete(int $id, EntityManagerInterface $em): Response
     {
         $deldossier = $this->getDoctrine()->getRepository(Dossier::class)->find($id);
-        $backdossier = (new Backdossier())
-            ->setNumdossier($deldossier->getNumdossier())
-            ->setClient($deldossier->getClient())
-            ->setRefpiece($deldossier->getRefpiece())
-            ->setDesigpiece($deldossier->getDesigpiece())
-            ->setInd($deldossier->getInd())
-            ->setPlan($deldossier->getPlan())
-            ->setStep($deldossier->getStep())
-            ->setDatecreat($deldossier->getDatecreat())
-            ->setDatedelete(new \DateTime());
+        // $backdossier = (new Backdossier())
+        //     ->setNumdossier($deldossier->getNumdossier())
+        //     ->setClient($deldossier->getClient())
+        //     ->setRefpiece($deldossier->getRefpiece())
+        //     ->setDesigpiece($deldossier->getDesigpiece())
+        //     ->setInd($deldossier->getInd())
+        //     ->setPlan($deldossier->getPlan())
+        //     ->setStep($deldossier->getStep())
+        //     ->setDatecreat($deldossier->getDatecreat())
+        //     ->setDatedelete(new \DateTime());
+        
+        $backdossier = new Backdossier();
+        $backdossier = clone $deldossier;
+        // $backdossier->setId();
+
         // $plan = $deldossier->getPlan();
         // $directory = "dossier/plan/";
         // if (!empty($plan)) {
@@ -212,6 +217,8 @@ class DossiertController extends AbstractController
         //             unlink($plan);
         //             closedir($handle);
         // }
+
+        dd($deldossier, $backdossier);
         $em->remove($deldossier);
         $em->persist($backdossier);
         $em->flush();
