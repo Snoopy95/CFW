@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	<h1>Dossier T</h1>
+	<h1>Corbeille Dossier T</h1>
 {% endblock %}
 
 {% block body %}
@@ -10,77 +10,10 @@
 		<div class="menu cadre">
 			<div class='d-flex justify-content-between'>
 				<div class=''>
-					<button class="btn btn-primary btn-sm" type="button"
-					{% if app.user %} data-bs-toggle="collapse" data-bs-target="#ajouter" aria-expanded="false" aria-controls="ajouter" {% endif %}
-					{% if not app.user %} disabled {% endif %}
-					>
-						Ajouter
-					</button>
-					<a href='{{path('oldfile')}}' type='button' class='btn btn-primary btn-sm'>Ancien dossier</a>
-					{% if is_granted('ROLE_ADMIN') %}
-						<a href='{{path('corbeille')}}' type='button' class='btn btn-warning btn-sm'>
-							<i class="fa-solid fa-trash-can"></i>
-							<span> Corbeille </span>
-						</a>
-					{% endif %}
-				</div>
-				<div class=''>
-					{{ form_start(formsearch)}}
-					<div class="form-inline">
-						<button type="submit" class="btn btn-success btn-sm">Recherche</button>
-						{{form_widget(formsearch.searchin)}}
-						{{ form_widget(formsearch.infield)}}
-					</div>
-					{{ form_end(formsearch) }}
-				</div>
-			</div>
-			<!-- ***** Formulaire d'ajout **** -->
-			<div class="collapse formul" id="ajouter">
-				<div class="mt-2 card card-body">
-					{{ form_start(form) }}
-					<div class="row mt-2">
-						<div class="col-1">
-							{{form_widget(form.numdossier)}}
-							<small class="invalid-feedback">{{form_errors(form.numdossier)}}</small>
-						</div>
-						<div class="col-2">
-							{{form_widget(form.client)}}
-						</div>
-						<div class="col-4">
-							{{form_widget(form.refpiece)}}
-						</div>
-						<div class="col-1">
-							{{form_widget(form.ind)}}
-						</div>
-						<div class="col-4">
-							{{form_widget(form.desigpiece)}}
-						</div>
-					</div>
-					<div class='row mt-3'>
-						<div class="col-6">
-							<div class="input-group">
-								{{form_widget(form.plan)}}
-								<label class="input-group-text">PDF</label>
-							</div>
-						</div>
-						<div class="col-6">
-							<div class="input-group">
-								{{form_widget(form.step)}}
-								<label class="input-group-text">3D</label>
-							</div>
-						</div>
-					</div>
-					<div class='row mt-2'>
-						<div class='col-12'>
-							<div class="form-check form-switch">
-								{{form_widget(form.print)}}
-								{{form_label(form.print)}}
-							</div>
-						</div>
-					</div>
-					<button type="submit" class="mt-3 btn btn-success">Valider !</button>
-
-					{{ form_end(form)}}
+				<a href="{{path('dossiert')}}" type='button' class='btn btn-sm btn-primary'>
+					<i class="fas fa-arrow-alt-circle-left"></i>
+					Retour
+				</a>
 				</div>
 			</div>
 		</div>

@@ -258,4 +258,16 @@ class DossiertController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/corbeille", name="corbeille")
+     */
+    public function corbeille(): Response
+    {
+        $listes = [];
+
+        return $this->render('dossiert/corbeille.html.twig', [
+            'listes' => $listes,
+        ]);
+    }
 }
