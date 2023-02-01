@@ -147,10 +147,10 @@
         "version": "v4.4.13"
     },
     "symfony/debug-bundle": {
-        "version": "4.1",
+        "version": "4.4",
         "recipe": {
             "repo": "github.com/symfony/recipes",
-            "branch": "master",
+            "branch": "main",
             "version": "4.1",
             "ref": "0ce7a032d344fb7b661cd25d31914cd703ad445b"
         },
